@@ -1,6 +1,9 @@
+#theme
 theme = catppuccin-frappe
 
-cursor-style = block
+cursor-style = box
+cursor-style-blink = false
+shell-integration-features = no-cursor
 
 mouse-hide-while-typing = true
 macos-titlebar-style=transparent
@@ -11,7 +14,7 @@ keybind = cmd+o>x=close_surface
 
 keybind = cmd+o>n=new_window
 
-# tabs
+# tabs 
 keybind = cmd+o>c=new_tab
 keybind = cmd+o>shift+l=next_tab
 keybind = cmd+o>shift+h=previous_tab
@@ -28,3 +31,20 @@ keybind = cmd+o>6=goto_tab:6
 keybind = cmd+o>7=goto_tab:7
 keybind = cmd+o>8=goto_tab:8
 keybind = cmd+o>9=goto_tab:9
+
+# split
+keybind = cmd+o>\=new_split:right
+keybind = cmd+o>-=new_split:down
+
+keybind = cmd+o>j=goto_split:bottom
+keybind = cmd+o>k=goto_split:top
+keybind = cmd+o>h=goto_split:left
+keybind = cmd+o>l=goto_split:right
+
+keybind = cmd+o>z=toggle_split_zoom
+
+keybind = cmd+o>e=equalize_splits
+
+# other
+copy-on-select = clipboard
+
