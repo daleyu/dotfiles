@@ -1,0 +1,32 @@
+""" This is my .ideavimrc file for IntelliJ projects. Feel free use it --------
+
+""" Map leader to space -------
+let mapleader = " "
+
+""" Some Basic Vim necessities -------
+set hlsearch
+
+""" plugins --------
+set easymotion
+set multiple-cursors
+
+" have x (removes single character) not go into the default registry
+nnnoremap x "_x
+
+
+" Copy a word
+nmap ,c yiw
+" Select a word
+nmap ,v viw
+
+# Hover over error bind
+map gh <Action>(ShowHoverInfo)
+
+" Paste in where the cursor is ----
+nnoremap gP i<CR><Esc>PkJxJx
+nnoremap gp a<CR><Esc>PkJxJx
+
+" change the copy and paste to match d and D binds
+nnoremap Y y$
+nnoremap V v$
+nnoremap vv V
