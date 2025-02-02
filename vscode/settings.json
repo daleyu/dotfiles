@@ -11,6 +11,9 @@
     "security.workspace.trust.untrustedFiles": "open",
     "remote.SSH.useLocalServer": false,
     "remote.SSH.remotePlatform": {
+      "acnlin56.pbn.bnl.gov": "linux",
+      "acnlingf.pbn.bnl.gov": "linux",
+      "acnlin6a.pbn.bnl.gov": "linux",
       "clac.cs.columbia.edu": "linux",
       "osvm": "linux"
     },
@@ -39,19 +42,19 @@
       "yaml": false,
       "dart": true,
       "go": false
-  },
+    },
     "[python]": {
       "editor.formatOnType": true,
       "editor.defaultFormatter": "ms-python.black-formatter"
     },
-    "workbench.iconTheme": "vscode-icons",
+    "workbench.iconTheme": "catppuccin-mocha",
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "vsicons.dontShowNewVersionMessage": true,
     "editor.minimap.autohide": true,
     "editor.minimap.renderCharacters": false,
     "editor.minimap.scale": 2,
     "terminal.integrated.env.osx": {},
-    "workbench.colorTheme": "Kanagawa Wave",
+    "workbench.colorTheme": "Catppuccin Mocha",
     "redhat.telemetry.enabled": true,
     "editor.rulers": [80, 100],
     "rewrap.autoWrap.enabled": true,
@@ -59,6 +62,25 @@
     "editor.insertSpaces": true,
     "editor.detectIndentation": false,
     "editor.tabSize": 4,
+    "files.autoSave": "off",
+    "[javascript][javascriptreact][typescript][typescriptreact]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.fixAll.eslint": "explicit",
+        "source.organizeImports": "explicit"
+      }
+    },
+    "eslint.options": {
+      "extensions": [".js", ".jsx"]
+    },
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact"
+    ],
     "[c]": {
       "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
     },
@@ -68,40 +90,43 @@
     "editor.fontLigatures": true,
     "editor.lineNumbers": "relative",
     "[latex]": {
-        "editor.defaultFormatter": "James-Yu.latex-workshop"
+      "editor.defaultFormatter": "James-Yu.latex-workshop"
     },
     "[go]": {
-        "editor.defaultFormatter": "golang.go"
-  },
-  "terminal.integrated.fontFamily": "monospace",
-  "git.confirmSync": false,
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": ["g", "H"],
-      "commands": [{ "command": "editor.action.showDefinitionPreviewHover" }]
+      "editor.defaultFormatter": "golang.go"
     },
-    {
-          "before": ["u"], 
-          "after": [],
-          "commands": [
-              {
-                  "command": "undo", 
-                  "args": []
-              }
-          ] 
+    "terminal.integrated.fontFamily": "monospace",
+    "git.confirmSync": false,
+    "vim.normalModeKeyBindingsNonRecursive": [
+      {
+        "before": ["g", "H"],
+        "commands": [{ "command": "editor.action.showDefinitionPreviewHover" }]
       },
-      { 
-          "before": ["<C-r>"], 
-          "after": [],
-          "commands": [
-              {
-                  "command": "redo", 
-                  "args": []
-              }
-          ] 
-      } 
-  ],
-  "vim.easymotion": true,
-  "vim.leader": "<space>",
-  "makefile.configureOnOpen": true,
+      {
+        "before": ["u"],
+        "after": [],
+        "commands": [
+          {
+            "command": "undo",
+            "args": []
+          }
+        ]
+      },
+      {
+        "before": ["<C-r>"],
+        "after": [],
+        "commands": [
+          {
+            "command": "redo",
+            "args": []
+          }
+        ]
+      }
+    ],
+    "vim.easymotion": true,
+    "vim.leader": "<space>",
+    "vim.statusBarColorControl": false,
+    "makefile.configureOnOpen": true,
+    "vim.vimrc.enable": true
   }
+  
