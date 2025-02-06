@@ -82,4 +82,4 @@ nnoremap <C-Tab> gt
 nnoremap <leader><CR> :nohlsearch<CR>
 
 " Copy the entire file to the clipboard
-nmap <C-a> ggVG"+y
+nmap <C-a> ggvvG"+yy
