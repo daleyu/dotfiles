@@ -1,10 +1,17 @@
+set -x XDG_CONFIG_HOME "$HOME/.config"
 if status is-interactive
     # Commands to run in interactive sessions can go here
     set -x PATH $PATH $HOME/.pub-cache/bin
     set -x JAVA_HOME $java_home
 end
 
+if test -f /opt/homebrew/share/autojump/autojump.fish
+    source /opt/homebrew/share/autojump/autojump.fish
+end
+
 fish_vi_key_bindings
+alias tn="tmux new-session -s"
+alias ta="tmux attach-session -t"
 
 #!/bin/fish
 # The begin/end block limits the scope of all variables except $PATH
