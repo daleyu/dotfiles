@@ -1,3 +1,4 @@
+
 " ---------------------------
 " Appearance & Filetype Settings
 " ---------------------------
@@ -48,9 +49,8 @@ set expandtab
 " Map leader to space
 let mapleader = " "
 
-" Remap x and s so that it does not yank the character
+" Remap x so that it does not yank the character (uses the black hole
 nnoremap x "_x
-nnoremap s "_s
 
 " Copy a word into the default register
 nmap ,c yiw
