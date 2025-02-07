@@ -9,9 +9,10 @@ sudo apt get stow
 ```
 
 ### Usage
-Stow will position the dotfile at the $HOME directory if used by default. Simply
-run stow `directory` to be able to echo the file at $HOME.
+Stow will position the dotfile at the $HOME directory if used by default. Stow
+by default sets the file at the parent directory, so you have to specify the
+target path.
+```
+stow --t=$HOME tmux
+```
 
-```
-stow ghostty
-```

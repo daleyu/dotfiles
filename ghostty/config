@@ -1,12 +1,15 @@
 #theme
 theme = catppuccin-frappe
 
-cursor-style = box
+cursor-style = block
 cursor-style-blink = false
 shell-integration-features = no-cursor
 
 mouse-hide-while-typing = true
 macos-titlebar-style=transparent
+
+#styling 
+background-opacity = 0.4
 
 # keybindings
 keybind = cmd+o>r=reload_config
@@ -47,4 +50,3 @@ keybind = cmd+o>e=equalize_splits
 
 # other
 copy-on-select = clipboard
-

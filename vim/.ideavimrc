@@ -1,28 +1,26 @@
-""" This is my .ideavimrc file for IntelliJ projects. Feel free use it --------
+""" Map leader to space ---------------------
+let mapleader=" "
 
-""" Map leader to space -------
-let mapleader = " "
+""" Some Basic vim necessities -------------
+set hlsearch 
 
-""" Some Basic Vim necessities -------
-set hlsearch
-
-""" plugins --------
+""" plugins --------------------------------
 set easymotion
 set multiple-cursors
 
 " have x (removes single character) not go into the default registry
-nnnoremap x "_x
+nnoremap x "_x
 
-
-" Copy a word
+" Copy Word
 nmap ,c yiw
-" Select a word
+
+" Select word
 nmap ,v viw
 
 # Hover over error bind
 map gh <Action>(ShowHoverInfo)
 
-" Paste in where the cursor is ----
+" paste in where the cursor is -------------
 nnoremap gP i<CR><Esc>PkJxJx
 nnoremap gp a<CR><Esc>PkJxJx
 
@@ -31,12 +29,11 @@ nnoremap Y y$
 nnoremap V v$
 nnoremap vv V
 
-" recenter after up and down 
+" recenter after up and down
 nnoremap <C-f> <C-f>zz
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 nnoremap <C-b> <C-b>zz
-
 
 " easy window navigation
 nnoremap <a-k> gT
@@ -44,16 +41,21 @@ nnoremap <a-j> gt
 nnoremap <c-s-tab> gT
 nnoremap <c-tab> gt
 
-" clear search buffer for nohlsearch
+" clear the search buffer when hitting return
 nnoremap <leader><cr> :nohlsearch<cr>
 
 " copy whole file
-nmap <C-a> ggVG"+y
+nmap <C-a> ggvvG"+y
 
-""" Mappings ----
+" splits
+:map <leader>i <Action>(PrevSplitter)
+:map <c-b> <Action>(SplitVertically)
+
+
+""" Mappings --------------------------------
 map <leader>f <Plug>(easymotion-s)
 map <leader>e <Plug>(easymotion-f)
 
-""" Source the .ideavimrc file ----
+""" Source vimrc
 :map <leader>9 <Action>(IdeaVim.ReloadVimRc.reload)
-let g:WhichKeyDesc_reload_vim_rc = "<leader>9 Reload Vimrc"
+let g:WhichKeyDesc_reload_vim_rc = "<leader>9 Reload VimRc"
