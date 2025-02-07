@@ -48,8 +48,9 @@ set expandtab
 " Map leader to space
 let mapleader = " "
 
-" Remap x so that it does not yank the character (uses the black hole register)
+" Remap x and s so that it does not yank the character
 nnoremap x "_x
+nnoremap s "_s
 
 " Copy a word into the default register
 nmap ,c yiw
@@ -82,4 +83,4 @@ nnoremap <C-Tab> gt
 nnoremap <leader><CR> :nohlsearch<CR>
 
 " Copy the entire file to the clipboard
-nmap <C-a> ggVG"+y
+nmap <C-a> ggvvG"+y
