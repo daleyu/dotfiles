@@ -9,8 +9,8 @@ mouse-hide-while-typing = true
 macos-titlebar-style=transparent
 
 #styling for transparent
-background-opacity = 0.75
-background-blur = 10
+background-opacity = 0.9
+background-blur = 15
 
 # keybindings
 keybind = cmd+o>r=reload_config
