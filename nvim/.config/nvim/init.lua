@@ -1,3 +1,52 @@
+-- set space as leader
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+-- nerd font
+vim.g.have_nerd_font = false
+
+-- line numbers
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.o.statuscolumn = "%s %l %r"
+
+-- don't show the mode
+vim.opt.showmode = false
+
+-- Sync clipboard between OS and Neovim.
+vim.schedule(function()
+  vim.opt.clipboard = 'unnamedplus'
+end)
+
+-- Enable break indent
+vim.opt.breakindent = true
+
+-- Save undo history
+vim.opt.undofile = true
+
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+-- Keep signcolumn on by default
+vim.opt.signcolumn = 'yes'
+
+-- Decrease update time
+vim.opt.updatetime = 250
+
+-- Decrease mapped sequence wait time
+vim.opt.timeoutlen = 300
+
+-- Configure how new splits should be opened
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = 'split'
+
+-- Show which line your cursor is on
+vim.opt.cursorline = true
+
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 -- Auto-install lazy.nvim if not present
@@ -17,8 +66,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	{'folke/tokyonight.nvim'},
 	{'neovim/nvim-lspconfig'},
+	'nvim-lualine/lualine.nvim',
+	dependencies = { 'nvim-tree/nvim-web-devicons' },
 	{'williamboman/mason.nvim'},
 	{'williamboman/mason-lspconfig.nvim'},
 	{'hrsh7th/cmp-nvim-lsp'},
@@ -26,7 +78,6 @@ require('lazy').setup({
 })
 
 vim.opt.termguicolors = true
-vim.cmd.colorscheme('tokyonight')
 
 -- Reserve a space in the gutter
 -- This will avoid an annoying layout shift in the screen
@@ -101,3 +152,24 @@ cmp.setup({
     end,
   },
 })
+
+local latte = require("catppuccin.palettes").get_palette "latte"
+local frappe = require("catppuccin.palettes").get_palette "frappe"
+local macchiato = require("catppuccin.palettes").get_palette "macchiato"
+local mocha = require("catppuccin.palettes").get_palette "mocha"
+require('lualine').setup {
+    options = {
+        theme = "catppuccin"
+    }
+}
+require("catppuccin").setup({
+    flavour = "macchiato",
+    background = { -- :h background
+        light = "latte",
+        dark = "macchiato",
+    },
+    transparent_background = true, 
+})
+
+-- setup must be called before loading
+vim.cmd.colorscheme("catppuccin")
