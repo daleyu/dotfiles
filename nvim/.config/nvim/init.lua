@@ -42,6 +42,10 @@ vim.opt.timeoutlen = 300
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
+-- tab stops and shift 
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
 
@@ -70,8 +74,9 @@ require('lazy').setup({
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	{'folke/tokyonight.nvim'},
 	{'neovim/nvim-lspconfig'},
-	'nvim-lualine/lualine.nvim',
-	dependencies = { 'nvim-tree/nvim-web-devicons' },
+	{'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
+	{ "nvim-treesitter/nvim-treesitter" },
+	{ "ibhagwan/fzf-lua", dependencies = { "nvim-tree/nvim-web-devicons" } },
 	{'williamboman/mason.nvim'},
 	{'williamboman/mason-lspconfig.nvim'},
 	{'hrsh7th/cmp-nvim-lsp'},
@@ -171,5 +176,37 @@ require("catppuccin").setup({
     transparent_background = true, 
 })
 
+require("fzf-lua").setup({
+	keymap = {
+		fzf = {
+			-- use cltr-q to select all items and convert to quickfix list
+			["ctrl-q"] = "select-all+accept",
+		},
+	},
+})
+-- use `fzf-lua` for replace vim.ui.select 
+require("fzf-lua").register_ui_select()
+
+-- Treesitter configs
+require("lazy").setup({{
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    config = function () 
+      local configs = require("nvim-treesitter.configs")
+
+      configs.setup({
+          ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html", "go" },
+          sync_install = false,
+          highlight = { enable = true },
+          indent = { enable = true },  
+        })
+    end
+ }})
+
 -- setup must be called before loading
 vim.cmd.colorscheme("catppuccin")
+
+-- Global keybindings 
+vim.keymap.set('n', '<leader>p', '<Cmd>FzfLua<CR>')
+vim.keymap.set('n', '<leader>f', '<Cmd>FzfLua files<CR>')
+vim.keymap.set("i", "{<cr>", "{<cr>}<esc>O")
