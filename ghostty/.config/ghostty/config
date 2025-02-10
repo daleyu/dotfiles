@@ -9,7 +9,7 @@ mouse-hide-while-typing = true
 macos-titlebar-style=transparent
 
 #styling for transparent
-background-opacity = 0.9
+background-opacity = 0.8
 background-blur = 15
 
 # keybindings
