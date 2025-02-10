@@ -8,6 +8,7 @@ vim.g.have_nerd_font = false
 -- line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.wo.number = true
 vim.o.statuscolumn = "%s %l %r"
 
 -- don't show the mode
@@ -112,7 +113,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-require'lspconfig'.golangci_lint_ls.setup({})
 require'lspconfig'.gopls.setup({})
 
 require('mason').setup({})
