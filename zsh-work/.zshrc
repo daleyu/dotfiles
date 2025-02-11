@@ -124,6 +124,11 @@ local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
 PROMPT='${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 RPROMPT="[%D{%m/%f/%y}|%@]"
 
+# aliases
+alias n="nvim"
+alias tn="tmux new-session -s"
+alias ta="tmux attach-session -t"
+
 kinit dale.yu@BYTEDANCE.COM
 klist
 echo "Connected for 24 hrs to Bytedance auth"
@@ -131,3 +136,4 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+eval "$(zoxide init zsh)"
