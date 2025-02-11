@@ -99,6 +99,7 @@ require('lazy').setup({
 	{'williamboman/mason.nvim'},
 	{'williamboman/mason-lspconfig.nvim'},
 	{'hrsh7th/cmp-nvim-lsp'},
+	{ "SmiteshP/nvim-navic", dependencies = {"neovim/nvim-lspconfig"} }, 
 	{'hrsh7th/nvim-cmp'},
 	{"sindrets/diffview.nvim"},
 	{"nvim-tree/nvim-tree.lua", dependencies = { "nvim-tree/nvim-web-devicons" } },
@@ -139,7 +140,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-require'lspconfig'.gopls.setup({})
+
+----------------
+-- LSPCONFIG --
+----------------
+local navic = require("nvim-navic")
+
+require'lspconfig'.gopls.setup({
+	on_attach = function(client, bufnr)
+        navic.attach(client, bufnr)
+    end
+})
+
 require'lspconfig'.pyright.setup({})
 
 require('mason').setup({})
@@ -494,7 +506,6 @@ mini_files.setup({
 })
 KEYMAP_SETTINGS.mini_files(mini_files)
 
-
 -- yank current file path
 function insertFullPath()
   local filepath = vim.fn.expand('%')
@@ -506,7 +517,10 @@ vim.keymap.set('n', '<leader>lc', insertFullPath, { noremap = true, silent = tru
 -- setup must be called before loading
 vim.cmd.colorscheme("catppuccin")
 
--- Global keybindings 
+
+------------------------
+-- Global Keymappings---
+------------------------
 vim.keymap.set('n', '<leader>p', '<Cmd>FzfLua<CR>')
 vim.keymap.set('n', '<leader>f', '<Cmd>FzfLua files<CR>')
 vim.keymap.set('n', '<leader>b', '<Cmd>NvimTreeToggle<CR>')
