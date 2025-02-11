@@ -82,6 +82,7 @@ require('lazy').setup({
 	{ "nvim-treesitter/nvim-treesitter" },
 	{'folke/tokyonight.nvim'},
 	{'neovim/nvim-lspconfig'},
+	{ 'echasnovski/mini.nvim', version = false },
 	{'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
 	{ "nvim-treesitter/nvim-treesitter" },
 	{ "ibhagwan/fzf-lua", dependencies = { "nvim-tree/nvim-web-devicons" } },
@@ -89,6 +90,7 @@ require('lazy').setup({
 	{'williamboman/mason-lspconfig.nvim'},
 	{'hrsh7th/cmp-nvim-lsp'},
 	{'hrsh7th/nvim-cmp'},
+	{"nvim-tree/nvim-tree.lua", dependencies = { "nvim-tree/nvim-web-devicons" } },
 })
 
 vim.opt.termguicolors = true
@@ -206,6 +208,41 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
+
+-- nvim-tree
+require("nvim-tree").setup()
+ 
+local KEYMAP_SETTINGS = {}
+do
+	local set = vim.keymap.set
+
+	KEYMAP_SETTINGS.mini_files = function(mini_files)
+		mini_files.config.mappings.close = "<esc>"
+		set("n", "<leader><space>", mini_files.open)
+		set("n", "<leader>s", function() -- set working dir to current buffer
+			local state = mini_files.get_explorer_state()
+			local dir = state and state.branch[state.depth_focus] or "%:h"
+			vim.cmd("cd " .. dir)
+			vim.cmd("pwd")
+		end)
+	end
+end
+----------------
+-- MINI.FILES --
+----------------
+
+local mini_files = require("mini.files")
+mini_files.setup({
+	windows = {
+		preview = true,
+		width_preview = 30,
+		width_nofocus = 30,
+		width_focus = 30,
+	},
+})
+KEYMAP_SETTINGS.mini_files(mini_files)
+
+
 -- yank current file path
 function insertFullPath()
   local filepath = vim.fn.expand('%')
@@ -220,8 +257,10 @@ vim.cmd.colorscheme("catppuccin")
 -- Global keybindings 
 vim.keymap.set('n', '<leader>p', '<Cmd>FzfLua<CR>')
 vim.keymap.set('n', '<leader>f', '<Cmd>FzfLua files<CR>')
+vim.keymap.set('n', '<leader>b', '<Cmd>NvimTreeToggle<CR>')
 vim.keymap.set("i", "{<cr>", "{<cr>}<esc>O")
 vim.keymap.set("n", "x", "\"_x")
+
 
 
 -- Call Line Number color change function
