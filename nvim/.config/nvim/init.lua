@@ -72,6 +72,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{ "nvim-treesitter/nvim-treesitter" },
 	{'folke/tokyonight.nvim'},
 	{'neovim/nvim-lspconfig'},
 	{'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
@@ -105,7 +106,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(event)
     local opts = {buffer = event.buf}
 
-    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+    vim.keymap.set('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
     vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
     vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
     vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
@@ -188,20 +189,15 @@ require("fzf-lua").setup({
 require("fzf-lua").register_ui_select()
 
 -- Treesitter configs
-require("lazy").setup({{
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function () 
-      local configs = require("nvim-treesitter.configs")
-
-      configs.setup({
-          ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html", "go" },
-          sync_install = false,
-          highlight = { enable = true },
-          indent = { enable = true },  
-        })
-    end
- }})
+require("nvim-treesitter.configs").setup({
+	ensure_installed = { "cpp", "typescript", "tsx", "python", "luau", "javascript", "rust", "json", "lua", "go", "html" },
+	highlight = {
+		enable = true,
+	},
+	indent = {
+		enable = true
+	},
+})
 
 -- setup must be called before loading
 vim.cmd.colorscheme("catppuccin")
@@ -210,3 +206,4 @@ vim.cmd.colorscheme("catppuccin")
 vim.keymap.set('n', '<leader>p', '<Cmd>FzfLua<CR>')
 vim.keymap.set('n', '<leader>f', '<Cmd>FzfLua files<CR>')
 vim.keymap.set("i", "{<cr>", "{<cr>}<esc>O")
+vim.keymap.set("n", "x", "\"_x")
