@@ -9,7 +9,14 @@ vim.g.have_nerd_font = false
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.wo.number = true
-vim.o.statuscolumn = "%s %l %r"
+vim.o.statuscolumn = "%s %l %r "
+
+-- Sets colors to line numbers Above, Current and Below  in this order
+function LineNumberColors()
+    vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#b09d99', bold=false })
+    vim.api.nvim_set_hl(0, 'LineNr', { fg='#b09d99',bold=false })
+    vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#b09d99', bold=false })
+end
 
 -- don't show the mode
 vim.opt.showmode = false
@@ -199,6 +206,14 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
+-- yank current file path
+function insertFullPath()
+  local filepath = vim.fn.expand('%')
+  vim.fn.setreg('+', filepath) -- write to clippoard
+end
+
+vim.keymap.set('n', '<leader>lc', insertFullPath, { noremap = true, silent = true })
+
 -- setup must be called before loading
 vim.cmd.colorscheme("catppuccin")
 
@@ -207,3 +222,7 @@ vim.keymap.set('n', '<leader>p', '<Cmd>FzfLua<CR>')
 vim.keymap.set('n', '<leader>f', '<Cmd>FzfLua files<CR>')
 vim.keymap.set("i", "{<cr>", "{<cr>}<esc>O")
 vim.keymap.set("n", "x", "\"_x")
+
+
+-- Call Line Number color change function
+LineNumberColors()
