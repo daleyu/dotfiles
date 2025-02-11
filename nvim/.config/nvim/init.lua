@@ -139,6 +139,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 require'lspconfig'.gopls.setup({})
+require'lspconfig'.pyright.setup({})
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
@@ -203,6 +204,13 @@ require("fzf-lua").setup({
 			["ctrl-q"] = "select-all+accept",
 		},
 	},
+	grep = {
+        rg_opts = "--color=always --hidden --line-number --smart-case --no-heading --column",
+    },
+    files = {
+        fd_opts = "--color=never --type f --hidden --follow --exclude .git",
+        rg_opts = "--color=never --files --hidden --follow -g '!.git'",
+    },
 })
 -- use `fzf-lua` for replace vim.ui.select 
 require("fzf-lua").register_ui_select()
@@ -275,6 +283,8 @@ vim.keymap.set("n", "<C-f>", "<C-f>zz", { noremap = true })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
 vim.keymap.set("n", "<C-b>", "<C-b>zz", { noremap = true })
+vim.keymap.set('n', '<leader>/', '<Cmd>FzfLua grep<CR>')  -- Search in all files
+vim.keymap.set('n', '<leader>*', '<Cmd>FzfLua grep_cword<CR>')  -- Search word under cursor
 
 
 
