@@ -25,3 +25,5 @@ if command -v rbenv > /dev/null
     eval (rbenv init - | source)
 end
 
+set -Ux PATH $PATH (go env GOPATH)/bin
+
