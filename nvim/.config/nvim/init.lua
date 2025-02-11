@@ -11,6 +11,10 @@ vim.opt.relativenumber = true
 vim.wo.number = true
 vim.o.statuscolumn = "%s %l %r "
 
+-- scroll off 
+vim.opt.scrolloff = 5
+vim.opt.sidescrolloff = 5
+
 -- Sets colors to line numbers Above, Current and Below  in this order
 function LineNumberColors()
     vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#b09d99', bold=false })
@@ -34,6 +38,10 @@ vim.opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
+
+-- Search Settings
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
 vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
@@ -52,6 +60,8 @@ vim.opt.splitbelow = true
 -- tab stops and shift 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
+
+vim.opt.laststatus = 3
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -260,6 +270,13 @@ vim.keymap.set('n', '<leader>f', '<Cmd>FzfLua files<CR>')
 vim.keymap.set('n', '<leader>b', '<Cmd>NvimTreeToggle<CR>')
 vim.keymap.set("i", "{<cr>", "{<cr>}<esc>O")
 vim.keymap.set("n", "x", "\"_x")
+vim.keymap.set("n", "<leader><CR>", ":nohlsearch<CR>", { noremap = true })
+vim.keymap.set("n", "<C-f>", "<C-f>zz", { noremap = true })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
+vim.keymap.set("n", "<C-b>", "<C-b>zz", { noremap = true })
+
+
 
 
 
