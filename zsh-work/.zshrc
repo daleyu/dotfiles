@@ -13,6 +13,8 @@ path+=("$GOPATH/bin:PATH")
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/homebrew/bin:$PATH:$(go env GOPATH)/bin/
 
+export EDITOR=nvim
+
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -129,10 +131,21 @@ alias n="nvim"
 alias tn="tmux new-session -s"
 alias ta="tmux attach-session -t"
 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 kinit dale.yu@BYTEDANCE.COM
 klist
 echo "Connected for 24 hrs to Bytedance auth"
 source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
