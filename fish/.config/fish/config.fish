@@ -10,8 +10,11 @@ if test -f /opt/homebrew/share/autojump/autojump.fish
 end
 
 fish_vi_key_bindings
+
+# Aliases
 alias tn="tmux new-session -s"
 alias ta="tmux attach-session -t"
+alias n="nvim"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
