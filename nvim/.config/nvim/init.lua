@@ -85,8 +85,12 @@ if not vim.uv.fs_stat(lazypath) then
     print('Done.')
 end
 
-vim.opt.rtp:prepend(lazypath)
 
+---------------------------
+---lazynvim downloads -----
+---------------------------
+
+vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	{ "nvim-treesitter/nvim-treesitter" },
@@ -104,6 +108,11 @@ require('lazy').setup({
 	{'hrsh7th/nvim-cmp'},
 	{"sindrets/diffview.nvim"},
 	{"nvim-tree/nvim-tree.lua", dependencies = { "nvim-tree/nvim-web-devicons" } },
+	{
+		"NeogitOrg/neogit",
+		dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim", "ibhagwan/fzf-lua" },
+		config = true,
+	},
 })
 
 vim.opt.termguicolors = true
@@ -524,6 +533,16 @@ mini_files.setup({
 })
 KEYMAP_SETTINGS.mini_files(mini_files)
 
+----------------
+---- neogit-----
+----------------
+require("neogit").setup({
+	status = {
+		recent_commit_include_author_info = true
+	}
+})
+
+
 -- yank current file path
 function insertFullPath()
   local filepath = vim.fn.expand('%')
@@ -553,7 +572,12 @@ vim.keymap.set('n', '<leader>/', '<Cmd>FzfLua grep<CR>')  -- Search in all files
 vim.keymap.set('n', '<leader>*', '<Cmd>FzfLua grep_cword<CR>')  -- Search word under cursor
 vim.keymap.set("n", "<leader>z", "<cmd>FzfLua zoxide<cr>")
 
+vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>")
+vim.keymap.set("n", "<leader>gd", "<cmd>Neogit diff<cr>")
 
+vim.keymap.set("n", "<leader>df", "<cmd>DiffviewFileHistory<cr>")
+vim.keymap.set("n", "<leader>do", "<cmd>DiffviewOpen<cr>")
+vim.keymap.set("n", "<leader>dc", "<cmd>DiffviewClose<cr>")
 
 
 
