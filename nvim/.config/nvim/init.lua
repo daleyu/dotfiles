@@ -551,6 +551,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
 vim.keymap.set("n", "<C-b>", "<C-b>zz", { noremap = true })
 vim.keymap.set('n', '<leader>/', '<Cmd>FzfLua grep<CR>')  -- Search in all files
 vim.keymap.set('n', '<leader>*', '<Cmd>FzfLua grep_cword<CR>')  -- Search word under cursor
+vim.keymap.set("n", "<leader>z", "<cmd>FzfLua zoxide<cr>")
 
 
 
