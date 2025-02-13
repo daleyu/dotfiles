@@ -27,6 +27,18 @@ end
 
 set -Ux PATH $PATH (go env GOPATH)/bin
 
+set -gx EDITOR nvim
+
+
+function y
+	set tmp (mktemp -t "yazi-cwd.XXXXXX")
+	yazi $argv --cwd-file="$tmp"
+	if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+		builtin cd -- "$cwd"
+	end
+	rm -f -- "$tmp"
+end
+
 # first 'brew install fish'
 # import autojump files with 'zoxide import --from=autojump "$HOME/Library/autojump/autojump.txt"'
 zoxide init fish | source
