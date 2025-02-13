@@ -21,3 +21,14 @@ How to delete a stow not at base path
 stow -D --target="/Users/[username]" tmux
 ```
 
+## Zoxide
+
+first `brew install zoxide`
+import autojump files with `zoxide import --from=autojump "$HOME/Library/autojump/autojump.txt"`
+
+
+## Setting up Yazi file manager
+
+```Install packages
+brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick font-symbols-only-nerd-font
+```
