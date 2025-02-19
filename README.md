@@ -33,6 +33,16 @@ import autojump files with `zoxide import --from=autojump "$HOME/Library/autojum
 brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick font-symbols-only-nerd-font
 ```
 
+## Brew packages
+Run this to install all brew packages
+```
+brew install jesseduffield/lazygit/lazygit
+```
+Casks
+```
+brew install --cask font-fira-code-nerd-font font-hack-nerd-font font-symbols-only-nerd-font
+```
+
 ## SketchyBar
 
 Install SketchyBar
@@ -40,8 +50,15 @@ Install SketchyBar
 brew tap FelixKratz/formulae
 brew install sketchybar
 ```
+There are a series of fonts and stuff that need to be downloaded
+```
+brew install --cask font-hack-nerd-font
+```
+
 - Remember to stow the SketchyBar Config
 ```bash
 brew services start sketchybar
+brew services restart sketchybar
 ```
 - Start Sketchybar as a background process
+
