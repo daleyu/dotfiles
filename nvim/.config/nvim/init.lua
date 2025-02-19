@@ -3,7 +3,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- nerd font
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- line numbers
 vim.opt.number = true
@@ -139,7 +139,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     vim.keymap.set('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
     vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-	vim.keymap.set("n", "gd", "<cmd>FzfLua lsp_definitions<cr>")
+	vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+	vim.keymap.set("n", "<leader>gd", "<cmd>FzfLua lsp_definitions<cr>")
 	--set("n", "gi", vim.lsp.buf.implementation, opts)
 	vim.keymap.set("n", "gi", "<cmd>FzfLua lsp_implementations<cr>")
 	--set("n", "go", vim.lsp.buf.type_definition, opts)
@@ -576,8 +577,8 @@ vim.keymap.set('n', '<leader>/', '<Cmd>FzfLua grep<CR>')  -- Search in all files
 vim.keymap.set('n', '<leader>*', '<Cmd>FzfLua grep_cword<CR>')  -- Search word under cursor
 vim.keymap.set("n", "<leader>z", "<cmd>FzfLua zoxide<cr>")
 
-vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>")
-vim.keymap.set("n", "<leader>gd", "<cmd>Neogit diff<cr>")
+vim.keymap.set("n", "<leader>ng", "<cmd>Neogit<cr>")
+vim.keymap.set("n", "<leader>nd", "<cmd>Neogit diff<cr>")
 
 vim.keymap.set("n", "<leader>df", "<cmd>DiffviewFileHistory<cr>")
 vim.keymap.set("n", "<leader>do", "<cmd>DiffviewOpen<cr>")
