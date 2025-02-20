@@ -8,6 +8,11 @@ shell-integration-features = no-cursor
 mouse-hide-while-typing = true
 macos-titlebar-style=transparent
 
+
+# window and toolbar decoration
+window-decoration = none
+
+
 #styling for transparent
 background-opacity = 0.85
 background-blur = 15

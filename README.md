@@ -34,13 +34,18 @@ brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick f
 ```
 
 ## Brew packages
+Download homebrew first
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
 Run this to install all brew packages
 ```
-brew install jesseduffield/lazygit/lazygit
+brew install jesseduffield/lazygit/lazygit tmux clipboard fzf gcc gh glow neovim node powerlevel10k python ripgrep rust stow tree-sitter wget yazi zoxide go 
 ```
 Casks
 ```
-brew install --cask font-fira-code-nerd-font font-hack-nerd-font font-symbols-only-nerd-font
+brew install --cask font-hack-nerd-font alt-tab discord firefox obsidian topnotch ghostty google-chrome typora nikitabobko/tap/aerospace
 ```
 
 ## SketchyBar
