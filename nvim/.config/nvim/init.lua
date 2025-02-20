@@ -326,13 +326,6 @@ require("neogit").setup({
 })
 
 
--- yank current file path
-function insertFullPath()
-  local filepath = vim.fn.expand('%')
-  vim.fn.setreg('+', filepath) -- write to clippoard
-end
-
-vim.keymap.set('n', '<leader>lc', insertFullPath, { noremap = true, silent = true })
 
 -- setup must be called before loading
 vim.cmd.colorscheme("catppuccin")
@@ -341,18 +334,49 @@ vim.cmd.colorscheme("catppuccin")
 ------------------------
 -- Global Keymappings---
 ------------------------
-vim.keymap.set('n', '<leader>p', '<Cmd>FzfLua<CR>')
-vim.keymap.set('n', '<leader>f', '<Cmd>FzfLua files<CR>')
-vim.keymap.set('n', '<leader>b', '<Cmd>NvimTreeToggle<CR>')
+
+
+--- utility keymappings
 vim.keymap.set("i", "{<cr>", "{<cr>}<esc>O")
 vim.keymap.set("n", "x", "\"_x")
 vim.keymap.set("n", "<leader><CR>", ":nohlsearch<CR>", { noremap = true })
+vim.keymap.set("n", "Y", "y$")
+vim.keymap.set("n", "V", "v$")
+vim.keymap.set("n", "vv", "V")
+vim.keymap.set("n", "<leader>aa", "ggvvG\"+y")
+
+
+-- navigation
 vim.keymap.set("n", "<C-f>", "<C-f>zz", { noremap = true })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
 vim.keymap.set("n", "<C-b>", "<C-b>zz", { noremap = true })
+vim.keymap.set({ "n", "v", "x" }, "<c-j>", "7<c-e>")
+vim.keymap.set({ "n", "v", "x" }, "<c-k>", "7<c-y>")
+vim.keymap.set("n", "<c-h>", "<c-w>W")
+vim.keymap.set("n", "<c-l>", "<c-w>w")
+vim.keymap.set("n", "gb", "<cmd>b#<cr>")
+vim.keymap.set("n", "]b", "<cmd>bn<cr>")
+vim.keymap.set("n", "[b", "<cmd>bp<cr>")
+vim.keymap.set("n", "g[", "gt")
+vim.keymap.set("n", "g]", "gT")
+
+-- yank current file path
+function insertFullPath()
+  local filepath = vim.fn.expand('%')
+  vim.fn.setreg('+', filepath) -- write to clippoard
+end
+
+vim.keymap.set('n', '<leader>lc', insertFullPath, { noremap = true, silent = true })
+
+-- plugin binds
+vim.keymap.set('n', '<leader>b', '<Cmd>NvimTreeToggle<CR>')
+
+vim.keymap.set('n', '<leader>p', '<Cmd>FzfLua<CR>')
+vim.keymap.set('n', '<leader>f', '<Cmd>FzfLua files<CR>')
 vim.keymap.set('n', '<leader>/', '<Cmd>FzfLua grep<CR>')  -- Search in all files
 vim.keymap.set('n', '<leader>*', '<Cmd>FzfLua grep_cword<CR>')  -- Search word under cursor
+vim.keymap.set("n", "<leader>z", "<cmd>FzfLua zoxide<cr>")
 vim.keymap.set("n", "<leader>z", "<cmd>FzfLua zoxide<cr>")
 
 vim.keymap.set("n", "<leader>ng", "<cmd>Neogit<cr>")
