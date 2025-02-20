@@ -54,6 +54,7 @@ Install SketchyBar
 ```bash
 brew tap FelixKratz/formulae
 brew install sketchybar
+brew install borders
 ```
 There are a series of fonts and stuff that need to be downloaded
 ```
