@@ -377,7 +377,8 @@ vim.keymap.set('n', '<leader>f', '<Cmd>FzfLua files<CR>')
 vim.keymap.set('n', '<leader>/', '<Cmd>FzfLua grep<CR>')  -- Search in all files
 vim.keymap.set('n', '<leader>*', '<Cmd>FzfLua grep_cword<CR>')  -- Search word under cursor
 vim.keymap.set("n", "<leader>z", "<cmd>FzfLua zoxide<cr>")
-vim.keymap.set("n", "<leader>z", "<cmd>FzfLua zoxide<cr>")
+vim.keymap.set("n", "<leader>,", "<cmd>FzfLua buffers<cr>")
+vim.keymap.set("n", "<leader>t", "<cmd>FzfLua treesitter<cr>")
 
 vim.keymap.set("n", "<leader>ng", "<cmd>Neogit<cr>")
 vim.keymap.set("n", "<leader>nd", "<cmd>Neogit diff<cr>")
