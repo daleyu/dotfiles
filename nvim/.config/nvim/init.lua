@@ -288,13 +288,15 @@ do
 
 	KEYMAP_SETTINGS.mini_files = function(mini_files)
 		mini_files.config.mappings.close = "<esc>"
-		set("n", "<leader><space>", mini_files.open)
+		set("n", "<leader>o", mini_files.open)
 		set("n", "<leader>s", function() -- set working dir to current buffer
 			local state = mini_files.get_explorer_state()
 			local dir = state and state.branch[state.depth_focus] or "%:h"
 			vim.cmd("cd " .. dir)
 			vim.cmd("pwd")
 		end)
+		set("n", "<leader><space>", "<cmd>lua MiniFiles.open(vim.fn.expand(\"%h\"))<CR>")
+
 	end
 end
 ----------------
