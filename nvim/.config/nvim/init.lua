@@ -295,7 +295,9 @@ do
 			vim.cmd("cd " .. dir)
 			vim.cmd("pwd")
 		end)
-		set("n", "<leader><space>", "<cmd>lua MiniFiles.open(vim.fn.expand(\"%h\"))<CR>")
+		set("n", "<leader><space>", function()
+			mini_files.open(vim.fn.expand("%:p:h"), false)
+		end)
 
 	end
 end

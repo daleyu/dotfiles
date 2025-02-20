@@ -10,7 +10,8 @@ macos-titlebar-style=transparent
 
 
 # window and toolbar decoration
-window-decoration = false
+window-decoration = auto
+macos-titlebar-style = hidden
 
 #styling for transparent
 background-opacity = 0.85

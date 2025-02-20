@@ -41,7 +41,7 @@ automatically-unhide-macos-hidden-apps = false
 
 
 #ADDED STUFF
-#
+
 # Notify Sketchybar about workspace change and update icons
 exec-on-workspace-change = ['/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE && ~/.config/sketchybar/plugins/update_workspace_icons.sh']
 
@@ -170,9 +170,14 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
+# to find the name of apps run `aerospace list-apps`
 # Default space
 [[on-window-detected]]
 if.app-id ='app.zen-browser.zen'
+run = ['move-node-to-workspace 1']
+
+[[on-window-detected]]
+if.app-id ='com.google.Chrome'
 run = ['move-node-to-workspace 1']
 
 [[on-window-detected]]
@@ -185,7 +190,7 @@ run = ['move-node-to-workspace 3']
 
 #Slack or lark for work computer
 [[on-window-detected]]
-if.app-id ='com.apple.MobileSMS'
+if.app-id ='com.larksuite.larkApp'
 run = ['move-node-to-workspace 3']
 
 [[on-window-detected]]
@@ -203,6 +208,11 @@ run = ['move-node-to-workspace 5']
 [[on-window-detected]]
 if.app-id ='com.microsoft.VSCode'
 run = ['move-node-to-workspace 6']
+
+[[on-window-detected]]
+if.app-id ='net.ankiweb.dtop'
+run = ['move-node-to-workspace 7']
+
 
 # force certain workspaces to certain monitors
 [workspace-to-monitor-force-assignment]
