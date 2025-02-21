@@ -62,7 +62,7 @@ preset = 'dvorak'
 inner.horizontal = 8
 inner.vertical = 8
 outer.bottom = 15
-outer.top = [{monitor.main = 36},15]
+outer.top = [{monitor."built-in" = 10}, {monitor.main = 40},10]
 outer.right = 15
 outer.left= 15
 
