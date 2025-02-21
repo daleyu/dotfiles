@@ -3,9 +3,7 @@ after-login-command = []
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = [
-  'exec-and-forget borders style=round width=6 active_color=0xffbb9af7 inactive_color=0xffbb9af7'
-]
+after-startup-command = []
 
 # Start AeroSpace at login
 start-at-login = true 
@@ -60,10 +58,10 @@ preset = 'dvorak'
 [gaps]
 inner.horizontal = 8
 inner.vertical = 8
-outer.bottom = 10
-outer.top = 10
-outer.right = 10
-outer.left= 10
+outer.bottom = 15
+outer.top = 15
+outer.right = 15
+outer.left= 15
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -100,7 +98,7 @@ alt-b = 'exec-and-forget open -a /Applications/Zen\ Browser.app'
 alt-c = 'exec-and-forget open -a /Applications/Visual\ Studio\ Code.app'
 alt-t = 'exec-and-forget open -a /Applications/Ghostty.app'
 alt-m = 'exec-and-forget open -a /Applications/Messages.app'
-alt-l = 'exec-and-forget open -a /Applications/LarkSuite.app'
+alt-s = 'exec-and-forget open -a /Applications/LarkSuite.app'
 alt-d = 'exec-and-forget open -a /Applications/Discord.app'
 alt-w = 'exec-and-forget open -a /Applications/Obsidian.app'
 alt-n = 'exec-and-forget open -a /Applications/Notion.app'
