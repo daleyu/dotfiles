@@ -246,7 +246,6 @@ require("fzf-lua").register_ui_select()
 -----------------
 --- UNDO-TREE ---
 -----------------
-require("undotree").setup()
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
 
