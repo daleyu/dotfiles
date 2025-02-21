@@ -358,8 +358,8 @@ vim.keymap.set("n", "<c-l>", "<c-w>w")
 vim.keymap.set("n", "gb", "<cmd>b#<cr>")
 vim.keymap.set("n", "]b", "<cmd>bn<cr>")
 vim.keymap.set("n", "[b", "<cmd>bp<cr>")
-vim.keymap.set("n", "g[", "gt")
-vim.keymap.set("n", "g]", "gT")
+vim.keymap.set("n", "g[", "gT")
+vim.keymap.set("n", "g]", "gt")
 
 -- yank current file path
 function insertFullPath()
