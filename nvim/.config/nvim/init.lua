@@ -25,11 +25,6 @@ end
 -- don't show the mode
 vim.opt.showmode = false
 
--- Sync clipboard between OS and Neovim.
-vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
-end)
-
 -- Enable break indent
 vim.opt.breakindent = true
 
@@ -95,6 +90,7 @@ require('lazy').setup({
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	{ "nvim-treesitter/nvim-treesitter" },
 	{'folke/tokyonight.nvim'},
+	{ 'mbbill/undotree' },
 	{'neovim/nvim-lspconfig'},
 	{ 'echasnovski/mini.nvim', version = false },
 	{'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
@@ -207,6 +203,10 @@ cmp.setup({
   },
 })
 
+----------------
+---- THEME -----
+----------------
+
 local latte = require("catppuccin.palettes").get_palette "latte"
 local frappe = require("catppuccin.palettes").get_palette "frappe"
 local macchiato = require("catppuccin.palettes").get_palette "macchiato"
@@ -242,6 +242,13 @@ require("fzf-lua").setup({
 })
 -- use `fzf-lua` for replace vim.ui.select 
 require("fzf-lua").register_ui_select()
+
+-----------------
+--- UNDO-TREE ---
+-----------------
+require("undotree").setup()
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+
 
 -------------------------
 --- Treesitter configs---
@@ -345,6 +352,24 @@ vim.keymap.set("n", "V", "v$")
 vim.keymap.set("n", "vv", "V")
 vim.keymap.set("n", "<leader>aa", "ggvvG\"+y")
 
+-- goated binds
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("n", "J", "mzJ`z")
+
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("x", "<leader>v", [["_dP]])
+
+vim.keymap.set("n", "<leader>dd", "\"_d")
+vim.keymap.set("v","<leader>dd", "\"_d")
+
+vim.keymap.set("n", "<leader>c", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- separate clipboards
+vim.keymap.set("n", "<leader>y", "\"+y")
+vim.keymap.set("v", "<leader>y", "\"+y")
+vim.keymap.set("n", "<leader>Y", "\"+y")
 
 -- navigation
 vim.keymap.set("n", "<C-f>", "<C-f>zz", { noremap = true })
