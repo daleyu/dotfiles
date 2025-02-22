@@ -11,15 +11,15 @@ vim.opt.relativenumber = true
 vim.wo.number = true
 vim.o.statuscolumn = "%s %l %r "
 
--- scroll off 
+-- scroll off
 vim.opt.scrolloff = 5
 vim.opt.sidescrolloff = 5
 
 -- Sets colors to line numbers Above, Current and Below  in this order
 function LineNumberColors()
-    vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#b09d99', bold=false })
-    vim.api.nvim_set_hl(0, 'LineNr', { fg='#b09d99',bold=false })
-    vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#b09d99', bold=false })
+	vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#b09d99', bold = false })
+	vim.api.nvim_set_hl(0, 'LineNr', { fg = '#b09d99', bold = false })
+	vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#b09d99', bold = false })
 end
 
 -- don't show the mode
@@ -52,11 +52,16 @@ vim.opt.timeoutlen = 300
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
--- tab stops and shift 
+-- tab stops and shift
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
 vim.opt.laststatus = 3
+
+-- width
+-- vim.opt.colorcolumn = "80"
+vim.opt.textwidth = 80
+
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -68,18 +73,17 @@ local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 -- Auto-install lazy.nvim if not present
 if not vim.uv.fs_stat(lazypath) then
-    print('Installing lazy.nvim....')
-    vim.fn.system({
-        'git',
-        'clone',
-        '--filter=blob:none',
-        'https://github.com/folke/lazy.nvim.git',
-        '--branch=stable', -- latest stable release
-        lazypath,
-    })
-    print('Done.')
+	print('Installing lazy.nvim....')
+	vim.fn.system({
+		'git',
+		'clone',
+		'--filter=blob:none',
+		'https://github.com/folke/lazy.nvim.git',
+		'--branch=stable', -- latest stable release
+		lazypath,
+	})
+	print('Done.')
 end
-
 
 ---------------------------
 ---lazynvim downloads -----
@@ -87,23 +91,34 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{ "catppuccin/nvim",                name = "catppuccin",                             priority = 1000 },
 	{ "nvim-treesitter/nvim-treesitter" },
-	{'folke/tokyonight.nvim'},
+	{ 'folke/tokyonight.nvim' },
 	{ 'mbbill/undotree' },
-	{'neovim/nvim-lspconfig'},
-	{ 'echasnovski/mini.nvim', version = false },
-	{'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
+	{ 'neovim/nvim-lspconfig' },
+	{ "mfussenegger/nvim-lint" },
+	{ "stevearc/conform.nvim" },
+	{ 'echasnovski/mini.nvim',          version = false },
+	{ 'nvim-lualine/lualine.nvim',      dependencies = { 'nvim-tree/nvim-web-devicons' } },
+	{
+		"folke/lazydev.nvim",
+		ft = "lua", -- only load on lua files
+		opts = {
+			library = {
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+			},
+		},
+	},
 	{ "nvim-treesitter/nvim-treesitter" },
 	{ "nvim-treesitter/nvim-treesitter-context" },
-	{ "ibhagwan/fzf-lua", dependencies = { "nvim-tree/nvim-web-devicons" } },
-	{'williamboman/mason.nvim'},
-	{'williamboman/mason-lspconfig.nvim'},
-	{'hrsh7th/cmp-nvim-lsp'},
-	{ "SmiteshP/nvim-navic", dependencies = {"neovim/nvim-lspconfig"} }, 
-	{'hrsh7th/nvim-cmp'},
-	{"sindrets/diffview.nvim"},
-	{"nvim-tree/nvim-tree.lua", dependencies = { "nvim-tree/nvim-web-devicons" } },
+	{ "ibhagwan/fzf-lua",                       dependencies = { "nvim-tree/nvim-web-devicons" } },
+	{ 'williamboman/mason.nvim' },
+	{ 'williamboman/mason-lspconfig.nvim' },
+	{ 'hrsh7th/cmp-nvim-lsp' },
+	{ "SmiteshP/nvim-navic",                    dependencies = { "neovim/nvim-lspconfig" } },
+	{ 'hrsh7th/nvim-cmp' },
+	{ "sindrets/diffview.nvim" },
+	{ "nvim-tree/nvim-tree.lua",                dependencies = { "nvim-tree/nvim-web-devicons" } },
 	{
 		"NeogitOrg/neogit",
 		dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim", "ibhagwan/fzf-lua" },
@@ -121,35 +136,67 @@ vim.opt.signcolumn = 'yes'
 -- This should be executed before you configure any language server
 local lspconfig_defaults = require('lspconfig').util.default_config
 lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-  'force',
-  lspconfig_defaults.capabilities,
-  require('cmp_nvim_lsp').default_capabilities()
+	'force',
+	lspconfig_defaults.capabilities,
+	require('cmp_nvim_lsp').default_capabilities()
 )
 
 -- This is where you enable features that only work
 -- if there is a language server active in the file
 vim.api.nvim_create_autocmd('LspAttach', {
-  desc = 'LSP actions',
-  callback = function(event)
-    local opts = {buffer = event.buf}
+	desc = 'LSP actions',
+	callback = function(event)
+		local opts = { buffer = event.buf }
 
-    vim.keymap.set('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-    vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-	vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-	vim.keymap.set("n", "<leader>gd", "<cmd>FzfLua lsp_definitions<cr>")
-	--set("n", "gi", vim.lsp.buf.implementation, opts)
-	vim.keymap.set("n", "gi", "<cmd>FzfLua lsp_implementations<cr>")
-	--set("n", "go", vim.lsp.buf.type_definition, opts)
-	vim.keymap.set("n", "go", "<cmd>FzfLua lsp_type_defs<cr>")
-	--set("n", "gr", vim.lsp.buf.references, opts)
-	vim.keymap.set("n", "gr", "<cmd>FzfLua lsp_references<cr>")
-	vim.keymap.set("n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<cr>")
-    vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-    vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-    vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-    vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-  end,
+		vim.keymap.set('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+		vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+		vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+		vim.keymap.set("n", "<leader>gd", "<cmd>FzfLua lsp_definitions<cr>")
+		--set("n", "gi", vim.lsp.buf.implementation, opts)
+		vim.keymap.set("n", "gi", "<cmd>FzfLua lsp_implementations<cr>")
+		--set("n", "go", vim.lsp.buf.type_definition, opts)
+		vim.keymap.set("n", "go", "<cmd>FzfLua lsp_type_defs<cr>")
+		--set("n", "gr", vim.lsp.buf.references, opts)
+		vim.keymap.set("n", "gr", "<cmd>FzfLua lsp_references<cr>")
+		vim.keymap.set("n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<cr>")
+		vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+		vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+		vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+		vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+	end,
 })
+
+
+----------------
+-- FORMATTING --
+----------------
+
+local conform = require("conform")
+conform.setup({
+	formatters_by_ft = {
+		lua = { "stylua" },
+		luau = { "stylua" },
+	},
+	format_on_save = {
+		timeout_ms = 500,
+		lsp_fallback = true,
+	},
+})
+
+---------------
+--- LINTING ---
+---------------
+local lint = require("lint")
+lint.linters_by_ft = {
+	lua = { "selene" },
+	luau = { "selene" },
+}
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+	callback = function()
+		lint.try_lint()
+	end,
+})
+
 
 
 ----------------
@@ -157,50 +204,52 @@ vim.api.nvim_create_autocmd('LspAttach', {
 ----------------
 local navic = require("nvim-navic")
 
-require'lspconfig'.gopls.setup({
+require 'lspconfig'.gopls.setup({
 	on_attach = function(client, bufnr)
-        navic.attach(client, bufnr)
-    end
+		navic.attach(client, bufnr)
+	end
 })
 
-require'lspconfig'.pyright.setup({})
+require 'lspconfig'.pyright.setup({})
+
+require 'lspconfig'.lua_ls.setup({})
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  handlers = {
-    function(server_name)
-      require('lspconfig')[server_name].setup({})
-    end,
-  },
+	handlers = {
+		function(server_name)
+			require('lspconfig')[server_name].setup({})
+		end,
+	},
 })
 
--- autocomplete -- 
+-- autocomplete --
 local cmp = require('cmp')
 
 cmp.setup({
-  sources = {
-    {name = 'nvim_lsp'},
-  },
-  mapping = cmp.mapping.preset.insert({
-    -- Navigate between completion items
-    ['<C-p>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
-    ['<C-n>'] = cmp.mapping.select_next_item({behavior = 'select'}),
+	sources = {
+		{ name = 'nvim_lsp' },
+	},
+	mapping = cmp.mapping.preset.insert({
+		-- Navigate between completion items
+		['<C-p>'] = cmp.mapping.select_prev_item({ behavior = 'select' }),
+		['<C-n>'] = cmp.mapping.select_next_item({ behavior = 'select' }),
 
-    -- `Enter` key to confirm completion
-    ['<CR>'] = cmp.mapping.confirm({select = false}),
+		-- `Enter` key to confirm completion
+		['<CR>'] = cmp.mapping.confirm({ select = false }),
 
-    -- Ctrl+Space to trigger completion menu
-    ['<C-Space>'] = cmp.mapping.complete(),
+		-- Ctrl+Space to trigger completion menu
+		['<C-Space>'] = cmp.mapping.complete(),
 
-    -- Scroll up and down in the completion documentation
-    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-d>'] = cmp.mapping.scroll_docs(4),
-  }),
-  snippet = {
-    expand = function(args)
-      vim.snippet.expand(args.body)
-    end,
-  },
+		-- Scroll up and down in the completion documentation
+		['<C-u>'] = cmp.mapping.scroll_docs(-4),
+		['<C-d>'] = cmp.mapping.scroll_docs(4),
+	}),
+	snippet = {
+		expand = function(args)
+			vim.snippet.expand(args.body)
+		end,
+	},
 })
 
 ----------------
@@ -212,17 +261,17 @@ local frappe = require("catppuccin.palettes").get_palette "frappe"
 local macchiato = require("catppuccin.palettes").get_palette "macchiato"
 local mocha = require("catppuccin.palettes").get_palette "mocha"
 require('lualine').setup {
-    options = {
-        theme = "catppuccin"
-    }
+	options = {
+		theme = "catppuccin"
+	}
 }
 require("catppuccin").setup({
-    flavour = "macchiato",
-    background = { -- :h background
-        light = "latte",
-        dark = "macchiato",
-    },
-    transparent_background = true, 
+	flavour = "macchiato",
+	background = { -- :h background
+		light = "latte",
+		dark = "macchiato",
+	},
+	transparent_background = true,
 })
 
 require("fzf-lua").setup({
@@ -233,14 +282,14 @@ require("fzf-lua").setup({
 		},
 	},
 	grep = {
-        rg_opts = "--color=always --hidden --line-number --smart-case --no-heading --column",
-    },
-    files = {
-        fd_opts = "--color=never --type f --hidden --follow --exclude .git",
-        rg_opts = "--color=never --files --hidden --follow -g '!.git'",
-    },
+		rg_opts = "--color=always --hidden --line-number --smart-case --no-heading --column",
+	},
+	files = {
+		fd_opts = "--color=never --type f --hidden --follow --exclude .git",
+		rg_opts = "--color=never --files --hidden --follow -g '!.git'",
+	},
 })
--- use `fzf-lua` for replace vim.ui.select 
+-- use `fzf-lua` for replace vim.ui.select
 require("fzf-lua").register_ui_select()
 
 -----------------
@@ -261,20 +310,20 @@ require("nvim-treesitter.configs").setup({
 		enable = true
 	},
 })
-require'treesitter-context'.setup{
-  enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-  multiwindow = false, -- Enable multiwindow support.
-  max_lines = 1, -- How many lines the window should span. Values <= 0 mean no limit.
-  min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
-  line_numbers = true,
-  multiline_threshold = 1, -- Maximum number of lines to show for a single context
-  trim_scope = 'inner', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-  mode = 'cursor',  -- Line used to calculate context. Choices: 'cursor', 'topline'
-  -- Separator between context and content. Should be a single character string, like '-'.
-  -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
-  separator = nil,
-  zindex = 40, -- The Z-index of the context window
-  on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
+require 'treesitter-context'.setup {
+	enable = true,        -- Enable this plugin (Can be enabled/disabled later via commands)
+	multiwindow = false,  -- Enable multiwindow support.
+	max_lines = 1,        -- How many lines the window should span. Values <= 0 mean no limit.
+	min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+	line_numbers = true,
+	multiline_threshold = 1, -- Maximum number of lines to show for a single context
+	trim_scope = 'inner', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+	mode = 'cursor',      -- Line used to calculate context. Choices: 'cursor', 'topline'
+	-- Separator between context and content. Should be a single character string, like '-'.
+	-- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+	separator = nil,
+	zindex = 40,  -- The Z-index of the context window
+	on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 }
 
 ----------------
@@ -287,7 +336,7 @@ require("diffview").setup({})
 
 -- nvim-tree
 require("nvim-tree").setup()
- 
+
 local KEYMAP_SETTINGS = {}
 do
 	local set = vim.keymap.set
@@ -304,7 +353,6 @@ do
 		set("n", "<leader><space>", function()
 			mini_files.open(vim.fn.expand("%:p:h"), false)
 		end)
-
 	end
 end
 ----------------
@@ -361,9 +409,9 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "<leader>v", [["_dP]])
 
 vim.keymap.set("n", "<leader>dd", "\"_d")
-vim.keymap.set("v","<leader>dd", "\"_d")
+vim.keymap.set("v", "<leader>dd", "\"_d")
 
-vim.keymap.set("v","<leader>te", "<cmd> lua vim.diagnostic.open_float() <CR>")
+vim.keymap.set("v", "<leader>te", "<cmd> lua vim.diagnostic.open_float() <CR>")
 
 vim.keymap.set("n", "<leader>c", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
@@ -389,8 +437,8 @@ vim.keymap.set("n", "g]", "gt")
 
 -- yank current file path
 function insertFullPath()
-  local filepath = vim.fn.expand('%')
-  vim.fn.setreg('+', filepath) -- write to clippoard
+	local filepath = vim.fn.expand('%')
+	vim.fn.setreg('+', filepath) -- write to clippoard
 end
 
 vim.keymap.set('n', '<leader>lc', insertFullPath, { noremap = true, silent = true })
@@ -400,8 +448,8 @@ vim.keymap.set('n', '<leader>b', '<Cmd>NvimTreeToggle<CR>')
 
 vim.keymap.set('n', '<leader>p', '<Cmd>FzfLua<CR>')
 vim.keymap.set('n', '<leader>f', '<Cmd>FzfLua files<CR>')
-vim.keymap.set('n', '<leader>/', '<Cmd>FzfLua grep<CR>')  -- Search in all files
-vim.keymap.set('n', '<leader>*', '<Cmd>FzfLua grep_cword<CR>')  -- Search word under cursor
+vim.keymap.set('n', '<leader>/', '<Cmd>FzfLua grep<CR>')       -- Search in all files
+vim.keymap.set('n', '<leader>*', '<Cmd>FzfLua grep_cword<CR>') -- Search word under cursor
 vim.keymap.set("n", "<leader>z", "<cmd>FzfLua zoxide<cr>")
 vim.keymap.set("n", "<leader>,", "<cmd>FzfLua buffers<cr>")
 vim.keymap.set("n", "<leader>t", "<cmd>FzfLua treesitter<cr>")
