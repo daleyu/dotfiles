@@ -212,6 +212,10 @@ if.app-id ='com.microsoft.VSCode'
 run = ['move-node-to-workspace 6']
 
 [[on-window-detected]]
+if.app-id ='com.spotify.client'
+run = ['move-node-to-workspace 6']
+
+[[on-window-detected]]
 if.app-id ='net.ankiweb.dtop'
 run = ['move-node-to-workspace 7']
 
