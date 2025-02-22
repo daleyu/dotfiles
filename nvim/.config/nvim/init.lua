@@ -349,7 +349,7 @@ vim.keymap.set("n", "<leader><CR>", ":nohlsearch<CR>", { noremap = true })
 vim.keymap.set("n", "Y", "y$")
 vim.keymap.set("n", "V", "v$")
 vim.keymap.set("n", "vv", "V")
-vim.keymap.set("n", "<leader>aa", "ggvvG\"+y")
+vim.keymap.set("n", "<leader>aa", "ggvvG<leader>y")
 
 -- goated binds
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -362,6 +362,8 @@ vim.keymap.set("x", "<leader>v", [["_dP]])
 
 vim.keymap.set("n", "<leader>dd", "\"_d")
 vim.keymap.set("v","<leader>dd", "\"_d")
+
+vim.keymap.set("v","<leader>te", "<cmd> lua vim.diagnostic.open_float() <CR>")
 
 vim.keymap.set("n", "<leader>c", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
