@@ -339,6 +339,10 @@ require("diffview").setup({})
 -- nvim-tree
 require("nvim-tree").setup()
 
+----------------
+-- MINI.FILES --
+----------------
+
 local KEYMAP_SETTINGS = {}
 do
 	local set = vim.keymap.set
@@ -357,9 +361,6 @@ do
 		end)
 	end
 end
-----------------
--- MINI.FILES --
-----------------
 
 local mini_files = require("mini.files")
 mini_files.setup({
@@ -370,6 +371,11 @@ mini_files.setup({
 		width_focus = 30,
 	},
 })
+
+require('mini.surround').setup()
+
+
+
 KEYMAP_SETTINGS.mini_files(mini_files)
 
 ----------------
