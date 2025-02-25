@@ -67,4 +67,22 @@ brew services start sketchybar
 brew services restart sketchybar
 ```
 - Start Sketchybar as a background process
+    - Sometimes this won't work on a company laptop, even with the same config.
+      it must be an issue with the extra security or software on it.
+## Misc Packages
+
+### Selene and Rust
+
+Setup rust with rustup
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh 
+```
+Now we need to get selene. 
+```
+cargo install selene
+```
+Make sure you `chmod +x ~/.cargo/bin/selene`
+
+### Setting up VimTex and Zathura
+Not gonna bother with this since it isn't needed.
 
