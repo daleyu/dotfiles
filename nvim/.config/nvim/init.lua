@@ -125,6 +125,7 @@ require('lazy').setup({
 		dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim", "ibhagwan/fzf-lua" },
 		config = true,
 	},
+	{ "lewis6991/gitsigns.nvim", opts = {} },
 })
 
 vim.opt.termguicolors = true
@@ -397,6 +398,15 @@ require("neogit").setup({
 	}
 })
 
+
+--------------
+---GITSIGNS---
+--------------
+require('gitsigns').setup({})
+
+vim.keymap.set("n", "<leader>hb", "<cmd>Gitsigns blame<cr>")
+vim.keymap.set("n", "<leader>hl", "<cmd>Gitsigns toggle_current_line_blame<cr>")
+
 --------------
 ---CODESNAP---
 --------------
@@ -483,8 +493,9 @@ vim.keymap.set('n', '<leader>b', '<Cmd>NvimTreeToggle<CR>')
 
 vim.keymap.set('n', '<leader>p', '<Cmd>FzfLua<CR>')
 vim.keymap.set('n', '<leader>f', '<Cmd>FzfLua files<CR>')
-vim.keymap.set('n', '<leader>/', '<Cmd>FzfLua grep<CR>')       -- Search in all files
-vim.keymap.set('n', '<leader>*', '<Cmd>FzfLua grep_cword<CR>') -- Search word under cursor
+vim.keymap.set('n', '<leader>/', '<Cmd>FzfLua grep<CR>')        -- Search in all files
+vim.keymap.set('n', '<leader>l/', '<Cmd>FzfLua live_grep<CR>')  -- Search word under cursor
+vim.keymap.set('n', '<leader>*', '<Cmd>FzfLua grep_cword <CR>') -- Search word under cursor
 vim.keymap.set("n", "<leader>z", "<cmd>FzfLua zoxide<cr>")
 vim.keymap.set("n", "<leader>,", "<cmd>FzfLua buffers<cr>")
 vim.keymap.set("n", "<leader>t", "<cmd>FzfLua treesitter<cr>")
