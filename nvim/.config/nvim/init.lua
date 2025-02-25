@@ -126,6 +126,14 @@ require('lazy').setup({
 		config = true,
 	},
 	{ "lewis6991/gitsigns.nvim", opts = {} },
+	{
+		"lervag/vimtex",
+		lazy = false, -- we don't want to lazy load VimTeX
+		-- tag = "v2.15", -- uncomment to pin to a specific release
+		init = function()
+			vim.g.vimtex_view_method = "zathura"
+		end
+	}
 })
 
 vim.opt.termguicolors = true
@@ -322,6 +330,13 @@ require("nvim-treesitter.configs").setup({
 	indent = {
 		enable = true
 	},
+	incremental_selection = {
+		enable = true,
+		keymaps = {
+			node_incremental = "v",
+			node_decremental = "V",
+		},
+	},
 })
 require 'treesitter-context'.setup {
 	enable = true,        -- Enable this plugin (Can be enabled/disabled later via commands)
@@ -458,7 +473,7 @@ vim.keymap.set("v", "<leader>dd", "\"_d")
 vim.keymap.set("n", "ge", vim.diagnostic.open_float)
 
 
-vim.keymap.set("n", "<leader>c", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>cc", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- separate clipboards
 vim.keymap.set("n", "<leader>y", "\"+y")
@@ -507,7 +522,10 @@ vim.keymap.set("n", "<leader>df", "<cmd>DiffviewFileHistory<cr>")
 vim.keymap.set("n", "<leader>do", "<cmd>DiffviewOpen<cr>")
 vim.keymap.set("n", "<leader>dc", "<cmd>DiffviewClose<cr>")
 
-
+vim.keymap.set("n", "<leader>q", function()
+	local pdf_file = vim.fn.expand('%:r') .. '.pdf'
+	vim.cmd('silent !zathura ' .. pdf_file .. ' &')
+end)
 
 -- Call Line Number color change function
 LineNumberColors()
