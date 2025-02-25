@@ -117,6 +117,7 @@ require('lazy').setup({
 	{ 'hrsh7th/cmp-nvim-lsp' },
 	{ "SmiteshP/nvim-navic",                    dependencies = { "neovim/nvim-lspconfig" } },
 	{ 'hrsh7th/nvim-cmp' },
+	{ "mistricky/codesnap.nvim",                build = "make" },
 	{ "sindrets/diffview.nvim" },
 	{ "nvim-tree/nvim-tree.lua",                dependencies = { "nvim-tree/nvim-web-devicons" } },
 	{
@@ -166,12 +167,21 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set("n", "go", "<cmd>FzfLua lsp_type_defs<cr>")
 		--set("n", "gr", vim.lsp.buf.references, opts)
 		vim.keymap.set("n", "gr", "<cmd>FzfLua lsp_references<cr>")
-		vim.keymap.set("n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<cr>")
+		vim.keymap.set("n", "<leader>ge", "<cmd>FzfLua diagnostics_document<cr>")
+		vim.keymap.set("n", "<leader>gw", "<cmd>FzfLua diagnostics_document<cr>")
+
 		vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
 		vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
 		vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
 		vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 	end,
+})
+
+vim.diagnostic.config({
+	float = {
+		border = "rounded",
+		source = true,
+	},
 })
 
 
@@ -402,7 +412,23 @@ require("neogit").setup({
 	}
 })
 
+--------------
+---CODESNAP---
+--------------
 
+require("codesnap").setup({
+	has_breadcrumbs = true,
+	show_workspace = true,
+	has_line_number = true,
+	bg_padding = 0,
+	save_path = os.getenv("XDG_PICTURES_DIR") or (os.getenv("HOME") .. "/Pictures"),
+	mac_window_bar = false,
+
+})
+
+vim.keymap.set("v", "<leader>cc", "<cmd>CodeSnap<cr>")
+vim.keymap.set("v", "<leader>cs", "<cmd>CodeSnapSave<cr>")
+vim.keymap.set("v", "<leader>ca", "<cmd>CodeSnapASCII<cr>")
 
 -- setup must be called before loading
 vim.cmd.colorscheme("catppuccin")
@@ -417,10 +443,10 @@ vim.cmd.colorscheme("catppuccin")
 vim.keymap.set("i", "{<cr>", "{<cr>}<esc>O")
 vim.keymap.set("n", "x", "\"_x")
 vim.keymap.set("n", "<leader><CR>", ":nohlsearch<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>aa", "ggvvG")
 vim.keymap.set("n", "Y", "y$")
 vim.keymap.set("n", "V", "v$")
 vim.keymap.set("n", "vv", "V")
-vim.keymap.set("n", "<leader>aa", "ggvvG<leader>y")
 
 -- goated binds
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -434,7 +460,8 @@ vim.keymap.set("x", "<leader>v", [["_dP]])
 vim.keymap.set("n", "<leader>dd", "\"_d")
 vim.keymap.set("v", "<leader>dd", "\"_d")
 
-vim.keymap.set("v", "<leader>te", "<cmd> lua vim.diagnostic.open_float() <CR>")
+vim.keymap.set("n", "ge", vim.diagnostic.open_float)
+
 
 vim.keymap.set("n", "<leader>c", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
@@ -459,12 +486,12 @@ vim.keymap.set("n", "g[", "gT")
 vim.keymap.set("n", "g]", "gt")
 
 -- yank current file path
-function insertFullPath()
+function InsertFullPath()
 	local filepath = vim.fn.expand('%')
 	vim.fn.setreg('+', filepath) -- write to clippoard
 end
 
-vim.keymap.set('n', '<leader>lc', insertFullPath, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>lc', InsertFullPath, { noremap = true, silent = true })
 
 -- plugin binds
 vim.keymap.set('n', '<leader>b', '<Cmd>NvimTreeToggle<CR>')
