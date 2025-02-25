@@ -436,8 +436,8 @@ require("codesnap").setup({
 
 })
 
-vim.keymap.set("v", "<leader>cc", "<cmd>CodeSnap<cr>")
-vim.keymap.set("v", "<leader>cs", "<cmd>CodeSnapSave<cr>")
+vim.keymap.set("v", "<leader>cs", "<cmd>CodeSnap<cr>")
+-- vim.keymap.set("v", "<leader>cw", "<cmd>CodeSnapSave<cr>")
 vim.keymap.set("v", "<leader>ca", "<cmd>CodeSnapASCII<cr>")
 
 -- setup must be called before loading
@@ -508,9 +508,9 @@ vim.keymap.set('n', '<leader>b', '<Cmd>NvimTreeToggle<CR>')
 
 vim.keymap.set('n', '<leader>p', '<Cmd>FzfLua<CR>')
 vim.keymap.set('n', '<leader>f', '<Cmd>FzfLua files<CR>')
-vim.keymap.set('n', '<leader>/', '<Cmd>FzfLua grep<CR>')        -- Search in all files
-vim.keymap.set('n', '<leader>l/', '<Cmd>FzfLua live_grep<CR>')  -- Search word under cursor
-vim.keymap.set('n', '<leader>*', '<Cmd>FzfLua grep_cword <CR>') -- Search word under cursor
+vim.keymap.set('n', '<leader>/', '<Cmd>FzfLua grep<CR>')
+vim.keymap.set('n', '<leader>l/', '<Cmd>FzfLua live_grep<CR>')
+vim.keymap.set('n', '<leader>*', '<Cmd>FzfLua grep_cword <CR>')
 vim.keymap.set("n", "<leader>z", "<cmd>FzfLua zoxide<cr>")
 vim.keymap.set("n", "<leader>,", "<cmd>FzfLua buffers<cr>")
 vim.keymap.set("n", "<leader>t", "<cmd>FzfLua treesitter<cr>")
