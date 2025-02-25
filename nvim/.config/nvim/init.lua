@@ -159,11 +159,21 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set("n", "go", "<cmd>FzfLua lsp_type_defs<cr>")
 		--set("n", "gr", vim.lsp.buf.references, opts)
 		vim.keymap.set("n", "gr", "<cmd>FzfLua lsp_references<cr>")
+		vim.keymap.set("n", "<leader>ge", "<cmd>FzfLua diagnostics_document<cr>")
+		vim.keymap.set("n", "<leader>gw", "<cmd>FzfLua diagnostics_document<cr>")
+
 		vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
 		vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
 		vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
 		vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 	end,
+})
+
+vim.diagnostic.config({
+	float = {
+		border = "rounded",
+		source = true,
+	},
 })
 
 
@@ -435,7 +445,8 @@ vim.keymap.set("x", "<leader>v", [["_dP]])
 vim.keymap.set("n", "<leader>dd", "\"_d")
 vim.keymap.set("v", "<leader>dd", "\"_d")
 
-vim.keymap.set("v", "<leader>ge", "<cmd> lua vim.diagnostic.open_float() <CR>")
+vim.keymap.set("n", "ge", vim.diagnostic.open_float)
+
 
 vim.keymap.set("n", "<leader>c", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
