@@ -117,6 +117,7 @@ require('lazy').setup({
 	{ 'hrsh7th/cmp-nvim-lsp' },
 	{ "SmiteshP/nvim-navic",                    dependencies = { "neovim/nvim-lspconfig" } },
 	{ 'hrsh7th/nvim-cmp' },
+	{ "mistricky/codesnap.nvim",                build = "make" },
 	{ "sindrets/diffview.nvim" },
 	{ "nvim-tree/nvim-tree.lua",                dependencies = { "nvim-tree/nvim-web-devicons" } },
 	{
@@ -158,7 +159,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set("n", "go", "<cmd>FzfLua lsp_type_defs<cr>")
 		--set("n", "gr", vim.lsp.buf.references, opts)
 		vim.keymap.set("n", "gr", "<cmd>FzfLua lsp_references<cr>")
-		vim.keymap.set("n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<cr>")
 		vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
 		vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
 		vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
@@ -387,7 +387,23 @@ require("neogit").setup({
 	}
 })
 
+--------------
+---CODESNAP---
+--------------
 
+require("codesnap").setup({
+	has_breadcrumbs = true,
+	show_workspace = true,
+	has_line_number = true,
+	bg_padding = 0,
+	save_path = os.getenv("XDG_PICTURES_DIR") or (os.getenv("HOME") .. "/Pictures"),
+	mac_window_bar = false,
+
+})
+
+vim.keymap.set("v", "<leader>cc", "<cmd>CodeSnap<cr>")
+vim.keymap.set("v", "<leader>cs", "<cmd>CodeSnapSave<cr>")
+vim.keymap.set("v", "<leader>ca", "<cmd>CodeSnapASCII<cr>")
 
 -- setup must be called before loading
 vim.cmd.colorscheme("catppuccin")
@@ -419,7 +435,7 @@ vim.keymap.set("x", "<leader>v", [["_dP]])
 vim.keymap.set("n", "<leader>dd", "\"_d")
 vim.keymap.set("v", "<leader>dd", "\"_d")
 
-vim.keymap.set("v", "<leader>te", "<cmd> lua vim.diagnostic.open_float() <CR>")
+vim.keymap.set("v", "<leader>ge", "<cmd> lua vim.diagnostic.open_float() <CR>")
 
 vim.keymap.set("n", "<leader>c", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
@@ -444,12 +460,12 @@ vim.keymap.set("n", "g[", "gT")
 vim.keymap.set("n", "g]", "gt")
 
 -- yank current file path
-function insertFullPath()
+function InsertFullPath()
 	local filepath = vim.fn.expand('%')
 	vim.fn.setreg('+', filepath) -- write to clippoard
 end
 
-vim.keymap.set('n', '<leader>lc', insertFullPath, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>lc', InsertFullPath, { noremap = true, silent = true })
 
 -- plugin binds
 vim.keymap.set('n', '<leader>b', '<Cmd>NvimTreeToggle<CR>')
