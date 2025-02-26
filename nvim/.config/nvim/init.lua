@@ -129,10 +129,18 @@ require('lazy').setup({
 	{
 		"lervag/vimtex",
 		lazy = false, -- we don't want to lazy load VimTeX
-		-- tag = "v2.15", -- uncomment to pin to a specific release
 		init = function()
 			vim.g.vimtex_view_method = "zathura"
 		end
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		}
 	}
 })
 
@@ -443,11 +451,28 @@ vim.keymap.set("v", "<leader>ca", "<cmd>CodeSnapASCII<cr>")
 -- setup must be called before loading
 vim.cmd.colorscheme("catppuccin")
 
+-- require("noice").setup({
+-- 	lsp = {
+-- 		-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+-- 		override = {
+-- 			["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+-- 			["vim.lsp.util.stylize_markdown"] = true,
+-- 			["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+-- 		},
+-- 	},
+-- 	presets = {
+-- 		bottom_search = true,     -- use a classic bottom cmdline for search
+-- 		command_palette = true,   -- position the cmdline and popupmenu together
+-- 		long_message_to_split = true, -- long messages will be sent to a split
+-- 		inc_rename = false,       -- enables an input dialog for inc-rename.nvim
+-- 		lsp_doc_border = false,   -- add a border to hover docs and signature help
+-- 	},
+-- })
+
 
 ------------------------
 -- Global Keymappings---
 ------------------------
-
 
 --- utility keymappings
 vim.keymap.set("i", "{<cr>", "{<cr>}<esc>O")
@@ -499,6 +524,7 @@ vim.keymap.set("n", "g]", "gt")
 function InsertFullPath()
 	local filepath = vim.fn.expand('%')
 	vim.fn.setreg('+', filepath) -- write to clippoard
+	print("Copied file path to system clipboard")
 end
 
 vim.keymap.set('n', '<leader>lc', InsertFullPath, { noremap = true, silent = true })
