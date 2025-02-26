@@ -226,6 +226,6 @@ run = ['move-node-to-workspace 7']
 2 = 'main'                       # Main monitor
 3 = 'secondary'                  # Non-main monitor in case when there are only two monitors
 4 = 'main'                  # Non-main monitor in case when there are only two monitors
-5 = 'main'
+5 = 'secondary'
 6 = 'secondary'
 7 = 'secondary'

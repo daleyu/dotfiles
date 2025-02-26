@@ -460,6 +460,10 @@ require("noice").setup({
 	},
 })
 
+require("notify").setup({
+	background_colour = "#bb9af7",
+})
+
 ------------------------
 -- Global Keymappings---
 ------------------------
