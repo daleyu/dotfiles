@@ -140,7 +140,14 @@ require('lazy').setup({
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
 		}
-	}
+	},
+	{
+		"lukas-reineke/virt-column.nvim",
+		opts = {
+			char = "▕",
+			virtcolumn = "80,120",
+		}
+	},
 })
 
 vim.opt.termguicolors = true
