@@ -91,15 +91,17 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
-	{ "catppuccin/nvim",                name = "catppuccin",                             priority = 1000 },
+	{ "catppuccin/nvim",                name = "catppuccin", priority = 1000 },
 	{ "nvim-treesitter/nvim-treesitter" },
 	{ 'folke/tokyonight.nvim' },
 	{ 'mbbill/undotree' },
-	{ 'neovim/nvim-lspconfig' },
+	{
+		'neovim/nvim-lspconfig',
+	},
 	{ "mfussenegger/nvim-lint" },
 	{ "stevearc/conform.nvim" },
-	{ 'echasnovski/mini.nvim',          version = false },
-	{ 'nvim-lualine/lualine.nvim',      dependencies = { 'nvim-tree/nvim-web-devicons' } },
+	{ 'echasnovski/mini.nvim',     version = false },
+	{ 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
 	{
 		"folke/lazydev.nvim",
 		ft = "lua", -- only load on lua files
@@ -115,7 +117,6 @@ require('lazy').setup({
 	{ 'williamboman/mason.nvim' },
 	{ 'williamboman/mason-lspconfig.nvim' },
 	{ 'hrsh7th/cmp-nvim-lsp' },
-	{ "SmiteshP/nvim-navic",                    dependencies = { "neovim/nvim-lspconfig" } },
 	{ 'hrsh7th/nvim-cmp' },
 	{ "mistricky/codesnap.nvim",                build = "make" },
 	{ "sindrets/diffview.nvim" },
@@ -141,13 +142,7 @@ require('lazy').setup({
 			"rcarriga/nvim-notify",
 		}
 	},
-	{
-		"lukas-reineke/virt-column.nvim",
-		opts = {
-			char = "▕",
-			virtcolumn = "80,120",
-		}
-	},
+	{ 'vim-test/vim-test' }
 })
 
 vim.opt.termguicolors = true
@@ -237,13 +232,7 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 ----------------
 -- LSPCONFIG --
 ----------------
-local navic = require("nvim-navic")
-
-require 'lspconfig'.gopls.setup({
-	on_attach = function(client, bufnr)
-		navic.attach(client, bufnr)
-	end
-})
+require 'lspconfig'.gopls.setup({})
 
 require 'lspconfig'.pyright.setup({})
 
@@ -541,6 +530,9 @@ vim.keymap.set('n', '<leader>*', '<Cmd>FzfLua grep_cword <CR>')
 vim.keymap.set("n", "<leader>z", "<cmd>FzfLua zoxide<cr>")
 vim.keymap.set("n", "<leader>,", "<cmd>FzfLua buffers<cr>")
 vim.keymap.set("n", "<leader>t", "<cmd>FzfLua treesitter<cr>")
+
+
+vim.keymap.set("n", "<leader>T", "<cmd>TestFile<CR>")
 
 vim.keymap.set("n", "<leader>ng", "<cmd>Neogit<cr>")
 vim.keymap.set("n", "<leader>nd", "<cmd>Neogit diff<cr>")
