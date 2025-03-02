@@ -61,6 +61,7 @@ vim.opt.laststatus = 3
 -- width
 -- vim.opt.colorcolumn = "80"
 vim.opt.textwidth = 80
+vim.opt.wrapmargin = 10
 
 
 -- Preview substitutions live, as you type!
@@ -142,7 +143,16 @@ require('lazy').setup({
 			"rcarriga/nvim-notify",
 		}
 	},
-	{ 'vim-test/vim-test' }
+	{ 'vim-test/vim-test' },
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		build = "cd app && yarn install",
+		init = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	},
 })
 
 vim.opt.termguicolors = true
