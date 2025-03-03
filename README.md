@@ -100,6 +100,20 @@ cargo install selene
 ```
 Make sure you `chmod +x ~/.cargo/bin/selene`
 
+### Markdown Preview
+- You need to have node.js and yarn installed.
+I use nvm to handle all my node stuff so I just curl get nvm from github like
+`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash`
+and then I install yarn with like `npm install --global yarn`
+
+> Right now Markdown preview has a weird bug where the installation script
+> hasn't been working for me
+This means you should run the command to rerun the install.sh
+```
+cd /Users/bytedance/.local/share/nvim/lazy/markdown-preview.nvim/app
+./install.sh
+```
+
 ### Setting up VimTex and Zathura
 Not gonna bother with this since it isn't needed.
 
