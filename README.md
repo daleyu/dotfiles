@@ -69,6 +69,13 @@ brew services restart sketchybar
 - Start Sketchybar as a background process
     - Sometimes this won't work on a company laptop, even with the same config.
       it must be an issue with the extra security or software on it.
+
+## Setting up Node environment
+- NVM as node version manager
+`https://github.com/nvm-sh/nvm`
+
+- Installing Bun
+
 ## Misc Packages
 
 ### Golang setup

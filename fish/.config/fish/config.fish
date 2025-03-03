@@ -45,3 +45,7 @@ end
 # first 'brew install fish'
 # import autojump files with 'zoxide import --from=autojump "$HOME/Library/autojump/autojump.txt"'
 zoxide init fish | source
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
