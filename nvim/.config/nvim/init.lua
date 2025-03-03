@@ -153,6 +153,11 @@ require('lazy').setup({
 		end,
 		ft = { "markdown" },
 	},
+	{
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
+	}
 })
 
 vim.opt.termguicolors = true
@@ -216,6 +221,13 @@ conform.setup({
 		luau = { "stylua" },
 		go = { "gofmt", "goimports" },
 		python = { "black" },
+		typescript = { { 'prettierd', "prettier" } },
+		typescriptreact = { { 'prettierd', "prettier" } },
+		javascript = { { 'prettierd', "prettier" } },
+		javascriptreact = { { 'prettierd', "prettier" } },
+		json = { { 'prettierd', "prettier" } },
+		html = { { 'prettierd', "prettier" } },
+		css = { { 'prettierd', "prettier" } },
 	},
 	format_on_save = {
 		timeout_ms = 500,
@@ -247,6 +259,8 @@ require 'lspconfig'.gopls.setup({})
 require 'lspconfig'.pyright.setup({})
 
 require 'lspconfig'.lua_ls.setup({})
+
+require("typescript-tools").setup({})
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
