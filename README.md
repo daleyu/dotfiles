@@ -41,7 +41,7 @@ Download homebrew first
 
 Run this to install all brew packages
 ```
-brew install jesseduffield/lazygit/lazygit tmux clipboard fzf gcc gh glow neovim node powerlevel10k python ripgrep rust stow tree-sitter wget yazi zoxide go cava
+brew install jesseduffield/lazygit/lazygit tmux clipboard fzf gcc gh glow neovim node powerlevel10k python ripgrep rust stow tree-sitter wget yazi zoxide go cava graphviz
 ```
 Casks
 ```
@@ -70,6 +70,16 @@ brew services restart sketchybar
     - Sometimes this won't work on a company laptop, even with the same config.
       it must be an issue with the extra security or software on it.
 ## Misc Packages
+
+### Golang setup
+
+Some useful go packages, I've used. 
+```
+go install github.com/loov/goda@latest
+```
+- Goda lets you debug gomod and the different dependencies. You will need
+graphviz to do some of the commands. 
+    - it is kind of buggy but wtv
 
 ### Selene and Rust
 
