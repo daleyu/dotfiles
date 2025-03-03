@@ -411,9 +411,6 @@ mini_files.setup({
 	},
 })
 
-require('mini.surround').setup()
-
-
 
 KEYMAP_SETTINGS.mini_files(mini_files)
 
