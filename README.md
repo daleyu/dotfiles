@@ -80,6 +80,38 @@ brew services restart sketchybar
 
 ### Golang setup
 
+#### USING MULTIPLE VERSIONS OF GO (IMPORTANT)
+
+No point in using goenv or gvm, as they are not the supported technique from the
+official go documentation. 
+- Instead you should download multiple go versions like https://go.dev/doc/manage-install#installing-multiple,
+Then you can set the go version in that terminal session using an alias and also
+set the goroot that neovim will use. You also have to export the path in this
+session. Then, neovim should be able to recognize the go alias and version. 
+> Soon I will export this process to a script that will just be something like
+> change_ver go1.18 and then automatically do it.
+```bash
+> alias go='go1.18'                                                   
+
+> export GOROOT=$(go1.18 env GOROOT)                                  
+
+> echo $GOROOT 
+/Users/bytedance/sdk/go1.18
+
+> export PATH=$GOROOT/bin:$PATH                                
+
+>  n .                                                         
+
+> gopls version                                                
+golang.org/x/tools/gopls v0.18.1
+
+```
+- if this doesn't work or there are unexpected errors, then it is likely that
+the gopls is too updated, you should look at the go docs and get the latest
+gopls that works with that version
+
+#### Random Go Packages
+
 Some useful go packages, I've used. 
 ```
 go install github.com/loov/goda@latest
