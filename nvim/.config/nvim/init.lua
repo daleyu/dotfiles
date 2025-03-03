@@ -475,7 +475,7 @@ require("notify").setup({
 vim.keymap.set("i", "{<cr>", "{<cr>}<esc>O")
 vim.keymap.set("n", "x", "\"_x")
 vim.keymap.set("n", "<leader><CR>", ":nohlsearch<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>aa", "ggvvG")
+vim.keymap.set("n", "<leader>va", "ggvvG\"+y")
 vim.keymap.set("n", "Y", "y$")
 vim.keymap.set("n", "V", "v$")
 vim.keymap.set("n", "vv", "V")
