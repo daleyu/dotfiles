@@ -11,7 +11,7 @@ export GOPATH="$HOME/go"
 path+=("$GOPATH/bin:PATH")
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/homebrew/bin:$PATH:$(go env GOPATH)/bin/
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/homebrew/bin:$PATH:$(go env GOPATH)/bin/:~/.utils
 
 export EDITOR=nvim
 
