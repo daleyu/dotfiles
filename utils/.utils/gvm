@@ -1,0 +1,23 @@
+#!/bin/bash
+if [ $# -eq 0 ]; then
+  echo "Please provide the go version you want to use"
+  echo "Usage: source ./gvm.sh <version-number>"
+else
+  echo "Go version: $1"
+fi
+
+go install golang.org/dl/go$1@latest
+echo "installing go$1"
+go$1 download
+
+alias go="go$1"
+
+export GOROOT=$(go$1 env GOROOT)                                  
+
+echo $GOROOT 
+
+export PATH=$GOROOT/bin:$PATH                                
+
+echo $(go version)
+
+echo "Set your go version now by doing go=\"go$1\""
