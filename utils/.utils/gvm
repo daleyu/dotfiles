@@ -1,4 +1,9 @@
 #!/bin/bash
+if [ "$0" = "$BASH_SOURCE" ]; then
+	echo "Error: Source the file, so that your current session can be set to that go version"
+    exit 1
+fi
+
 if [ $# -eq 0 ]; then
   echo "Please provide the go version you want to use"
   echo "Usage: source ./gvm.sh <version-number>"
