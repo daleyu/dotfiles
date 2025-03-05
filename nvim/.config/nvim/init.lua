@@ -157,7 +157,22 @@ require('lazy').setup({
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
-	}
+	},
+	{ "MagicDuck/grug-far.nvim", opts = { windowCreationCommand = "e" } },
+	{
+		"ray-x/go.nvim",
+		dependencies = { -- optional packages
+			"ray-x/guihua.lua",
+			"neovim/nvim-lspconfig",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		config = function()
+			require("go").setup()
+		end,
+		event = { "CmdlineEnter" },
+		ft = { "go", 'gomod' },
+		build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+	},
 })
 
 vim.opt.termguicolors = true
@@ -481,6 +496,27 @@ require("notify").setup({
 	background_colour = "#bb9af7",
 })
 
+
+
+------------------------
+-- LANGUAGE SPECIFIC ---
+------------------------
+
+-------------
+-- GOLANG ---
+-------------
+require('go').setup()
+
+local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*.go",
+	callback = function()
+		require('go.format').goimports()
+	end,
+	group = format_sync_grp,
+})
+
+
 ------------------------
 -- Global Keymappings---
 ------------------------
@@ -561,6 +597,8 @@ vim.keymap.set("n", "<leader>nd", "<cmd>Neogit diff<cr>")
 vim.keymap.set("n", "<leader>df", "<cmd>DiffviewFileHistory<cr>")
 vim.keymap.set("n", "<leader>do", "<cmd>DiffviewOpen<cr>")
 vim.keymap.set("n", "<leader>dc", "<cmd>DiffviewClose<cr>")
+vim.keymap.set("n", "<leader>r", "<cmd>GrugFar<cr>")
+
 
 vim.keymap.set("n", "<leader>q", function()
 	local pdf_file = vim.fn.expand('%:r') .. '.pdf'
