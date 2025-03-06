@@ -14,6 +14,11 @@ run  = "plugin max-preview"
 desc = "Maximize or restore preview"
 
 [[manager.prepend_keymap]]
+on = ["<Space>", "<Enter>"]
+run  = "escape --all"
+desc = "nohlsearch equiv"
+
+[[manager.prepend_keymap]]
 on   = [ "c", "a" ]
 run  = "plugin compress"
 desc = "Archive selected files"
