@@ -29,9 +29,15 @@ import autojump files with `zoxide import --from=autojump "$HOME/Library/autojum
 
 ## Setting up Yazi file manager
 
+Install the packages
 ```Install packages
 brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick font-symbols-only-nerd-font
 ```
+Download the Catppucin theme
+```
+ya pack -a yazi-rs/flavors:catppuccin-macchiato
+```
+
 
 ## Brew packages
 Download homebrew first
@@ -41,7 +47,7 @@ Download homebrew first
 
 Run this to install all brew packages
 ```
-brew install jesseduffield/lazygit/lazygit tmux clipboard fzf gcc gh glow neovim node powerlevel10k python ripgrep rust stow tree-sitter wget yazi zoxide go cava graphviz eza
+brew install jesseduffield/lazygit/lazygit tmux clipboard fzf gcc gh glow neovim node powerlevel10k python ripgrep rust stow tree-sitter wget yazi zoxide go cava graphviz eza ast-grep
 ```
 Casks
 ```
