@@ -41,7 +41,7 @@ Download homebrew first
 
 Run this to install all brew packages
 ```
-brew install jesseduffield/lazygit/lazygit tmux clipboard fzf gcc gh glow neovim node powerlevel10k python ripgrep rust stow tree-sitter wget yazi zoxide go cava graphviz
+brew install jesseduffield/lazygit/lazygit tmux clipboard fzf gcc gh glow neovim node powerlevel10k python ripgrep rust stow tree-sitter wget yazi zoxide go cava graphviz eza
 ```
 Casks
 ```
@@ -90,22 +90,10 @@ set the goroot that neovim will use. You also have to export the path in this
 session. Then, neovim should be able to recognize the go alias and version. 
 > Soon I will export this process to a script that will just be something like
 > change_ver go1.18 and then automatically do it.
-```bash
-> alias go='go1.18'                                                   
 
-> export GOROOT=$(go1.18 env GOROOT)                                  
+`$ source gvm <go-version>`
+- Use this script to be able to change go version
 
-> echo $GOROOT 
-/Users/bytedance/sdk/go1.18
-
-> export PATH=$GOROOT/bin:$PATH                                
-
->  n .                                                         
-
-> gopls version                                                
-golang.org/x/tools/gopls v0.18.1
-
-```
 - if this doesn't work or there are unexpected errors, then it is likely that
 the gopls is too updated, you should look at the go docs and get the latest
 gopls that works with that version
