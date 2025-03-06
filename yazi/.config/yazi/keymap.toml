@@ -2,3 +2,8 @@
 edit = [
     { run = "nvim %*", for = "macos" },
 ]
+
+[[manager.prepend_keymap]]
+on   = "T"
+run  = "plugin max-preview"
+desc = "Maximize or restore preview"
