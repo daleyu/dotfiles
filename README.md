@@ -47,7 +47,7 @@ Download homebrew first
 
 Run this to install all brew packages
 ```
-brew install jesseduffield/lazygit/lazygit tmux clipboard fzf gcc gh glow neovim node powerlevel10k python ripgrep rust stow tree-sitter wget yazi zoxide go cava graphviz eza ast-grep
+brew install jesseduffield/lazygit/lazygit tmux clipboard fzf gcc gh glow neovim node powerlevel10k python ripgrep rust stow tree-sitter wget yazi zoxide go cava graphviz eza ast-grep reattach-to-user-namespace
 ```
 Casks
 ```
@@ -81,8 +81,9 @@ brew services restart sketchybar
 `https://github.com/nvm-sh/nvm`
 
 - Installing Bun
+    - install using node and just follow the website. I hate JS though.
 
-## Misc Packages
+## Language Setups
 
 ### Golang setup
 
@@ -126,6 +127,21 @@ cargo install selene
 ```
 Make sure you `chmod +x ~/.cargo/bin/selene`
 
+### Dart and Flutter
+TODO
+
+### Java
+TODO
+
+### Ruby
+TODO
+
+### Python
+TODO
+
+### Lua
+TODO
+
 ### Markdown Preview
 - You need to have node.js and yarn installed.
 I use nvm to handle all my node stuff so I just curl get nvm from github like
@@ -133,7 +149,7 @@ I use nvm to handle all my node stuff so I just curl get nvm from github like
 and then I install yarn with like `npm install --global yarn`
 
 > Right now Markdown preview has a weird bug where the installation script
-> hasn't been working for me
+> hasn't been working for me without rerunning the install script
 This means you should run the command to rerun the install.sh
 ```
 cd /Users/bytedance/.local/share/nvim/lazy/markdown-preview.nvim/app
@@ -142,4 +158,3 @@ cd /Users/bytedance/.local/share/nvim/lazy/markdown-preview.nvim/app
 
 ### Setting up VimTex and Zathura
 Not gonna bother with this since it isn't needed.
-
