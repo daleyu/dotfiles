@@ -588,7 +588,9 @@ vim.keymap.set("n", "<leader>nd", "<cmd>Neogit diff<cr>")
 vim.keymap.set("n", "<leader>df", "<cmd>DiffviewFileHistory<cr>")
 vim.keymap.set("n", "<leader>do", "<cmd>DiffviewOpen<cr>")
 vim.keymap.set("n", "<leader>dc", "<cmd>DiffviewClose<cr>")
+
 vim.keymap.set("n", "<leader>r", "<cmd>GrugFar<cr>")
+vim.keymap.set("n", "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>")
 
 
 vim.keymap.set("n", "<leader>q", function()
