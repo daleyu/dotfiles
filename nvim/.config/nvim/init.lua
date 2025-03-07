@@ -13,7 +13,7 @@ vim.o.statuscolumn = "%s %l %r "
 
 -- scroll off
 vim.opt.scrolloff = 5
-vim.opt.sidescrolloff = 5
+vim.opt.sidescrolloff = 10
 
 -- Sets colors to line numbers Above, Current and Below  in this order
 function LineNumberColors()
@@ -173,6 +173,7 @@ require('lazy').setup({
 		ft = { "go", 'gomod' },
 		build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
 	},
+	{ "folke/zen-mode.nvim", },
 })
 
 vim.opt.termguicolors = true
@@ -575,7 +576,7 @@ vim.keymap.set('n', '<leader>f', '<Cmd>FzfLua files<CR>')
 vim.keymap.set('n', '<leader>/', '<Cmd>FzfLua grep<CR>')
 vim.keymap.set('n', '<leader>l/', '<Cmd>FzfLua live_grep<CR>')
 vim.keymap.set('n', '<leader>*', '<Cmd>FzfLua grep_cword <CR>')
-vim.keymap.set("n", "<leader>z", "<cmd>FzfLua zoxide<cr>")
+vim.keymap.set("n", "<leader>zz", "<cmd>FzfLua zoxide<cr>")
 vim.keymap.set("n", "<leader>,", "<cmd>FzfLua buffers<cr>")
 vim.keymap.set("n", "<leader>t", "<cmd>FzfLua treesitter<cr>")
 
@@ -591,6 +592,8 @@ vim.keymap.set("n", "<leader>dc", "<cmd>DiffviewClose<cr>")
 
 vim.keymap.set("n", "<leader>r", "<cmd>GrugFar<cr>")
 vim.keymap.set("n", "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>")
+
+vim.keymap.set("n", "<leader>zm", "<cmd>ZenMode<cr>")
 
 
 vim.keymap.set("n", "<leader>q", function()
