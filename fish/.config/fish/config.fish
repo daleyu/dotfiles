@@ -60,3 +60,32 @@ zoxide init fish | source
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+function logo
+    echo '                 '(set_color a5b4fd)'___
+  ___======____='(set_color f0a9a9)'-'(set_color f5a9e0)'-'(set_color f0a9a9)'-='(set_color a5b4fd)')
+/T            \_'(set_color f5a9e0)'--='(set_color f0a9a9)'=='(set_color a5b4fd)')
+[ \ '(set_color f0a9a9)'('(set_color f5a9e0)'0'(set_color f0a9a9)')   '(set_color a5b4fd)'\~    \_'(set_color f5a9e0)'-='(set_color f0a9a9)'='(set_color a5b4fd)')
+ \      / )J'(set_color f0a9a9)'~~    \\'(set_color f5a9e0)'-='(set_color a5b4fd)')
+  \\\\___/  )JJ'(set_color f0a9a9)'~'(set_color f5a9e0)'~~   '(set_color a5b4fd)'\)
+   \_____/JJJ'(set_color f0a9a9)'~~'(set_color f5a9e0)'~~    '(set_color a5b4fd)'\\
+   '(set_color f0a9a9)'/ '(set_color f5a9e0)'\  '(set_color f5a9e0)', \\'(set_color a5b4fd)'J'(set_color f0a9a9)'~~~'(set_color f5a9e0)'~~     '(set_color f0a9a9)'\\
+  (-'(set_color f5a9e0)'\)'(set_color a5b4fd)'\='(set_color f0a9a9)'|'(set_color f5a9e0)'\\\\\\'(set_color f0a9a9)'~~'(set_color f5a9e0)'~~       '(set_color f0a9a9)'L_'(set_color f5a9e0)'_
+  '(set_color f0a9a9)'('(set_color a5b4fd)'\\'(set_color f0a9a9)'\\)  ('(set_color f5a9e0)'\\'(set_color f0a9a9)'\\\)'(set_color a5b4fd)'_           '(set_color f5a9e0)'\=='(set_color f0a9a9)'__
+   '(set_color a5b4fd)'\V    '(set_color f0a9a9)'\\\\'(set_color a5b4fd)'\) =='(set_color f0a9a9)'=_____   '(set_color f5a9e0)'\\\\\\\\'(set_color f0a9a9)'\\\\
+          '(set_color a5b4fd)'\V)     \_) '(set_color f0a9a9)'\\\\'(set_color f5a9e0)'\\\\JJ\\'(set_color f0a9a9)'J\)
+                      '(set_color a5b4fd)'/'(set_color f0a9a9)'J'(set_color f5a9e0)'\\'(set_color f0a9a9)'J'(set_color a5b4fd)'T\\'(set_color f0a9a9)'JJJ'(set_color a5b4fd)'J)
+                      (J'(set_color f0a9a9)'JJ'(set_color a5b4fd)'| \UUU)
+                       (UU)'(set_color normal)
+end
+
+logo
+function fish_greeting
+	echo "
+	Welcome Dahlia
+	"
+end 
+
+
+
+
