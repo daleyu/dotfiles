@@ -235,7 +235,7 @@ conform.setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
 		luau = { "stylua" },
-		go = { "gofmt", },
+		go = { "gofmt", "goimports" },
 		python = { "black" },
 		typescript = { { 'prettierd', "prettier" } },
 		typescriptreact = { { 'prettierd', "prettier" } },
@@ -264,8 +264,6 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 		lint.try_lint()
 	end,
 })
-
-
 
 ----------------
 -- LSPCONFIG --
