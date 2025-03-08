@@ -3,6 +3,17 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
     set -x PATH $PATH $HOME/.pub-cache/bin
     set -x JAVA_HOME $java_home
+	# >>> conda initialize >>>
+	# !! Contents within this block are managed by 'conda init' !!
+	if test -f /Users/daleyu/anaconda3/bin/conda
+		eval /Users/daleyu/anaconda3/bin/conda "shell.fish" "hook" $argv | source
+	end
+	# <<< conda initialize <<<
+
+	#status --is-interactive; and ~/.rbenv/bin/rbenv init - fish | source
+	if command -v rbenv > /dev/null
+		eval (rbenv init - | source)
+	end
 end
 
 if test -f /opt/homebrew/share/autojump/autojump.fish
@@ -27,17 +38,6 @@ alias lS='eza -1 --color=always --group-directories-first --icons'
 alias lt='eza --tree --level=2 --color=always --group-directories-first --icons'
 alias l.="eza -a | grep -E '^\.'"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-if test -f /Users/daleyu/anaconda3/bin/conda
-    eval /Users/daleyu/anaconda3/bin/conda "shell.fish" "hook" $argv | source
-end
-# <<< conda initialize <<<
-
-#status --is-interactive; and ~/.rbenv/bin/rbenv init - fish | source
-if command -v rbenv > /dev/null
-    eval (rbenv init - | source)
-end
 
 set -Ux PATH $PATH (go env GOPATH)/bin
 
