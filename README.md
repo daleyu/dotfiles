@@ -21,6 +21,35 @@ How to delete a stow not at base path
 stow -D --target="/Users/[username]" tmux
 ```
 
+## Brew packages
+Download homebrew first
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Run this to install all brew packages
+```
+brew install fish jesseduffield/lazygit/lazygit tmux clipboard fzf gcc gh glow neovim node powerlevel10k python ripgrep rust stow tree-sitter wget yazi zoxide go cava graphviz eza ast-grep reattach-to-user-namespace
+```
+Casks
+```
+brew install --cask font-hack-nerd-font alt-tab discord firefox obsidian topnotch ghostty google-chrome typora nikitabobko/tap/aerospace
+```
+
+## Fish 
+My terminal of choice for personal computer. 
+- My theme is fish tide [equivalent to powerlevel10k]
+
+#### Fisher Plugin Manager
+I use fisher instead of omf. I found that omf was more than what I needed, and
+that fisher is more widely supported and stable. 
+- To download a fisher plugin I would use `fisher install <plugin>`
+
+## ZSH
+Terminal used for work. I just use ohmyzsh and then a really minimal setup.
+I am not bothered to go beyond that. 
+
+
 ## Zoxide
 
 first `brew install zoxide`
@@ -38,21 +67,6 @@ Download the Catppucin theme
 ya pack -a yazi-rs/flavors:catppuccin-macchiato
 ```
 
-
-## Brew packages
-Download homebrew first
-```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-Run this to install all brew packages
-```
-brew install jesseduffield/lazygit/lazygit tmux clipboard fzf gcc gh glow neovim node powerlevel10k python ripgrep rust stow tree-sitter wget yazi zoxide go cava graphviz eza ast-grep reattach-to-user-namespace
-```
-Casks
-```
-brew install --cask font-hack-nerd-font alt-tab discord firefox obsidian topnotch ghostty google-chrome typora nikitabobko/tap/aerospace
-```
 
 ## SketchyBar
 
@@ -79,6 +93,8 @@ brew services restart sketchybar
 ## Setting up Node environment
 - NVM as node version manager
 `https://github.com/nvm-sh/nvm`
+
+- Fish has to use nvm.fsh
 
 - Installing Bun
     - install using node and just follow the website. I hate JS though.
@@ -126,6 +142,11 @@ Now we need to get selene.
 cargo install selene
 ```
 Make sure you `chmod +x ~/.cargo/bin/selene`
+
+### Javascript
+
+##### Working with Prettier
+install prettierd with npm
 
 ### Dart and Flutter
 TODO
