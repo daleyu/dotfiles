@@ -40,7 +40,7 @@ alias lt='eza --tree --level=2 --color=always --group-directories-first --icons'
 alias l.="eza -a | grep -E '^\.'"
 
 
-set -Ux PATH $PATH (go env GOPATH)/bin
+set -gx PATH $PATH (go env GOPATH)/bin
 
 set -gx EDITOR nvim
 
