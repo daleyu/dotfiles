@@ -92,8 +92,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
-	{ "catppuccin/nvim",                name = "catppuccin", priority = 1000 },
-	{ "nvim-treesitter/nvim-treesitter" },
+	{ "catppuccin/nvim",      name = "catppuccin", priority = 1000 },
 	{ 'folke/tokyonight.nvim' },
 	{ 'mbbill/undotree' },
 	{
@@ -174,6 +173,11 @@ require('lazy').setup({
 		build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
 	},
 	{ "folke/zen-mode.nvim", },
+	{
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		dependencies = { "nvim-lua/plenary.nvim" }
+	},
 })
 
 vim.opt.termguicolors = true
@@ -283,9 +287,48 @@ require('mason-lspconfig').setup({
 			require('lspconfig')[server_name].setup({})
 		end,
 	},
+	ensure_installed = { "gopls", "lua_ls", "rust_analyzer", "pyright", "bashls", "jsonls" }
 })
 
+require 'lspconfig'.rust_analyzer.setup({})
+require 'lspconfig'.bashls.setup({})
+
+require 'lspconfig'.sorbet.setup({})
+require 'lspconfig'.ts_ls.setup({})
+require 'lspconfig'.eslint.setup({})
+
+
+local dartExcludedFolders = {
+	vim.fn.expand("$HOME/AppData/Local/Pub/Cache"),
+	vim.fn.expand("$HOME/.pub-cache"),
+	vim.fn.expand("/opt/homebrew/"),
+	vim.fn.expand("$HOME/tools/flutter/"),
+}
+
+require("lspconfig").dartls.setup({
+	cmd = { "dart", "language-server", "--protocol=lsp" },
+	filetypes = { "dart" },
+	init_options = {
+		onlyAnalyzeProjectsWithOpenFiles = false,
+		suggestFromUnimportedLibraries = true,
+		closingLabels = true,
+		outline = false,
+		flutterOutline = false,
+	},
+	settings = {
+		dart = {
+			analysisExcludedFolders = dartExcludedFolders,
+			updateImportsOnRename = true,
+			completeFunctionCalls = true,
+			showTodos = true,
+		},
+	},
+})
+
+------------------
 -- autocomplete --
+------------------
+
 local cmp = require('cmp')
 
 cmp.setup({
@@ -336,6 +379,10 @@ require("catppuccin").setup({
 	transparent_background = true,
 })
 
+------------------
+----- FZFLUA -----
+------------------
+
 require("fzf-lua").setup({
 	keymap = {
 		fzf = {
@@ -364,7 +411,7 @@ vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 --- Treesitter configs---
 -------------------------
 require("nvim-treesitter.configs").setup({
-	ensure_installed = { "cpp", "typescript", "tsx", "python", "luau", "javascript", "rust", "json", "lua", "go", "html" },
+	ensure_installed = { "cpp", "typescript", "tsx", "python", "luau", "javascript", "rust", "json", "lua", "go", "html", "dart", "ruby" },
 	highlight = {
 		enable = true,
 	},
@@ -394,6 +441,25 @@ require 'treesitter-context'.setup {
 	zindex = 40,  -- The Z-index of the context window
 	on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 }
+
+--------------------
+----- HARPOON ------
+--------------------
+
+local harpoon = require("harpoon")
+
+harpoon:setup()
+
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+vim.keymap.set("n", "<C-t>", function() harpoon:list():select(1) end)
+vim.keymap.set("n", "<C-n>", function() harpoon:list():select(2) end)
+vim.keymap.set("n", "<C-s>", function() harpoon:list():select(3) end)
+
+-- Toggle previous & next buffers stored within Harpoon list
+vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
+vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
 
 ----------------
 --- Diffview ---
@@ -575,6 +641,7 @@ vim.keymap.set('n', '<leader>/', '<Cmd>FzfLua grep<CR>')
 vim.keymap.set('n', '<leader>l/', '<Cmd>FzfLua live_grep<CR>')
 vim.keymap.set('n', '<leader>*', '<Cmd>FzfLua grep_cword <CR>')
 vim.keymap.set("n", "<leader>zz", "<cmd>FzfLua zoxide<cr>")
+vim.keymap.set("n", "<leader>ca", "<cmd>FzfLua lsp_code_actions<cr>")
 vim.keymap.set("n", "<leader>,", "<cmd>FzfLua buffers<cr>")
 vim.keymap.set("n", "<leader>t", "<cmd>FzfLua treesitter<cr>")
 
