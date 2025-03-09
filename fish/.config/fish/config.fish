@@ -20,31 +20,36 @@ if test -f /opt/homebrew/share/autojump/autojump.fish
     source /opt/homebrew/share/autojump/autojump.fish
 end
 
+# brew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+# brew end
+
 fish_vi_key_bindings
 
-# Aliases
-alias lg="lazygit"
-alias tn="tmux new-session -s"
-alias ta="tmux attach-session -t"
-alias n="nvim"
+# Abbreviations
+abbr -ag lg "lazygit"
+abbr -ag tn "tmux new-session -s"
+abbr -ag ta "tmux attach-session -t"
+abbr -ag n "nvim"
+abbr -ag ls "eza --color=always --group-directories-first --icons"
+abbr -ag ll "eza -la --icons --octal-permissions --group-directories-first"
+abbr -ag l "eza -bGF --header --git --color=always --group-directories-first --icons"
+abbr -ag llm "eza -lbGd --header --git --sort=modified --color=always --group-directories-first --icons"
+abbr -ag la "eza --long --all --group --group-directories-first"
+abbr -ag lx "eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale --color=always --group-directories-first --icons"
+abbr -ag lS "eza -1 --color=always --group-directories-first --icons"
+abbr -ag lt "eza --tree --level=2 --color=always --group-directories-first --icons"
+abbr -ag "l." "eza -a | grep -E '^\.'"
 
-alias ls='eza --color=always --group-directories-first --icons'
-alias ll='eza -la --icons --octal-permissions --group-directories-first'
-alias l='eza -bGF --header --git --color=always --group-directories-first --icons'
-alias llm='eza -lbGd --header --git --sort=modified --color=always --group-directories-first --icons' 
-alias la='eza --long --all --group --group-directories-first'
-alias lx='eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale --color=always --group-directories-first --icons'
-
-alias lS='eza -1 --color=always --group-directories-first --icons'
-alias lt='eza --tree --level=2 --color=always --group-directories-first --icons'
-alias l.="eza -a | grep -E '^\.'"
-
-
+# go 
 set -gx PATH $PATH (go env GOPATH)/bin
 
+
+# nvim
 set -gx EDITOR nvim
 
 
+# yazi
 function y
 	set tmp (mktemp -t "yazi-cwd.XXXXXX")
 	yazi $argv --cwd-file="$tmp"
@@ -54,8 +59,8 @@ function y
 	rm -f -- "$tmp"
 end
 
-# first 'brew install fish'
-# import autojump files with 'zoxide import --from=autojump "$HOME/Library/autojump/autojump.txt"'
+
+# zoxide
 zoxide init fish | source
 
 # bun
