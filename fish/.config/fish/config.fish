@@ -23,6 +23,7 @@ end
 fish_vi_key_bindings
 
 # Aliases
+alias lg="lazygit"
 alias tn="tmux new-session -s"
 alias ta="tmux attach-session -t"
 alias n="nvim"
