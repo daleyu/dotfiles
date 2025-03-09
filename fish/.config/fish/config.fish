@@ -79,13 +79,9 @@ function logo
                        (UU)'(set_color normal)
 end
 
-logo
 function fish_greeting
+	logo
 	echo "
 	Welcome Dahlia
 	"
 end 
-
-
-
-
