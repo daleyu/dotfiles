@@ -99,7 +99,7 @@ require('lazy').setup({
 		'neovim/nvim-lspconfig',
 	},
 	{ "mfussenegger/nvim-lint" },
-	{ "stevearc/conform.nvim" },
+	{ "stevearc/conform.nvim",     opts = {}, },
 	{ 'echasnovski/mini.nvim',     version = false },
 	{ 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
 	{
@@ -112,15 +112,16 @@ require('lazy').setup({
 		},
 	},
 	{ "nvim-treesitter/nvim-treesitter" },
+	{ "nvim-treesitter/nvim-treesitter-textobjects" },
 	{ "nvim-treesitter/nvim-treesitter-context" },
-	{ "ibhagwan/fzf-lua",                       dependencies = { "nvim-tree/nvim-web-devicons" } },
+	{ "ibhagwan/fzf-lua",                           dependencies = { "nvim-tree/nvim-web-devicons" } },
 	{ 'williamboman/mason.nvim' },
 	{ 'williamboman/mason-lspconfig.nvim' },
 	{ 'hrsh7th/cmp-nvim-lsp' },
 	{ 'hrsh7th/nvim-cmp' },
-	{ "mistricky/codesnap.nvim",                build = "make" },
+	{ "mistricky/codesnap.nvim",                    build = "make" },
 	{ "sindrets/diffview.nvim" },
-	{ "nvim-tree/nvim-tree.lua",                dependencies = { "nvim-tree/nvim-web-devicons" } },
+	{ "nvim-tree/nvim-tree.lua",                    dependencies = { "nvim-tree/nvim-web-devicons" } },
 	{
 		"NeogitOrg/neogit",
 		dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim", "ibhagwan/fzf-lua" },
@@ -241,18 +242,28 @@ conform.setup({
 		luau = { "stylua" },
 		go = { "gofmt", "goimports" },
 		python = { "black" },
-		typescript = { { 'prettierd', "prettier" } },
-		typescriptreact = { { 'prettierd', "prettier" } },
-		javascript = { { 'prettierd', "prettier" } },
-		javascriptreact = { { 'prettierd', "prettier" } },
-		json = { { 'prettierd', "prettier" } },
-		html = { { 'prettierd', "prettier" } },
-		css = { { 'prettierd', "prettier" } },
+		typescript = { 'prettierd', "prettier", stop_after_first = true },
+		typescriptreact = { 'prettierd', "prettier", stop_after_first = true },
+		javascript = { 'prettierd', "prettier", stop_after_first = true },
+		javascriptreact = { 'prettierd', "prettier", stop_after_first = true },
+		json = { 'prettierd', "prettier", stop_after_first = true },
+		html = { 'prettierd', "prettier", stop_after_first = true },
+		css = { 'prettierd', "prettier", stop_after_first = true },
 	},
 	format_on_save = {
 		timeout_ms = 500,
 		lsp_fallback = true,
 	},
+	format = {
+		stop_after_first = true,
+	}
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*",
+	callback = function(args)
+		require("conform").format({ bufnr = args.buf })
+	end,
 })
 
 ---------------
@@ -272,13 +283,23 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 ----------------
 -- LSPCONFIG --
 ----------------
-require 'lspconfig'.gopls.setup({})
+local servers = {
+	"gopls",
+	"lua_ls",
+	"rust_analyzer",
+	"pyright",
+	"bashls",
+	"jsonls",
+	"sorbet",
+	"ts_ls",
+	"eslint",
+	"jdtls",
+}
 
-require 'lspconfig'.pyright.setup({})
-
-require 'lspconfig'.lua_ls.setup({})
-
-require("typescript-tools").setup({})
+local lspconfig = require('lspconfig')
+for _, server in ipairs(servers) do
+	lspconfig[server].setup({})
+end
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
@@ -287,15 +308,8 @@ require('mason-lspconfig').setup({
 			require('lspconfig')[server_name].setup({})
 		end,
 	},
-	ensure_installed = { "gopls", "lua_ls", "rust_analyzer", "pyright", "bashls", "jsonls" }
+	ensure_installed = servers,
 })
-
-require 'lspconfig'.rust_analyzer.setup({})
-require 'lspconfig'.bashls.setup({})
-
-require 'lspconfig'.sorbet.setup({})
-require 'lspconfig'.ts_ls.setup({})
-require 'lspconfig'.eslint.setup({})
 
 
 local dartExcludedFolders = {
@@ -411,7 +425,7 @@ vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 --- Treesitter configs---
 -------------------------
 require("nvim-treesitter.configs").setup({
-	ensure_installed = { "cpp", "typescript", "tsx", "python", "luau", "javascript", "rust", "json", "lua", "go", "html", "dart", "ruby" },
+	ensure_installed = { "cpp", "typescript", "tsx", "python", "luau", "javascript", "rust", "json", "lua", "go", "html", "dart", "ruby", "latex", "javascript" },
 	highlight = {
 		enable = true,
 	},
@@ -423,6 +437,33 @@ require("nvim-treesitter.configs").setup({
 		keymaps = {
 			node_incremental = "v",
 			node_decremental = "V",
+		},
+	},
+	textobjects = {
+		select = {
+			enable = true,
+			-- Automatically jump forward to textobj, similar to targets.vim
+			lookahead = true,
+			keymaps = {
+				-- You can use the capture groups defined in textobjects.scm
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ac"] = "@class.outer",
+				-- You can optionally set descriptions to the mappings (used in the desc parameter of
+				-- nvim_buf_set_keymap) which plugins like which-key display
+				["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+				-- You can also use captures from other query groups like `locals.scm`
+				["al"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
+			},
+		},
+		swap = {
+			enable = true,
+			swap_next = {
+				["<leader>cpi"] = "@parameter.inner",
+			},
+			swap_previous = {
+				["<leader>cpI"] = "@parameter.inner",
+			},
 		},
 	},
 })
@@ -523,8 +564,24 @@ require("neogit").setup({
 --------------
 require('gitsigns').setup({})
 
+local gitsigns = require('gitsigns')
 vim.keymap.set("n", "<leader>hb", "<cmd>Gitsigns blame<cr>")
 vim.keymap.set("n", "<leader>hl", "<cmd>Gitsigns toggle_current_line_blame<cr>")
+vim.keymap.set('n', ']h', function()
+	if vim.wo.diff then
+		vim.cmd.normal({ ']h', bang = true })
+	else
+		gitsigns.nav_hunk('next')
+	end
+end)
+
+vim.keymap.set('n', '[h', function()
+	if vim.wo.diff then
+		vim.cmd.normal({ '[h', bang = true })
+	else
+		gitsigns.nav_hunk('prev')
+	end
+end)
 
 --------------
 ---CODESNAP---
