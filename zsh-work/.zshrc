@@ -88,6 +88,7 @@ plugins=(git
         zsh-syntax-highlighting
         zsh-autosuggestions
 		vi-mode
+		colored-man-pages
         )
 
 source $ZSH/oh-my-zsh.sh
@@ -127,6 +128,7 @@ PROMPT='${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 RPROMPT="[%D{%m/%f/%y}|%@]"
 
 # aliases
+alias lg="lazygit"
 alias n="nvim"
 alias tn="tmux new-session -s"
 alias ta="tmux attach-session -t"
