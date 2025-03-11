@@ -20,6 +20,9 @@ if test -f /opt/homebrew/share/autojump/autojump.fish
     source /opt/homebrew/share/autojump/autojump.fish
 end
 
+# fish path's
+fish_add_path $HOME/.config/tmux/plugins/tmux-session-wizard/bin
+
 # brew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 # brew end

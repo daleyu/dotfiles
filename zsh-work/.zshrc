@@ -13,6 +13,8 @@ path+=("$GOPATH/bin:PATH")
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/homebrew/bin:$PATH:$(go env GOPATH)/bin/:~/.utils
 
+export PATH=$HOME/.config/tmux/plugins/tmux-session-wizard/bin:$PATH
+
 export EDITOR=nvim
 
 # Path to your Oh My Zsh installation.
