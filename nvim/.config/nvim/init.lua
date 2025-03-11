@@ -290,7 +290,6 @@ local servers = {
 	"pyright",
 	"bashls",
 	"jsonls",
-	"sorbet",
 	"ts_ls",
 	"eslint",
 	"jdtls",
