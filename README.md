@@ -80,6 +80,10 @@ There are a series of fonts and stuff that need to be downloaded
 ```
 brew install --cask font-hack-nerd-font
 ```
+You also need to download the font from apple. It is called SF symbols and it
+can be found here: https://developer.apple.com/sf-symbols/
+- You also there are other nerd fonts to explore, but I tried this https://www.nerdfonts.com/
+    - There are prob other nerd fonts through brew that are good. 
 
 - Remember to stow the SketchyBar Config
 ```bash
