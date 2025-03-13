@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Execute the Go program
+~/byted-utils/sbt $1
+
+# You can add more commands here after the Go program executes
+echo "Done Decoding Social Blob"
