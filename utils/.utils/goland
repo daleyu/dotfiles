@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+open -na "GoLand.app" --args "$@"
