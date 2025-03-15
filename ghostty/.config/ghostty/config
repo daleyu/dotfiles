@@ -1,5 +1,5 @@
 #theme
-theme = catppuccin-frappe
+theme = catppuccin-macchiato
 
 cursor-style = block
 cursor-style-blink = false
