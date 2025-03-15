@@ -131,6 +131,7 @@ RPROMPT="[%D{%m/%f/%y}|%@]"
 
 # aliases
 alias lg="lazygit"
+alias cat="bat"
 alias n="nvim"
 alias tn="tmux new-session -s"
 alias ta="tmux attach-session -t"
