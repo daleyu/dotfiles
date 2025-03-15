@@ -2,6 +2,8 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.opt.termguicolors = true
+
 -- nerd font
 vim.g.have_nerd_font = true
 
@@ -179,13 +181,13 @@ require('lazy').setup({
 		branch = "harpoon2",
 		dependencies = { "nvim-lua/plenary.nvim" }
 	},
+	{ "norcalli/nvim-colorizer.lua", opts = {} },
+	{
+		"karb94/neoscroll.nvim",
+		opts = {},
+	},
 })
 
-vim.opt.termguicolors = true
-
--- Reserve a space in the gutter
--- This will avoid an annoying layout shift in the screen
-vim.opt.signcolumn = 'yes'
 
 -- Add cmp_nvim_lsp capabilities settings to lspconfig
 -- This should be executed before you configure any language server
@@ -378,12 +380,22 @@ local latte = require("catppuccin.palettes").get_palette "latte"
 local frappe = require("catppuccin.palettes").get_palette "frappe"
 local macchiato = require("catppuccin.palettes").get_palette "macchiato"
 local mocha = require("catppuccin.palettes").get_palette "mocha"
-require('lualine').setup {
-	options = {
-		theme = "catppuccin"
-	}
-}
 require("catppuccin").setup({
+	integrations = {
+		cmp = true,
+		gitsigns = true,
+		nvimtree = true,
+		fzf = true,
+		grug_far = false,
+		harpoon = false,
+		treesitter = true,
+		notify = false,
+		neogit = true,
+		mini = {
+			enabled = true,
+			indentscope_color = "",
+		},
+	},
 	flavour = "macchiato",
 	background = { -- :h background
 		light = "latte",
@@ -391,7 +403,24 @@ require("catppuccin").setup({
 	},
 	transparent_background = true,
 })
+require('lualine').setup {
+	options = {
+		theme = "catppuccin"
+	}
+}
 
+-- setup must be called before loading
+vim.cmd.colorscheme("catppuccin")
+
+vim.api.nvim_create_autocmd({ "BufEnter", "VimEnter" }, {
+	callback = function()
+		vim.opt.nu = true
+		vim.opt.rnu = true
+		vim.cmd("hi cursorline guibg=NONE")
+		vim.opt.signcolumn = "yes"
+		vim.cmd("ColorizerAttachToBuffer")
+	end,
+})
 ------------------
 ----- FZFLUA -----
 ------------------
@@ -600,8 +629,6 @@ vim.keymap.set("v", "<leader>cs", "<cmd>CodeSnap<cr>")
 -- vim.keymap.set("v", "<leader>cw", "<cmd>CodeSnapSave<cr>")
 vim.keymap.set("v", "<leader>ca", "<cmd>CodeSnapASCII<cr>")
 
--- setup must be called before loading
-vim.cmd.colorscheme("catppuccin")
 
 require("noice").setup({
 	cmdline = {},
