@@ -30,6 +30,8 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 fish_vi_key_bindings
 
 # Abbreviations
+abbr -ag cat "bat"
+abbr -ag cd "z"
 abbr -ag lg "lazygit"
 abbr -ag tn "tmux new-session -s"
 abbr -ag ta "tmux attach-session -t"

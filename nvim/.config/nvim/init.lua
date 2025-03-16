@@ -683,8 +683,10 @@ vim.keymap.set("v", "<leader>dd", "\"_d")
 
 vim.keymap.set("n", "ge", vim.diagnostic.open_float)
 
-
 vim.keymap.set("n", "<leader>cc", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+vim.keymap.set("n", "<leader>gfs", '<Cmd>! git diff origin/master --name-only<CR>')
+vim.keymap.set("n", "<leader>gfi", '<Cmd>! git diff origin/main --name-only<CR>')
 
 -- separate clipboards
 vim.keymap.set("n", "<leader>y", "\"+y")
@@ -727,7 +729,6 @@ vim.keymap.set("n", "<leader>zz", "<cmd>FzfLua zoxide<cr>")
 vim.keymap.set("n", "<leader>ca", "<cmd>FzfLua lsp_code_actions<cr>")
 vim.keymap.set("n", "<leader>,", "<cmd>FzfLua buffers<cr>")
 vim.keymap.set("n", "<leader>t", "<cmd>FzfLua treesitter<cr>")
-
 
 vim.keymap.set("n", "<leader>T", "<cmd>TestFile<CR>")
 

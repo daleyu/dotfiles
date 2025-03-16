@@ -130,6 +130,7 @@ PROMPT='${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 RPROMPT="[%D{%m/%f/%y}|%@]"
 
 # aliases
+alias cat="bat"
 alias lg="lazygit"
 alias cat="bat"
 alias n="nvim"
