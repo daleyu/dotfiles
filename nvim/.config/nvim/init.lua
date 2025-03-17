@@ -694,6 +694,7 @@ vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+y")
 
 -- navigation
+require('neoscroll').setup({ mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>'} })
 vim.keymap.set("n", "<C-f>", "<C-f>zz", { noremap = true })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
