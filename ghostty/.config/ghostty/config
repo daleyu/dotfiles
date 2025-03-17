@@ -57,3 +57,40 @@ keybind = cmd+o>e=equalize_splits
 
 # other
 copy-on-select = clipboard
+
+
+# TMUX settings
+
+keybind = super+1=text:\x011
+keybind = super+2=text:\x012
+keybind = super+3=text:\x013
+keybind = super+4=text:\x014
+keybind = super+5=text:\x015
+keybind = super+6=text:\x016
+keybind = super+7=text:\x017
+keybind = super+8=text:\x018
+keybind = super+9=text:\x019
+
+# next tab
+keybind = super+n=text:\x01n
+
+# prev tab
+keybind = super+p=text:\x01p
+
+# create tab
+keybind = super+t=text:\x01c
+
+# close tab
+keybind = super+w=text:\x01&
+
+# open sessions
+keybind = super+s=text:\x01s
+
+# open sessionizer
+keybind = super+t=text:\x01T
+
+# find window
+keybind = super+f=text:\x01f
+
+# go to last session
+keybind = super+l=text:\x01L
