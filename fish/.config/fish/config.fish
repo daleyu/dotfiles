@@ -54,6 +54,9 @@ set -gx PATH $PATH (go env GOPATH)/bin
 # nvim
 set -gx EDITOR nvim
 
+# man
+set -gx MANPAGER "sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
+
 
 # yazi
 function y
