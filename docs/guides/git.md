@@ -9,9 +9,14 @@ Host daleyu1-github
             User git
                 IdentityFile ~/.ssh/daleyu1_rsa
 ```
+> Note: the hostname will now replace the github.com ending and now be what is
+> used to  tell git where to look. See Debugging tips for teails
+
 Personally, I found that the like .gitconfig redirection if it is in the personal directory doesn't actually work. 
 - Note: You should be cloning from ssh, with the ssh hostname that you defined in the .ssh/config. Looks like this
 `git clone git@daleyu1-github:daleyu/dotfiles.git`
+
+#### Signing git commits
 So, what I do is I just set my email for a single repository, as I likely won't be having many personal repos on here other than for like dotfiles, etc. 
 ```
 // Set the email from this local repository
@@ -19,3 +24,21 @@ git config user.email "YOUR_EMAIL"
 // git config user.email "yudale2003@gmail.com" 
 ```
 Reference: https://stackoverflow.com/questions/3860112/multiple-github-accounts-on-the-same-computer
+
+
+#### Debugging Git Tips
+- Make sure that you are cloning repositories like the following format
+```
+git clone git@daleyu1-github:daleyu/<repo-name>.git
+// hostname after the @
+git clone git@<hostname>:<username>/<repo-name>.git
+```
+
+You can check if you are authenticated though 
+```
+ssh -T git@daleyu1-github
+ssh -T git@<host-name>
+```
+
+If you are finding that the commits are signed the wrong way then you have to
+look into your git config. 

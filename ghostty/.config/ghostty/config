@@ -15,7 +15,7 @@ window-decoration = auto
 macos-titlebar-style = hidden
 
 #styling for transparent
-background-opacity = 0.85
+background-opacity = 0.82
 background-blur = 15
 
 # keybindings
