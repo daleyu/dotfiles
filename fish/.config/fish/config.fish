@@ -100,3 +100,5 @@ function fish_greeting
 	Welcome Dahlia
 	"
 end 
+
+fish_add_path /Users/daleyu/.spicetify
