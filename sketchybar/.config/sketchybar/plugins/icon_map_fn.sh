@@ -178,6 +178,9 @@ function icon_map() {
   "GrandTotal" | "Receipts")
     icon_result=":dollar:"
     ;;
+  "Ghostty")
+    icon_result=":ghostty:"
+    ;;
   "Double Commander")
     icon_result=":doublecmd:"
     ;;
