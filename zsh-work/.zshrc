@@ -181,3 +181,5 @@ case ":$PATH:" in
 esac
 # pnpm end
 export FPATH="/opt/homebrew/bin/eza/completions/zsh:$FPATH"
+
+export PATH=$PATH:/Users/bytedance/.spicetify
