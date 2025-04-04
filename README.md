@@ -152,6 +152,30 @@ Make sure you `chmod +x ~/.cargo/bin/selene`
 ##### Working with Prettier
 install prettierd with npm
 
+### Zig
+
+##### Installing with a Package Manager
+It is possible to install zig using a brew, which is on their official
+documentation. I haven't explored zvm yet, but that seems like a good option
+- Brew [only stable release]
+```
+brew install zig
+```
+
+##### Installing development build
+Zig is not in stable beta, so I've been manually installing from source and
+adding to my path
+- Navigate to zig website and download for system's architecture. 
+- Move the folder to $HOME and the add to path with 
+```
+export PATH="$HOME/zig-macos-aarch64-[version]:$PATH"
+```
+
+*Enabling on MacOS*
+- Navigate to privacy and security.
+- scroll down and allow anyways for zig.
+
+
 ### Dart and Flutter
 TODO
 
