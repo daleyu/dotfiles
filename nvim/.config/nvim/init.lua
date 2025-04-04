@@ -160,7 +160,7 @@ require('lazy').setup({
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
 	},
-	{ "MagicDuck/grug-far.nvim", opts = { windowCreationCommand = "e" } },
+	{ "MagicDuck/grug-far.nvim",     opts = { windowCreationCommand = "e" } },
 	{
 		"ray-x/go.nvim",
 		dependencies = { -- optional packages
@@ -175,7 +175,15 @@ require('lazy').setup({
 		ft = { "go", 'gomod' },
 		build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
 	},
-	{ "folke/zen-mode.nvim", },
+	{
+		"folke/zen-mode.nvim",
+		opts = {
+			window = {
+				backdrop = 0,
+				width = .55,
+			},
+		},
+	},
 	{
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
@@ -715,6 +723,12 @@ require("notify").setup({
 -------------
 require('go').setup()
 
+
+
+--------------
+-- VIM API ---
+--------------
+vim.api.nvim_set_hl(0, "ZenBg", { ctermbg = 0 })
 
 ------------------------
 -- Global Keymappings---
