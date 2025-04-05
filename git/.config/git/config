@@ -1,0 +1,20 @@
+[fetch]
+    prune = true
+
+[pull]
+    rebase = true
+
+[core]
+    pager = delta
+	editor = nvim
+
+[interactive]
+    diffFilter = delta --color-only
+
+[merge]
+    conflictstyle = zdiff3
+
+[include]
+    path = ~/.config/delta/.gitconfig
+	path = ~/.config/delta/catppuccin.gitconfig
+
