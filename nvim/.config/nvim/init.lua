@@ -363,6 +363,7 @@ local servers = {
 	"ts_ls",
 	"eslint",
 	"jdtls",
+	"zls"
 }
 
 local lspconfig = require('lspconfig')
