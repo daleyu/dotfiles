@@ -179,7 +179,7 @@ function icon_map() {
     icon_result=":dollar:"
     ;;
   "Ghostty")
-    icon_result=":ghostty:"
+    icon_result=":terminal:"
     ;;
   "Double Commander")
     icon_result=":doublecmd:"
@@ -698,7 +698,7 @@ function icon_map() {
     icon_result=":zed:"
     ;;
   "Zen Browser")
-    icon_result=":zen_browser:"
+    icon_result=":firefox:"
     ;;
   "Zeplin")
     icon_result=":zeplin:"
