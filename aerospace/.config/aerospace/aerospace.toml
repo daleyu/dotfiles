@@ -197,12 +197,9 @@ if.app-id ='com.larksuite.larkApp'
 run = ['move-node-to-workspace 3']
 
 [[on-window-detected]]
-if.app-id ='notion.id'
+if.app-id ='com.spotify.client'
 run = ['move-node-to-workspace 4']
 
-[[on-window-detected]]
-if.app-id ='md.obsidian'
-run = ['move-node-to-workspace 4']
 
 [[on-window-detected]]
 if.app-id ='com.hnc.Discord'
@@ -213,7 +210,11 @@ if.app-id ='com.microsoft.VSCode'
 run = ['move-node-to-workspace 6']
 
 [[on-window-detected]]
-if.app-id ='com.spotify.client'
+if.app-id ='notion.id'
+run = ['move-node-to-workspace 6']
+
+[[on-window-detected]]
+if.app-id ='md.obsidian'
 run = ['move-node-to-workspace 6']
 
 [[on-window-detected]]
@@ -226,8 +227,8 @@ run = ['move-node-to-workspace 7']
 1 = 'main'                         # Monitor sequence number from left to right. 1-based indexing
 2 = 'main'                       # Main monitor
 3 = 'secondary'                  # Non-main monitor in case when there are only two monitors
-4 = 'main'                  # Non-main monitor in case when there are only two monitors
+4 = 'secondary'                  # Non-main monitor in case when there are only two monitors
 5 = 'secondary'
-6 = 'secondary'
+6 = 'main'
 7 = 'secondary'
 8 = 'main'
