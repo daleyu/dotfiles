@@ -36,6 +36,14 @@ Casks
 brew install --cask font-hack-nerd-font alt-tab discord firefox obsidian topnotch ghostty google-chrome typora nikitabobko/tap/aerospace
 ```
 
+## Git
+See my git.md in docs.
+Remember to include my global path here: 
+```
+[include]
+    path = ~/.config/git/config
+```
+
 ## Fish 
 My terminal of choice for personal computer. 
 - My theme is fish tide [equivalent to powerlevel10k]
