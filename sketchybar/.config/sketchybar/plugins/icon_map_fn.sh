@@ -307,6 +307,9 @@ function icon_map() {
   "kitty")
     icon_result=":kitty:"
     ;;
+  "Lark")
+    icon_result=":slack:"
+    ;;
   "League of Legends")
     icon_result=":league_of_legends:"
     ;;
