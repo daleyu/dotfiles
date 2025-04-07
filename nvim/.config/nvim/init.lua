@@ -361,6 +361,7 @@ local servers = {
 	"bashls",
 	"jsonls",
 	"ts_ls",
+	"zls",
 	"eslint",
 	"jdtls",
 	"zls"
