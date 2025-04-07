@@ -17,7 +17,6 @@ update_space_icons() {
         icon_strip=""
         while IFS= read -r app; do
             if [ -n "$app" ]; then
-                # Use your existing icon mapping function
                 app_icon="$($CONFIG_DIR/plugins/icon_map_fn.sh "$app")"
                 [ -n "$app_icon" ] && icon_strip+=" $app_icon"
             fi
