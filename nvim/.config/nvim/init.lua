@@ -618,7 +618,6 @@ require("nvim-tree").setup()
 local KEYMAP_SETTINGS = {}
 do
 	local set = vim.keymap.set
-
 	KEYMAP_SETTINGS.mini_files = function(mini_files)
 		mini_files.config.mappings.close = "<esc>"
 		set("n", "<leader>o", mini_files.open)
@@ -629,11 +628,13 @@ do
 			vim.cmd("pwd")
 		end)
 		set("n", "<leader><space>", function()
-			mini_files.open(vim.fn.expand("%:p:h"), false)
+			if not mini_files.close() then
+				local current_file = vim.fn.expand("%:p")
+				mini_files.open(current_file)
+			end
 		end)
 	end
 end
-
 local mini_files = require("mini.files")
 mini_files.setup({
 	windows = {
