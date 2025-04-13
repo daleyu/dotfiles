@@ -48,40 +48,44 @@ default_color="#[bg=default,fg=${thm_fg},bold]"
 
 # variables
 bg=$(get_tmux_option "@minimal-tmux-bg" "$thm_blue")
-fg=$(get_tmux_option "@minimal-tmux-fg" "#24273a") # Using dark color for text on blue background
-use_arrow=$(get_tmux_option "@minimal-tmux-use-arrow" true)
-larrow="$("$use_arrow" && get_tmux_option "@minimal-tmux-left-arrow" "")"
-rarrow="$("$use_arrow" && get_tmux_option "@minimal-tmux-right-arrow" "")"
+fg=$(get_tmux_option "@minimal-tmux-fg" "#24273a")
+
+use_arrow=$(get_tmux_option "@minimal-tmux-use-arrow" false)
+larrow="$("$use_arrow" && get_tmux_option "@minimal-tmux-left-arrow" "")"
+rarrow="$("$use_arrow" && get_tmux_option "@minimal-tmux-right-arrow" "")"
+
 status=$(get_tmux_option "@minimal-tmux-status" "bottom")
-justify=$(get_tmux_option "@minimal-tmux-justify" "left") # Changed to left justification
+justify=$(get_tmux_option "@minimal-tmux-justify" "centre")
+
 indicator_state=$(get_tmux_option "@minimal-tmux-indicator" true)
 indicator_str=$(get_tmux_option "@minimal-tmux-indicator-str" " tmux ")
 indicator=$("$indicator_state" && echo " $indicator_str ")
+
+left_padding=$(get_tmux_option "@minimal-tmux-left-padding" "   ")
+right_padding=$(get_tmux_option "@minimal-tmux-right-padding" "   ")
+
 right_state=$(get_tmux_option "@minimal-tmux-right" true)
 left_state=$(get_tmux_option "@minimal-tmux-left" true)
-status_right=$("$right_state" && get_tmux_option "@minimal-tmux-status-right" "#[fg=${thm_blue}]#S")
-status_left=$("$left_state" && get_tmux_option "@minimal-tmux-status-left" "${default_color}#{?client_prefix,,${indicator}}#[bg=${bg},fg=${fg},bold]#{?client_prefix,${indicator},}${default_color}")
+
+status_left=$("$right_state" && get_tmux_option "@minimal-tmux-status-right" "#S${right_padding}          ")
+status_right=$("$left_state" && get_tmux_option "@minimal-tmux-status-left" "${left_padding}${default_color}#{?client_prefix,,${indicator}}#[bg=${bg},fg=${fg},bold]#{?client_prefix,${indicator},}${default_color}")
 status_right_extra="$status_right$(get_tmux_option "@minimal-tmux-status-right-extra" "")"
 status_left_extra="$status_left$(get_tmux_option "@minimal-tmux-status-left-extra" "")"
+
 window_status_format=$(get_tmux_option "@minimal-tmux-window-status-format" ' #I:#W ')
+
 expanded_icon=$(get_tmux_option "@minimal-tmux-expanded-icon" '󰊓 ')
 show_expanded_icon_for_all_tabs=$(get_tmux_option "@minimal-tmux-show-expanded-icon-for-all-tabs" false)
 
 # Setting the options in tmux
 tmux set-option -g status-position "$status"
-tmux set-option -g status-style bg=default,fg=$thm_fg # Transparent background
-tmux set-option -g status-justify "left" # Ensure windows are left-justified
+tmux set-option -g status-style bg=default,fg=default
+tmux set-option -g status-justify "$justify"
 
-# Window styles
-tmux set-option -g window-status-format "#[fg=$thm_surface_2]$window_status_format"
-"$show_expanded_icon_for_all_tabs" && tmux set-option -g window-status-format "#[fg=$thm_surface_2]${window_status_format}#{?window_zoomed_flag,${expanded_icon},}"
+tmux set-option -g status-left "$status_left_extra"
+tmux set-option -g status-right "$status_right_extra"
 
-# Active window
+tmux set-option -g window-status-format "$window_status_format"
+"$show_expanded_icon_for_all_tabs" && tmux set-option -g window-status-format " ${window_status_format}#{?window_zoomed_flag,${expanded_icon},}"
+
 tmux set-option -g window-status-current-format "#[fg=${bg}]$larrow#[bg=${bg},fg=${fg}]${window_status_format}#{?window_zoomed_flag,${expanded_icon},}#[fg=${bg},bg=default]$rarrow"
-
-# Set other tmux styling
-tmux set-option -g pane-border-style fg=$thm_surface_2
-tmux set-option -g pane-active-border-style fg=$thm_blue
-tmux set-option -g message-style bg=$thm_mauve,fg="#24273a"
-tmux set-option -g message-command-style bg=$thm_mauve,fg="#24273a"
-tmux set-option -g mode-style bg=$thm_mauve,fg="#24273a"
