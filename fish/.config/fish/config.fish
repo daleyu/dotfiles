@@ -102,6 +102,7 @@ function fish_greeting
 end 
 
 fish_add_path /Users/daleyu/.spicetify
+fish_add_path /Users/daleyu/.utils
 
 # ZVM and ZIG
 set -gx ZVM_INSTALL "$HOME/.zvm/self"
