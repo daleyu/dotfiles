@@ -364,7 +364,7 @@ local servers = {
 	"zls",
 	"eslint",
 	"jdtls",
-	"zls"
+	"thriftls",
 }
 
 local lspconfig = require('lspconfig')
