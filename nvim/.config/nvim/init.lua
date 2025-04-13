@@ -523,7 +523,7 @@ vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 --- Treesitter configs---
 -------------------------
 require("nvim-treesitter.configs").setup({
-	ensure_installed = { "cpp", "typescript", "tsx", "python", "luau", "javascript", "rust", "json", "lua", "go", "html", "dart", "ruby", "latex", "javascript" },
+	ensure_installed = { "cpp", "typescript", "tsx", "python", "luau", "javascript", "rust", "json", "lua", "go", "html", "dart", "ruby", "latex", "javascript", "zig", "java", },
 	highlight = {
 		enable = true,
 	},
