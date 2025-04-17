@@ -9,9 +9,15 @@ mouse-hide-while-typing = true
 macos-titlebar-style=transparent
 macos-option-as-alt = left
 
+# font
+font-size = 14
+adjust-cell-height = 15%
 
 # window and toolbar decoration
 window-decoration = auto
+window-padding-x = 10
+window-padding-y = 10
+window-padding-balance = true
 macos-titlebar-style = hidden
 
 #styling for transparent
@@ -23,6 +29,7 @@ keybind = cmd+o>r=reload_config
 keybind = cmd+o>x=close_surface
 
 keybind = cmd+o>n=new_window
+keybind = super+kp_add=increase_font_size:1
 
 # tabs 
 keybind = cmd+o>c=new_tab
