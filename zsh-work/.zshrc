@@ -144,6 +144,8 @@ alias l='eza -bGF --header --git --color=always --group-directories-first --icon
 alias llm='eza -lbGd --header --git --sort=modified --color=always --group-directories-first --icons' 
 alias la='eza --long --all --group --group-directories-first'
 alias lx='eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale --color=always --group-directories-first --icons'
+alias gds='git diff origin/master'
+alias gdi='git diff origin/main'
 
 alias lS='eza -1 --color=always --group-directories-first --icons'
 alias lt='eza --tree --level=2 --color=always --group-directories-first --icons'
@@ -162,8 +164,6 @@ kinit dale.yu@BYTEDANCE.COM
 klist
 echo "Connected for 24 hrs to Bytedance auth"
 source ~/powerlevel10k/powerlevel10k.zsh-theme
-
-
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

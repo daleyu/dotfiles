@@ -57,7 +57,26 @@ You can check if you are authenticated though
 If you are finding that the commits are signed the wrong way then you have to
 look into your git config.
 
+*Fixing delta and Bat*
+- You have to make sure that both bat, delta, and git are all stowed. Check to
+make sure that git has access to the global git config. 
+
+Bat sometimes isn't able to find the themes, so it might be best to run `bat
+cache --build`. This will allow it to find the theme. 
+
 ### Git Guides
+
+##### Rebasing Workflow using Neogit and Neovim
+Rebase on pull should be the default for many reasons. 
+
+##### Code Review Practices
+Often times you will get comments on an MR and you will want to be able to add
+in a quick typo fix without changing the commit hash. 
+`git commit --amend`
+- Just make the changes and then commit ammend them to keep the hash and not
+need to squash again
+
+
 ##### Squashing to One Commit
 Often times it is best practice to squash to one commit before submitting for
 review/etc. You can squash to one commit through doing something like the
