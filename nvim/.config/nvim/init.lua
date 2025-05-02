@@ -774,10 +774,8 @@ vim.keymap.set("n", "<leader>Y", "\"+y")
 -- vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
 -- vim.keymap.set("n", "<C-b>", "<C-b>zz", { noremap = true })
 require('neoscroll').setup({
-	mappings = { -- Keys to be mapped to their corresponding default scrolling animation
+	mappings = {
 		'<C-u>', '<C-d>',
-		'<C-b>', '<C-f>',
-		'<C-y>', '<C-e>',
 		'zt', 'zz', 'zb',
 	},
 	hide_cursor = true,       -- Hide cursor while scrolling
@@ -836,6 +834,7 @@ vim.keymap.set("n", "<leader>dc", "<cmd>DiffviewClose<cr>")
 
 vim.keymap.set("n", "<leader>r", "<cmd>GrugFar<cr>")
 vim.keymap.set("n", "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>")
+vim.keymap.set('n', '<leader>PP', ':echo getpid()<CR>', { noremap = true, silent = true })
 
 vim.keymap.set("n", "<leader>zm", "<cmd>ZenMode<cr>")
 
