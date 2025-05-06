@@ -268,6 +268,7 @@ lspconfig_defaults.capabilities = vim.tbl_deep_extend(
 -- This is where you enable features that only work
 -- if there is a language server active in the file
 vim.api.nvim_create_autocmd('LspAttach', {
+	group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
 	desc = 'LSP actions',
 	callback = function(event)
 		local opts = { buffer = event.buf }
@@ -289,6 +290,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
 		vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
 		vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+		local client = vim.lsp.get_client_by_id(event.data.client_id)
+		if client == nil then
+			return
+		end
+		if client.name == 'ruff' then
+			-- Disable hover in favor of Pyright
+			client.server_capabilities.hoverProvider = false
+		end
 	end,
 })
 
@@ -364,6 +373,7 @@ local servers = {
 	"eslint",
 	"jdtls",
 	"thriftls",
+	"ruff",
 }
 
 local lspconfig = require('lspconfig')
@@ -377,6 +387,21 @@ require('mason-lspconfig').setup({
 		function(server_name)
 			require('lspconfig')[server_name].setup({})
 		end,
+
+		pyright = function()
+			require('lspconfig').pyright.setup({
+				settings = {
+					pyright = {
+						disableOrganizeImports = true,
+					},
+					python = {
+						analysis = {
+							ignore = { "*" },
+						},
+					},
+				},
+			})
+		end
 	},
 	ensure_installed = servers,
 })
