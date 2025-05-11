@@ -703,6 +703,9 @@ function icon_map() {
   "Zen Browser")
     icon_result=":firefox:"
     ;;
+  "Zen")
+    icon_result=":firefox:"
+    ;;
   "Zeplin")
     icon_result=":zeplin:"
     ;;
