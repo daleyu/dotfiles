@@ -6,6 +6,8 @@ Fish is the shell that I use on my personal computers.
 brew install fish 
 ```
 
+- check the utils on the script to make fish default shell. 
+
 I don't use omf because it is so bloated and honestly doesn't fit my needs. 
 - Download fisher
 ```

@@ -133,16 +133,6 @@ session. Then, neovim should be able to recognize the go alias and version.
 the gopls is too updated, you should look at the go docs and get the latest
 gopls that works with that version
 
-#### Random Go Packages
-
-Some useful go packages, I've used. 
-```
-go install github.com/loov/goda@latest
-```
-- Goda lets you debug gomod and the different dependencies. You will need
-graphviz to do some of the commands. 
-    - it is kind of buggy but wtv
-
 ### Selene and Rust
 
 Setup rust with rustup
