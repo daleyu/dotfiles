@@ -46,7 +46,8 @@ abbr -ag lx "eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale --color
 abbr -ag lS "eza -1 --color=always --group-directories-first --icons"
 abbr -ag lt "eza --tree --level=2 --color=always --group-directories-first --icons"
 abbr -ag "l." "eza -a | grep -E '^\.'"
-
+abbr -ag gds 'git diff origin/master'
+abbr -ag gdi 'git diff origin/main'
 # go 
 set -gx PATH $PATH (go env GOPATH)/bin
 
@@ -108,3 +109,4 @@ fish_add_path /Users/daleyu/.utils
 set -gx ZVM_INSTALL "$HOME/.zvm/self"
 set -gx PATH $PATH "$HOME/.zvm/bin"
 set -gx PATH $PATH "$ZVM_INSTALL/"
+/Users/daleyu/.local/bin/mise activate fish | source
