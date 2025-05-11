@@ -66,6 +66,16 @@ cache --build`. This will allow it to find the theme.
 
 ### Git Guides
 
+##### Ignoring a file only locally
+- If you want a file on your local computer like an editorconfig or something,
+but don't want it to be upstream then you can add it to your local git info
+exclude, like this.
+```bash
+echo mise.toml >> .git/info/exclude
+```
+I use this for mise so it doesn't get pushed upstream
+
+
 ##### Rebasing Workflow using Neogit and Neovim
 Rebase on pull should be the default for many reasons. 
 

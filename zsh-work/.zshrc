@@ -186,7 +186,3 @@ export PATH=$PATH:/Users/bytedance/.spicetify
 export PATH="$HOME/zig-macos-aarch64-0.15.0-dev.190+bfbf4badd:$PATH"
 echo "eval \"\$(/Users/bytedance/.local/bin/mise activate zsh)\"" >> "/Users/bytedance/.zshrc"
 eval "$(/Users/bytedance/.local/bin/mise activate zsh)"
-eval "$(/Users/bytedance/.local/bin/mise activate zsh)"
-eval "$(/Users/bytedance/.local/bin/mise activate zsh)"
-eval "$(/Users/bytedance/.local/bin/mise activate zsh)"
-eval "$(/Users/bytedance/.local/bin/mise activate zsh)"
