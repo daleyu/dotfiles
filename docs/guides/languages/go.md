@@ -6,6 +6,14 @@ manually replaced. This could get in the way if you are go getting a package
 version.
 - go get hostname/repo/file@branch-name
 
+*Invalid version: unknown revision*
+- This situation is usually caused by the disappearance of the commit, such as when push -f is executed in the repository. 
+Generally, upgrading the version is sufficient. If it cannot be upgraded, it may be due to an indirect dependency that has fixed the version number. 
+- Sometimes it could actually be that Go's dependency management it's is broken.
+If it is the case that the go dependency management is broken, then you need to delete or replace all dependencies on the repository in the project before go get.
+- this can be done with a replace like 
+`replace packace => package v1.x.x`
+Once it is replaced then you can deleted that portion
 
 #### USING MULTIPLE VERSIONS OF GO (IMPORTANT)
 
