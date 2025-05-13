@@ -13,7 +13,10 @@ path+=("$GOPATH/bin:PATH")
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/homebrew/bin:$PATH:$(go env GOPATH)/bin/:~/.utils
 
-export PATH=$HOME/.config/tmux/plugins/tmux-session-wizard/bin:$PATH
+export PATH=$HOME/.ripgreprc:$PATH
+
+RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+export RIPGREP_CONFIG_PATH
 
 export EDITOR=nvim
 

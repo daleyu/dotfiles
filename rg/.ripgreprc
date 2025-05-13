@@ -1,0 +1,14 @@
+--max-columns-preview
+
+# Add my 'web' type.
+--type-add
+web:*.{html,css,js}*
+
+--hidden
+
+--colors=line:none
+--colors=line:style:bold
+--colors=line:fg:magenta
+--colors=path:fg:green
+
+--smart-case
