@@ -1,5 +1,5 @@
 #theme
-theme = catppuccin-macchiato
+theme = dark:catppuccin-mocha,light:catppuccin-latte
 
 cursor-style = block
 cursor-style-blink = false
@@ -21,7 +21,8 @@ window-padding-balance = true
 macos-titlebar-style = hidden
 
 #styling for transparent
-background-opacity = 0.85
+background-opacity = 0.95
+# background-opacity = 0.85
 background-blur = 15
 
 # keybindings
