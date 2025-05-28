@@ -115,7 +115,10 @@ brew services restart sketchybar
 
 ### Golang setup
 
-#### USING MULTIPLE VERSIONS OF GO (IMPORTANT)
+#### USING MULTIPLE VERSIONS OF GO (IMPORTANT) DEPRECATED
+
+!USE mise now for version management
+`mise use go@version`
 
 No point in using goenv or gvm, as they are not the supported technique from the
 official go documentation. 
