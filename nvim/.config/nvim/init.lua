@@ -107,6 +107,18 @@ require('lazy').setup({
 			end,
 		},
 	},
+	{
+		'rmagatti/auto-session',
+		lazy = false,
+
+		---enables autocomplete for opts
+		---@module "auto-session"
+		---@type AutoSession.Config
+		opts = {
+			suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+			-- log_level = 'debug',
+		}
+	},
 	{ 'folke/tokyonight.nvim' },
 	{ 'mbbill/undotree' },
 	{
@@ -502,7 +514,7 @@ require("catppuccin").setup({
 			indentscope_color = "",
 		},
 	},
-	flavour = "macchiato",
+	flavour = "mocha",
 	background = { -- :h background
 		light = "latte",
 		dark = "mocha",
@@ -752,6 +764,10 @@ require("notify").setup({
 })
 
 
+require('auto-session').setup({
+	suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+	auto_restore_last_session = true,
+})
 
 ------------------------
 -- LANGUAGE SPECIFIC ---
@@ -819,7 +835,7 @@ require('neoscroll').setup({
 	stop_eof = true,          -- Stop at <EOF> when scrolling downwards
 	respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
 	cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-	duration_multiplier = 1.0, -- Global duration multiplier
+	duration_multiplier = 0.2, -- Global duration multiplier
 	easing = 'linear',        -- Default easing function
 	pre_hook = nil,           -- Function to run before the scrolling animation starts
 	post_hook = nil,          -- Function to run after the scrolling animation ends
