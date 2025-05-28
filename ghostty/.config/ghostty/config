@@ -1,5 +1,5 @@
 #theme
-theme = dark:catppuccin-mocha,light:catppuccin-latte
+theme = dark:catppuccin-mocha,light:github-light-default
 
 cursor-style = block
 cursor-style-blink = false
@@ -21,8 +21,10 @@ window-padding-balance = true
 macos-titlebar-style = hidden
 
 #styling for transparent
-background-opacity = 0.95
+background-opacity = 1
 # background-opacity = 0.85
+# TODO: add https://github.com/ghostty-org/ghostty/pull/5170 for toggle when it
+# is merged
 background-blur = 15
 
 # keybindings
