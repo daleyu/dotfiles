@@ -75,9 +75,12 @@ echo mise.toml >> .git/info/exclude
 ```
 I use this for mise so it doesn't get pushed upstream
 
-
 ##### Rebasing Workflow using Neogit and Neovim
 Rebase on pull should be the default for many reasons. 
+
+Neogit has some options, but usually I start from the command line and the
+rebase through diffview and neogit. 
+- Push r as the rebase option and then continue or abort :)
 
 ##### Code Review Practices
 Often times you will get comments on an MR and you will want to be able to add
@@ -86,6 +89,9 @@ in a quick typo fix without changing the commit hash.
 - Just make the changes and then commit ammend them to keep the hash and not
 need to squash again
 
+##### Undoing any Git Reset Command
+
+It is very often that you might do something like 
 
 ##### Squashing to One Commit
 Often times it is best practice to squash to one commit before submitting for
