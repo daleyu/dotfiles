@@ -34,3 +34,20 @@ your changes one commit at a time.
 
 After you replay all the commits then it should actually show that you are at
 current because you basically advanced to that point.
+
+## Detached Head
+Reference: https://git-scm.com/docs/git-checkout#_detached_head
+Most of the time when you see detached head it is the result of a rebase or
+getting individually checked out to a certain commit in history. This is because
+the detached head state is when you aren't technically on a branch. 
+- You have to then attach a branch, because Git works in a tree structure. if
+you just create a new node then there is no way to attach that 
+
+
+Random links: i'll look at later
+https://stackoverflow.com/questions/2530060/in-plain-english-what-does-git-reset-do
+https://stackoverflow.com/questions/5473/how-can-i-undo-git-reset-hard-head1
+https://stackoverflow.com/questions/2510276/how-do-i-undo-git-reset
+
+
+
