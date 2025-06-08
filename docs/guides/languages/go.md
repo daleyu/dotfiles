@@ -6,6 +6,25 @@ manually replaced. This could get in the way if you are go getting a package
 version.
 - go get hostname/repo/file@branch-name
 
+### Understanding Version Queries
+When downloading an updated go depedency then it will often be a query that
+might look something like `go get $base/$module/@latest` but often times you
+might see it replaced with either a branch instead of latest, or even master.
+I'll break down exactly what these options mean.
+
+- Branch [@master/@branch-name]
+    - When you put a branch for the version query then this means that it will
+    select the commit at the tip of the upstream's repository branch under that
+    name
+    - This means if you cause code changes in a SDK branch, and it is pushed to
+      master then you will want to run go get master to get that.
+- latest
+    - Latest is described in the go documentation here: https://go.dev/ref/mod#version-queries
+    - It will try to select the highest available release version, if you are
+    using github or gitlab then this would be one of the tagged releases.
+        - If there is no tagged release then it will just get the latest commit
+          into the master branch
+
 *Invalid version: unknown revision*
 - This situation is usually caused by the disappearance of the commit, such as when push -f is executed in the repository. 
 Generally, upgrading the version is sufficient. If it cannot be upgraded, it may be due to an indirect dependency that has fixed the version number. 
@@ -22,8 +41,9 @@ It seems like Mise is a tool that can handle and fix this workflow very easily.
 You can just run `mise use go@x.x` for the version. You can specify this in the
 parent directory and then you won't have to git ignore it.
 
+- If you want to gitignore then check my gitignore doc
 
-##### Gvm
+##### Gvm [DEPRECATED IN FAVOR OF MISE]
 
 No point in using goenv or gvm, as they are not the supported technique from the
 official go documentation. 
