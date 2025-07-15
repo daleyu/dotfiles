@@ -12,3 +12,7 @@ Key repeat rate should be the second fastest.
 Set caps lock to escape and add in the dvorak keyboard layout. 
 > capslock can be set to escape by going to keyboard --> keyboard shortcuts ->
 > modifier keys -> caps lock key as escape. 
+
+### MacOS specific Configs
+`$HOME/Library/Application Support/com.mitchellh.ghostty`
+
