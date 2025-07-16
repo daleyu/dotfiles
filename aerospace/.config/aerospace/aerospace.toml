@@ -188,6 +188,10 @@ if.app-id ='com.mitchellh.ghostty'
 run = ['move-node-to-workspace 2']
 
 [[on-window-detected]]
+if.app-id ='com.mitchellh.ghostty'
+run = ['move-node-to-workspace 2']
+
+[[on-window-detected]]
 if.app-id ='com.apple.MobileSMS'
 run = ['move-node-to-workspace 3']
 

@@ -1,0 +1,129 @@
+general.import = [
+  # Uncomment one of the themes below:
+  # "~/.config/alacritty/catppuccin-latte.toml",
+  # "~/.config/alacritty/catppuccin-frappe.toml",
+  # "~/.config/alacritty/catppuccin-macchiato.toml",
+  "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+decorations = "buttonless"
+opacity = 0.85
+dynamic_padding = true
+blur = true
+
+[window.padding]
+x = 10
+y = 10
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
+bold = { family = "JetBrainsMono Nerd Font Mono", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font Mono", style = "Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font Mono", style = "Bold Italic" }
+size = 14.0
+
+[cursor.style]
+shape = "Block"
+blinking = "Off"
+
+[mouse]
+hide_when_typing = true
+
+[selection]
+save_to_clipboard = true
+
+[[keyboard.bindings]]
+key = "Equals"
+mods = "Command"
+action = "IncreaseFontSize"
+
+# TMUX-like bindings using Super (Cmd) key
+[[keyboard.bindings]]
+key = "Key1"
+mods = "Super"
+chars = "\u00011"
+
+[[keyboard.bindings]]
+key = "Key2"
+mods = "Super"
+chars = "\u00012"
+
+[[keyboard.bindings]]
+key = "Key3"
+mods = "Super"
+chars = "\u00013"
+
+[[keyboard.bindings]]
+key = "Key4"
+mods = "Super"
+chars = "\u00014"
+
+[[keyboard.bindings]]
+key = "Key5"
+mods = "Super"
+chars = "\u00015"
+
+[[keyboard.bindings]]
+key = "Key6"
+mods = "Super"
+chars = "\u00016"
+
+[[keyboard.bindings]]
+key = "Key7"
+mods = "Super"
+chars = "\u00017"
+
+[[keyboard.bindings]]
+key = "Key8"
+mods = "Super"
+chars = "\u00018"
+
+[[keyboard.bindings]]
+key = "Key9"
+mods = "Super"
+chars = "\u00019"
+
+[[keyboard.bindings]]
+key = "N"
+mods = "Super"
+chars = "\u0001n"
+
+[[keyboard.bindings]]
+key = "P"
+mods = "Super"
+chars = "\u0001p"
+
+[[keyboard.bindings]]
+key = "T"
+mods = "Super"
+chars = "\u0001c"
+
+[[keyboard.bindings]]
+key = "W"
+mods = "Super"
+chars = "\u0001&"
+
+[[keyboard.bindings]]
+key = "S"
+mods = "Super"
+chars = "\u0001s"
+
+[[keyboard.bindings]]
+key = "T"
+mods = "Super"
+chars = "\u0001T"
+
+[[keyboard.bindings]]
+key = "F"
+mods = "Super"
+chars = "\u0001f"
+
+[[keyboard.bindings]]
+key = "L"
+mods = "Super"
+chars = "\u0001L"
+
