@@ -43,6 +43,9 @@ function icon_map() {
   "Anki")
     icon_result=":anki:"
     ;;
+  "AnkiWeb")
+    icon_result=":anki:"
+    ;;
   "Anytype")
     icon_result=":anytype:"
     ;;
