@@ -27,6 +27,13 @@ Download homebrew first
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
+BrewFile [Untested]
+- I think I can install everything I need through the brewfile but I haven't
+tested this. Will test next week
+```
+brew bundle
+```
+
 Run this to install all brew packages
 ```
 brew install fish jesseduffield/lazygit/lazygit tmux clipboard fzf gcc gh glow neovim node powerlevel10k python ripgrep rust stow tree-sitter wget yazi zoxide go cava graphviz eza ast-grep reattach-to-user-namespace luarocks bat
@@ -35,6 +42,12 @@ Casks
 ```
 brew install --cask font-hack-nerd-font alt-tab discord firefox obsidian topnotch ghostty google-chrome typora nikitabobko/tap/aerospace
 ```
+
+## Fonts
+My font of choice is 
+
+https://www.nerdfonts.com/font-downloads
+
 
 ## Git
 See my git.md in docs.
@@ -47,6 +60,8 @@ Remember to include my global path here:
 ## Fish 
 My terminal of choice for personal computer. 
 - My theme is fish tide [equivalent to powerlevel10k]
+ 
+Check my fish docs in the docs folder for more specific information.
 
 #### Fisher Plugin Manager
 I use fisher instead of omf. I found that omf was more than what I needed, and
@@ -57,12 +72,12 @@ that fisher is more widely supported and stable.
 Terminal used for work. I just use ohmyzsh and then a really minimal setup.
 I am not bothered to go beyond that. 
 
-
 ## Zoxide
-
 first `brew install zoxide`
 import autojump files with `zoxide import --from=autojump "$HOME/Library/autojump/autojump.txt"`
-
+I replace cd with z because it fits and works for all my use cases. Fish also
+has a nice command autocompleter which will show the whole command you ran even
+if aliased. 
 
 ## Setting up Yazi file manager
 
@@ -74,7 +89,6 @@ Download the Catppucin theme
 ```
 ya pack -a yazi-rs/flavors:catppuccin-macchiato
 ```
-
 
 ## SketchyBar
 
@@ -103,10 +117,12 @@ brew services restart sketchybar
       it must be an issue with the extra security or software on it.
 
 ## Setting up Node environment
+I think this can be replaced by mise
 - NVM as node version manager
 `https://github.com/nvm-sh/nvm`
 
 - Fish has to use nvm.fsh
+`https://github.com/jorgebucaran/nvm.fish`
 
 - Installing Bun
     - install using node and just follow the website. I hate JS though.
@@ -157,7 +173,7 @@ install prettierd with npm
 
 ##### Installing with a Package Manager
 It is possible to install zig using a brew, which is on their official
-documentation. I haven't explored zvm yet, but that seems like a good option
+documentation. It is better to use zvm or mise though. 
 - Brew [only stable release]
 ```
 brew install zig
