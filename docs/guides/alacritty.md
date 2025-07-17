@@ -9,3 +9,7 @@ apple so they won't pay for the 99 dollars per year to get their application
 signed. As a result, the way to get alacritty on Mac is to get it from a cask
 that has no-quarantine flag 
 `brew install --cask alacritty --no-quarantine`
+
+## alacritty theme
+I use catppuccin theme so you can get it from here and then copy the curl
+`https://github.com/catppuccin/alacritty`

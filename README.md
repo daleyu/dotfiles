@@ -44,7 +44,10 @@ brew install --cask font-hack-nerd-font alt-tab discord firefox obsidian topnotc
 ```
 
 ## Fonts
-My font of choice is 
+My font of choice is jetbrains mono nerd font, and I get the ttf files from
+here. After I get the ttf files, it only needs to be added to the font book for
+MacOS and then it can be loaded in by name through different applications.
+- Yes I use ligatures, I just personally like them.
 
 https://www.nerdfonts.com/font-downloads
 
@@ -128,6 +131,7 @@ I think this can be replaced by mise
     - install using node and just follow the website. I hate JS though.
 
 ## Language Setups
+MIGRATED TO DOCS FOLDER. Check specific language doc. 
 
 ### Golang setup
 
