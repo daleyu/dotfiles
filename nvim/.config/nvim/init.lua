@@ -798,6 +798,8 @@ vim.keymap.set("n", "Y", "y$")
 vim.keymap.set("n", "V", "v$")
 vim.keymap.set("n", "vv", "V")
 
+vim.keymap.set("n", "qj", "@q")
+
 -- goated binds
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
