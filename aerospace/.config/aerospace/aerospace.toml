@@ -201,17 +201,25 @@ if.app-id ='com.larksuite.larkApp'
 run = ['move-node-to-workspace 3']
 
 [[on-window-detected]]
-if.app-id ='com.spotify.client'
-run = ['move-node-to-workspace 4']
+if.app-id ='com.microsoft.VSCode'
+run = ['move-node-to-workspace 6']
 
+# cursor
+[[on-window-detected]]
+if.app-id ='com.todesktop.230313mzl4w4u92'
+run = ['move-node-to-workspace 3']
+
+[[on-window-detected]]
+if.app-id ='com.jetbrains.intellij'
+run = ['move-node-to-workspace 3']
+
+[[on-window-detected]]
+if.app-id ='com.spotify.client'
+run = ['move-node-to-workspace 5']
 
 [[on-window-detected]]
 if.app-id ='com.hnc.Discord'
 run = ['move-node-to-workspace 5']
-
-[[on-window-detected]]
-if.app-id ='com.microsoft.VSCode'
-run = ['move-node-to-workspace 6']
 
 [[on-window-detected]]
 if.app-id ='notion.id'
@@ -225,14 +233,27 @@ run = ['move-node-to-workspace 6']
 if.app-id ='net.ankiweb.dtop'
 run = ['move-node-to-workspace 7']
 
+[[on-window-detected]]
+if.app-id ='com.apple.finder'
+run = ['move-node-to-workspace 7']
+
+[[on-window-detected]]
+if.app-id ='com.electron.dockerdesktop'
+run = ['move-node-to-workspace 8']
+
+[[on-window-detected]]
+if.app-id ='com.postmanlabs.mac'
+run = ['move-node-to-workspace 8']
 
 # force certain workspaces to certain monitors
 [workspace-to-monitor-force-assignment]
 1 = 'main'                         # Monitor sequence number from left to right. 1-based indexing
 2 = 'main'                       # Main monitor
 3 = 'secondary'                  # Non-main monitor in case when there are only two monitors
-4 = 'secondary'                  # Non-main monitor in case when there are only two monitors
+4 = 'secondary'
 5 = 'secondary'
 6 = 'main'
 7 = 'secondary'
 8 = 'main'
+9 = 'secondary'
+0 = 'secondary'
