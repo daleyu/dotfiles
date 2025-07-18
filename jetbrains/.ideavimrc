@@ -21,6 +21,9 @@ set multiple-cursors
 
 " have x (removes single character) not go into the default registry
 nnoremap x "_x
+" other deletion settings
+nnoremap <leader>dd \"_dd")
+vnoremap <leader>dd \"_dd"
 
 " Copy Word
 nmap ,c yiw
@@ -85,9 +88,15 @@ nnoremap <c-tab> gt
 
 " clear the search buffer when hitting return
 nnoremap <leader><cr> :nohlsearch<cr>
+nnoremap <leader><BS> :bd<CR>
 
 " copy whole file
-nmap <C-a> ggvvG"+y
+nmap <leader>vv ggVG"+y
+
+" goated bindings for qol
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+nnoremap J mzJ`z
 
 " splits
 :map <leader>i <Action>(PrevSplitter)
@@ -95,8 +104,8 @@ nmap <C-a> ggvvG"+y
 
 
 """ Mappings --------------------------------
-map <leader>f <Plug>(easymotion-s)
-map <leader>e <Plug>(easymotion-f)
+" map <leader>f <Plug>(easymotion-s)
+" map <leader>e <Plug>(easymotion-f)
 
 """ Source vimrc
 map <leader>9 :source ~/.ideavimrc<cr>
