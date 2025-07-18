@@ -790,6 +790,8 @@ vim.api.nvim_set_hl(0, "ZenBg", { ctermbg = 0 })
 --- utility keymappings
 vim.keymap.set("i", "{<cr>", "{<cr>}<esc>O")
 vim.keymap.set("n", "x", "\"_x")
+vim.keymap.set("n", "<BS>", "hx")
+vim.keymap.set("n", "<leader><BS>", ":bd<CR>")
 vim.keymap.set("n", "<leader><CR>", ":nohlsearch<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>vv", "ggVG\"+y")
 vim.keymap.set("n", "Y", "y$")
