@@ -790,6 +790,9 @@ vim.api.nvim_set_hl(0, "ZenBg", { ctermbg = 0 })
 --- utility keymappings
 vim.keymap.set("i", "{<cr>", "{<cr>}<esc>O")
 vim.keymap.set("n", "x", "\"_x")
+vim.keymap.set("n", "<leader>dd", "\"_dd")
+vim.keymap.set("v", "<leader>dd", "\"_dd")
+
 vim.keymap.set("n", "<BS>", "hx")
 vim.keymap.set("n", "<leader><BS>", ":bd<CR>")
 vim.keymap.set("n", "<leader><CR>", ":nohlsearch<CR>", { noremap = true })
@@ -808,9 +811,6 @@ vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "<leader>v", [["_dP]])
-
-vim.keymap.set("n", "<leader>dd", "\"_d")
-vim.keymap.set("v", "<leader>dd", "\"_d")
 
 vim.keymap.set("n", "ge", vim.diagnostic.open_float)
 
