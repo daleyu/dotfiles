@@ -1,132 +1,251 @@
 {
-    "python.pythonPath": "/usr/bin/python3",
+  "python.pythonPath": "/usr/bin/python3",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "workbench.statusBar.visible": false,
+  "breadcrumbs.enabled": false,
+  "editor.inlineSuggest.enabled": true,
+  "git.ignoreMissingGitWarning": true,
+  "application.shellEnvironmentResolutionTimeout": 20,
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [80],
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "files.exclude": {
-      "**/.classpath": true,
-      "**/.project": true,
-      "**/.settings": true,
-      "**/.factorypath": true
-    },
-    "security.workspace.trust.untrustedFiles": "open",
-    "remote.SSH.useLocalServer": false,
-    "remote.SSH.remotePlatform": {
-      "acnlin56.pbn.bnl.gov": "linux",
-      "acnlingf.pbn.bnl.gov": "linux",
-      "acnlin6a.pbn.bnl.gov": "linux",
-      "clac.cs.columbia.edu": "linux",
-      "osvm": "linux"
-    },
-    "git.autofetch": true,
-    "editor.inlineSuggest.enabled": true,
-    "git.ignoreMissingGitWarning": true,
-    "application.shellEnvironmentResolutionTimeout": 20,
-    "[dart]": {
-      "editor.formatOnSave": true,
-      "editor.formatOnType": true,
-      "editor.rulers": [80],
-      "editor.selectionHighlight": false,
-      "editor.suggest.snippetsPreventQuickSuggestions": false,
-      "editor.suggestSelection": "first",
-      "editor.tabCompletion": "onlySnippets",
-      "editor.wordBasedSuggestions": "off",
-      "editor.codeActionsOnSave": {
-        "source.fixAll": "explicit"
-      }
-    },
-    "github.copilot.enable": {
-      "*": true,
-      "plaintext": false,
-      "markdown": false,
-      "scminput": false,
-      "yaml": false,
-      "dart": true,
-      "go": false
-    },
-    "[python]": {
-      "editor.formatOnType": true,
-      "editor.defaultFormatter": "ms-python.black-formatter"
-    },
-    "workbench.iconTheme": "catppuccin-mocha",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit"
+    }
+  },
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "yaml": false,
+    "dart": true,
+    "go": false
+  },
+  "[python]": {
+    "editor.formatOnType": true,
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "workbench.iconTheme": "vscode-icons",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "vsicons.dontShowNewVersionMessage": true,
+  "editor.minimap.autohide": true,
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.scale": 2,
+  "terminal.integrated.env.osx": {},
+  "redhat.telemetry.enabled": true,
+  "editor.rulers": [80, 100],
+  "rewrap.autoWrap.enabled": true,
+  "clangd.detectExtensionConflicts": false,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.tabSize": 4,
+  "files.autoSave": "off",
+  "[javascript][javascriptreact][typescript][typescriptreact]": {
+    "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "vsicons.dontShowNewVersionMessage": true,
-    "editor.minimap.autohide": true,
-    "editor.minimap.renderCharacters": false,
-    "editor.minimap.scale": 2,
-    "terminal.integrated.env.osx": {},
-    "workbench.colorTheme": "Catppuccin Mocha",
-    "redhat.telemetry.enabled": true,
-    "editor.rulers": [80, 100],
-    "rewrap.autoWrap.enabled": true,
-    "clangd.detectExtensionConflicts": false,
-    "editor.insertSpaces": true,
-    "editor.detectIndentation": false,
-    "editor.tabSize": 4,
-    "files.autoSave": "off",
-    "[javascript][javascriptreact][typescript][typescriptreact]": {
-      "editor.formatOnSave": true,
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.codeActionsOnSave": {
-        "source.fixAll": "explicit",
-        "source.fixAll.eslint": "explicit",
-        "source.organizeImports": "explicit"
-      }
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.fixAll.eslint": "explicit",
+      "source.organizeImports": "explicit"
+    }
+  },
+  "eslint.options": {
+    "extensions": [".js", ".jsx"]
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "[c]": {
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+  },
+  "git.openRepositoryInParentFolders": "always",
+  "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
+  "editor.fontLigatures": true,
+  "editor.lineNumbers": "relative",
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+  "terminal.integrated.fontFamily": "monospace",
+  "git.confirmSync": false,
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
+  "vim.hlsearch": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["g", "h"],
+      "commands": [
+        {
+          "command": "editor.action.showDefinitionPreviewHover"
+        }
+      ]
     },
-    "eslint.options": {
-      "extensions": [".js", ".jsx"]
+    {
+      "before": ["u"],
+      "after": [],
+      "commands": [
+        {
+          "command": "undo",
+          "args": []
+        }
+      ]
     },
-    "eslint.validate": [
-      "javascript",
-      "javascriptreact",
-      "typescript",
-      "typescriptreact"
-    ],
-    "[c]": {
-      "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+    {
+      "before": ["<C-r>"],
+      "after": [],
+      "commands": [
+        {
+          "command": "redo",
+          "args": []
+        }
+      ]
     },
-    "githubPullRequests.createOnPublishBranch": "never",
-    "git.openRepositoryInParentFolders": "always",
-    "editor.fontFamily": "Fira Code",
-    "editor.fontLigatures": true,
-    "editor.lineNumbers": "relative",
-    "[latex]": {
-      "editor.defaultFormatter": "James-Yu.latex-workshop"
+    { "before": ["g", "["], "commands": [":bprevious"] },
+    { "before": ["g", "]"], "commands": [":bnext"] },
+    { "before": ["<C-w>", "v"], "commands": [":vsplit"] },
+    { "before": ["<C-w>", "s"], "commands": [":split"] },
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["workbench.action.quickOpen"]
     },
-    "[go]": {
-      "editor.defaultFormatter": "golang.go"
+    {
+      "before": ["<leader>", "p"],
+      "commands": ["workbench.action.showCommands"]
     },
-    "terminal.integrated.fontFamily": "monospace",
-    "git.confirmSync": false,
-    "vim.normalModeKeyBindingsNonRecursive": [
-      {
-        "before": ["g", "H"],
-        "commands": [{ "command": "editor.action.showDefinitionPreviewHover" }]
-      },
-      {
-        "before": ["u"],
-        "after": [],
-        "commands": [
-          {
-            "command": "undo",
-            "args": []
-          }
-        ]
-      },
-      {
-        "before": ["<C-r>"],
-        "after": [],
-        "commands": [
-          {
-            "command": "redo",
-            "args": []
-          }
-        ]
-      }
-    ],
-    "vim.easymotion": true,
-    "vim.leader": "<space>",
-    "vim.statusBarColorControl": false,
-    "makefile.configureOnOpen": true,
-    "vim.vimrc.enable": true
-  }
-  
+    {
+      "before": ["g", "r"],
+      "commands": ["editor.action.goToReferences"]
+    },
+    {
+      "before": ["g", "b"],
+      "commands": ["workbench.action.navigateBack"]
+    },
+    {
+      "before": ["<leader>", "c", "c"],
+      "commands": ["editor.action.rename"]
+    },
+    {
+      "before": ["<leader>", ","],
+      "commands": [
+        "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
+      ]
+    },
+    {
+      "before": ["<leader>", "z", "m"],
+      "commands": ["workbench.action.toggleZenMode"]
+    },
+    {
+      "before": ["<leader>", "l", "c"],
+      "commands": ["workbench.action.files.copyPathOfActiveFile"]
+    },
+    {
+      "before": ["<leader>", "<leader>"],
+      "commands": ["workbench.view.explorer"]
+    },
+    {
+      "before": ["<leader>", "/"],
+      "commands": ["workbench.view.search"]
+    },
+    {
+      "before": ["<leader>", "r"],
+      "commands": ["workbench.action.replaceInFiles"]
+    },
+    {
+      "before": ["<leader>", "b"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
+    {
+      "before": ["<leader>", "c", "a"],
+      "commands": ["editor.action.quickFix"]
+    },
+    {
+      "before": ["<C-h>"],
+      "commands": ["workbench.action.focusLeftGroup"]
+    },
+    {
+      "before": ["<C-l>"],
+      "commands": ["workbench.action.focusRightGroup"]
+    },
+    {
+      "before": ["<C-j>"],
+      "commands": ["workbench.action.focusBelowGroup"]
+    },
+    {
+      "before": ["<C-k>"],
+      "commands": ["workbench.action.focusAboveGroup"]
+    },
+    {
+      "before": ["<C-a>", "x"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["<leader>", "n", "g"],
+      "commands": ["workbench.view.scm"]
+    },
+    {
+      "before": ["<leader>", "m", "p"],
+      "commands": ["markdown.showPreviewToSide"]
+    }
+  ],
+  "vim.useSystemClipboard": true,
+  "vim.insertModeKeyBindings": [],
+  "vim.visualModeKeyBindings": [
+    { "before": ["<"], "commands": ["editor.action.outdentLines"] },
+    { "before": [">"], "commands": ["editor.action.indentLines"] },
+    { "before": ["J"], "commands": ["editor.action.moveLinesDownAction"] },
+    { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] }
+  ],
+  "vim.handleKeys": {
+    "<C-d>": true,
+    "<C-u>": true,
+    "<C-f>": true,
+    "<C-b>": true,
+    "<C-w>": true,
+    "<C-h>": true,
+    "<C-j>": true,
+    "<C-k>": true,
+    "<C-l>": true
+  },
+  "vim.easymotion": true,
+  "vim.leader": "<space>",
+  "vim.statusBarColorControl": false,
+  "makefile.configureOnOpen": true,
+  "vim.vimrc.enable": true,
+  "go.toolsManagement.autoUpdate": true,
+  "zig.zls.enabled": "on",
+  "workbench.editor.showTabs": "single",
+  "workbench.editor.revealIfOpen": true,
+  "workbench.editor.revealIfOpenInActiveGroup": true,
+  "workbench.editor.closeEmptyGroups": false,
+  "remote.defaultExtensionsIfInstalledLocally": [
+    "GitHub.copilot",
+    "GitHub.copilot-chat",
+    "GitHub.vscode-pull-request-github"
+  ],
+  "cursor.cpp.disabledLanguages": [
+    "plaintext",
+    "markdown",
+    "scminput",
+    "yaml",
+    "go"
+  ],
+  "workbench.colorTheme": "Catppuccin Mocha"
+}
+
