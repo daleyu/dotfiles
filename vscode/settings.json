@@ -135,7 +135,10 @@
     },
     {
       "before": ["g", "b"],
-      "commands": ["workbench.action.navigateBack"]
+      "commands": [
+        "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+        "workbench.action.acceptSelectedQuickOpenItem"
+      ]
     },
     {
       "before": ["<leader>", "c", "c"],
@@ -202,6 +205,21 @@
     {
       "before": ["<leader>", "m", "p"],
       "commands": ["markdown.showPreviewToSide"]
+    },
+    {
+      "before": ["<leader>", "v", "v"],
+      "commands": [
+        "editor.action.selectAll",
+        "editor.action.clipboardCopyAction"
+      ]
+    },
+    {
+      "before": ["<leader>", "a"],
+      "commands": ["cursor-harpoon.addEditor"]
+    },
+    {
+      "before": ["<leader>", "e"],
+      "commands": ["cursor-harpoon.editEditors"]
     }
   ],
   "vim.useSystemClipboard": true,
@@ -246,6 +264,7 @@
     "yaml",
     "go"
   ],
-  "workbench.colorTheme": "Catppuccin Mocha"
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.layoutControl.enabled": false,
+  "workbench.editor.enablePreview": false
 }
-
