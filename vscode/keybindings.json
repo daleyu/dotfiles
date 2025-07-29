@@ -37,5 +37,29 @@
   {
     "key": "ctrl+g",
     "command": "breadcrumbs.focus"
+  },
+  {
+    "key": "ctrl+e",
+    "commands": ["vscode-harpoon.editEditors"]
+  },
+  {
+    "key": "ctrl+p",
+    "commands": ["vscode-harpoon.editorQuickPick"]
+  },
+  {
+    "key": "ctrl+t",
+    "command": "vscode-harpoon.gotoEditor1"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "vscode-harpoon.gotoEditor2"
+  },
+  {
+    "key": "ctrl+s",
+    "command": "vscode-harpoon.gotoEditor3"
+  },
+  {
+    "key": "ctrl+-",
+    "command": "vscode-harpoon.gotoEditor4"
   }
 ]
