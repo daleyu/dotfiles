@@ -816,6 +816,79 @@ vim.keymap.set("n", "ge", vim.diagnostic.open_float)
 
 vim.keymap.set("n", "<leader>cc", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+local antonyms = {
+	"true", "false",
+	"after", "before",
+	"start", "end",
+	"left", "right",
+	"first", "last",
+	"True", "False",
+	"After", "Before",
+	"Start", "End",
+	"Left", "Right",
+	"First", "Last",
+}
+
+local function invert(calledFromVisual)
+	local api = vim.api
+	local bufnr = api.nvim_get_current_buf()
+	local mode = api.nvim_get_mode().mode
+
+	local word
+	local start_pos, end_pos
+
+	if calledFromVisual then
+		local start = vim.fn.getpos("'<")
+		local finish = vim.fn.getpos("'>")
+		start_pos = { start[2] - 1, start[3] - 1 }
+		end_pos = { finish[2] - 1, finish[3] }
+		local lines = api.nvim_buf_get_text(bufnr, start_pos[1], start_pos[2], end_pos[1], end_pos[2], {})
+		word = table.concat(lines, "\n"):gsub("^%s*(.-)%s*$", "%1")
+		if word:match("\n") then
+			return -- or handle multi-line case differently
+		end
+	else
+		local row, col = unpack(api.nvim_win_get_cursor(0))
+		row = row - 1
+		local line = api.nvim_buf_get_lines(bufnr, row, row + 1, false)[1]
+
+		local from_col, to_col = nil, nil
+		local left = col
+		local right = col
+		while left > 0 and line:sub(left, left):match("[%w_]") do left = left - 1 end
+		if not line:sub(left, left):match("[%w_]") then left = left + 1 end
+		while right <= #line and line:sub(right, right):match("[%w_]") do right = right + 1 end
+		to_col = right - 1
+		from_col = left
+
+		word = line:sub(from_col, to_col)
+
+		start_pos = { row, from_col - 1 }
+		end_pos = { row, to_col }
+	end
+
+	local antonym = nil
+	for i = 1, #antonyms, 2 do
+		if antonyms[i] == word then
+			antonym = antonyms[i + 1]
+			break
+		elseif antonyms[i + 1] == word then
+			antonym = antonyms[i]
+			break
+		end
+	end
+
+	if antonym then
+		api.nvim_buf_set_text(bufnr, start_pos[1], start_pos[2], end_pos[1], end_pos[2], { antonym })
+		if not calledFromVisual then
+			api.nvim_win_set_cursor(0, { start_pos[1] + 1, start_pos[2] + #antonym })
+		end
+	end
+end
+
+vim.keymap.set("n", "<leader>i", function() invert(false) end, { noremap = true, silent = true })
+vim.keymap.set("v", "<leader>i", function() invert(true) end, { noremap = true, silent = true })
+
 vim.keymap.set("n", "<leader>gfs", '<Cmd>! git diff origin/master --name-only<CR>')
 vim.keymap.set("n", "<leader>gfi", '<Cmd>! git diff origin/main --name-only<CR>')
 
