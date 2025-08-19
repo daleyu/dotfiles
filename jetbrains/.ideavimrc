@@ -2,23 +2,25 @@
 let mapleader=" "
 
 """ Some Basic vim necessities -------------
-set hlsearch 
+set hlsearch
 set scrolloff=10
 set number
 set relativenumber
 set showmode
 set showcmd
 set smartcase
+set ignorecase
 set incsearch
 set hlsearch
 set visualbell
 set clipboard+=unnamed
-set clipboard+=unnamedplus   
+set clipboard+=unnamedplus
 
 """ plugins --------------------------------
 set easymotion
 set multiple-cursors
-set NERDTree
+set nerdtree
+set which-key
 set surround
 set commentary
 
@@ -27,7 +29,6 @@ set commentary
 nnoremap x "_x
 " other deletion settings
 nnoremap <leader>dd "_dd
-vnoremap <leader>dd "_dd
 
 """ Copy and selection helpers -------------
 " Copy Word
@@ -48,30 +49,28 @@ nnoremap <leader>Y "+y
 
 """ Class motions --------------------------
 if &ide =~? 'intellij'
-  "--- Previous class opening
-  nnoremap [c 0?\<class\> <cr>f{:nohlsearch<cr>  
-  "--- Next class opening
-  nnoremap ]c $/\<class\> <cr>f{:nohlsearch<cr>
-  "--- Previous class closing
-  nnoremap [C $?\<class\> <cr>nf{%:nohlsearch<cr>
-  "--- Next class closing
-  nnoremap ]C 0/\<class\> <cr>f{%:nohlsearch<cr>
+"--- Previous class opening
+nnoremap [c 0?\<class\> <cr>f{:nohlsearch<cr>
+"--- Next class opening
+nnoremap ]c $/\<class\> <cr>f{:nohlsearch<cr>
+"--- Previous class closing
+nnoremap [C $?\<class\> <cr>nf{%:nohlsearch<cr>
+"--- Next class closing
+nnoremap ]C 0/\<class\> <cr>f{%:nohlsearch<cr>
 endif
 
-nnoremap vic gg :action MethodDown<cr>f{vi{ 
-nnoremap vac gg :action MethodDown<cr>f{va{ 
-nnoremap dic gg :action MethodDown<cr>f{di{ 
-nnoremap dac gg :action MethodDown<cr>f{da{ 
-nnoremap cic gg :action MethodDown<cr>f{ci{ 
-nnoremap cac gg :action MethodDown<cr>f{ca{ 
-nnoremap yic gg :action MethodDown<cr>f{yi{ 
-nnoremap yac gg :action MethodDown<cr>f{ya{ 
+nnoremap vic gg :action MethodDown<cr>f{vi{
+nnoremap vac gg :action MethodDown<cr>f{va{
+nnoremap dic gg :action MethodDown<cr>f{di{
+nnoremap dac gg :action MethodDown<cr>f{da{
+nnoremap cic gg :action MethodDown<cr>f{ci{
+nnoremap cac gg :action MethodDown<cr>f{ca{
+nnoremap yic gg :action MethodDown<cr>f{yi{
+nnoremap yac gg :action MethodDown<cr>f{ya{
 
 """ Navigation improvements ----------------
-" Match nvim's navigation bindings
-nnoremap <C-o> :action Back<cr>
-nnoremap <C-i> :action Forward<cr>
-nnoremap gb :action Back<cr>
+nnoremap gb <C-6>
+nmap <C-o> :action Back<CR>
 
 " Buffer/Tab navigation (match nvim)
 nnoremap g[ :action PreviousTab<cr>
@@ -83,13 +82,9 @@ nnoremap [b :action PreviousTab<cr>
 nnoremap gr :action FindUsages<cr>
 
 """ Window/Split management ----------------
-" Match nvim's split commands
-nnoremap <C-w>v :action SplitVertically<cr>
-nnoremap <C-w>s :action SplitHorizontally<cr>
-
 " Tmux like splits (keep existing)
 nnoremap <a--> :action SplitHorizontally<cr>
-nnoremap <a-\> :action SplitVertically<cr> 
+nnoremap <a-\> :action SplitVertically<cr>
 nnoremap <c-a-d> :action Unsplit<cr>
 
 " Window focus navigation (match nvim)
@@ -102,27 +97,34 @@ nnoremap <C-k> :action NextSplitter<cr>
 nnoremap <leader><BS> :action CloseContent<cr>
 
 """ Leader-based commands (match nvim style) --
-" File operations (match nvim fzf-lua bindings)
+nnoremap <D-t> :action Autosync.OpenExistingProject<cr>
 nnoremap <leader>f :action GotoFile<cr>
 nnoremap <leader>p :action GotoAction<cr>
+nnoremap <leader>gc :action GotoClass<cr>
 nnoremap <leader>, :action RecentFiles<cr>
 
 " UI toggles
-nnoremap <leader>b :action ActivateProjectToolWindow<cr>
+nnoremap <leader>b :NERDTreeClose<cr>
 nnoremap <leader><space> :action SelectInProjectView<cr>
 nnoremap <leader>/ :action FindInPath<cr>
-nnoremap <leader>r :action ReplaceInPath<cr>
+nnoremap <leader>rr :action ReplaceInPath<cr>
 
 " Code actions (match nvim LSP bindings)
-nnoremap <leader>cc :action RenameElement<cr>
 nnoremap <leader>ca :action ShowIntentionActions<cr>
+nnoremap mm :action ShowPopupMenu<cr>
 
 " Zen mode and utilities
 nnoremap <leader>zm :action ToggleDistractionFreeMode<cr>
-nnoremap <leader>lc :action CopyPaths<cr>
 
 " Git integration (match nvim neogit bindings)
 nnoremap <leader>ng :action Vcs.Show.Local.Changes<cr>
+nnoremap <leader>hb :action Annotate<cr>
+map <leader>x] <Action>(ReSharperGotoNextErrorInSolution)
+map <leader>x[ <Action>(ReSharperGotoPrevErrorInSolution)
+
+" gitsigns like navigate between hunks
+nnoremap <leader>h[ :action VcsShowPrevChangeMarker<cr>
+nnoremap <leader>h] :action VcsShowNextChangeMarker<cr>
 
 """ LSP-like bindings (match nvim) ----------
 " Hover and help
@@ -133,6 +135,8 @@ nnoremap gd :action GotoDeclaration<cr>
 nnoremap gD :action GotoDeclaration<cr>
 nnoremap gi :action GotoImplementation<cr>
 nnoremap go :action GotoTypeDeclaration<cr>
+nmap gt <Action>(GotoTest)
+
 
 " Diagnostics (match nvim)
 nnoremap ge :action ShowErrorDescription<cr>
@@ -142,12 +146,9 @@ nnoremap [e :action GotoPreviousError<cr>
 " Code formatting (match nvim F3 binding)
 nnoremap <F3> :action ReformatCode<cr>
 vnoremap <F3> :action ReformatCode<cr>
+nnoremap <leader>cc yiw:action Replace<cr>
 
-" Rename (match nvim F2 binding)
-nnoremap <F2> :action RenameElement<cr>
-
-" Code actions (match nvim F4 binding)
-nnoremap <F4> :action ShowIntentionActions<cr>
+nnoremap ga :action ShowIntentionActions<cr>
 
 """ Paste improvements (match nvim) --------
 " paste in where the cursor is
@@ -167,7 +168,8 @@ nnoremap N Nzz
 nnoremap <leader><cr> :nohlsearch<cr>
 
 """ File operations (match nvim) -----------
-" copy whole file
+nnoremap <c-g> :action ShowFilePath<cr>
+nnoremap <leader>lc :action CopyPathFromRepositoryRootProvider<cr>
 nmap <leader>vv ggVG"+y
 
 """ Visual mode improvements (match nvim) --
@@ -188,7 +190,7 @@ nnoremap qj @q
 nnoremap <BS> hx
 
 " Search and replace current word (match nvim)
-nnoremap <leader>cc :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+" nnoremap <leader>cc :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
 """ Tab navigation (alternative methods) ----
 nnoremap <a-k> gT
@@ -196,9 +198,9 @@ nnoremap <a-j> gt
 nnoremap <c-s-tab> gT
 nnoremap <c-tab> gt
 
-""" Split navigation (additional) -----------
-map <leader>i <Action>(PrevSplitter)
-map <c-b> <Action>(SplitVertically)
+" Tmux like
+nnoremap <a--> :action SplitHorizontally<cr>
+nnoremap <a-\> :action SplitVertically<cr>
 
 """ Source vimrc ---------------------------
 map <leader>9 :source ~/.ideavimrc<cr>
@@ -224,10 +226,14 @@ nnoremap [e :action GotoPreviousError<cr>
 nnoremap <leader>a :action ToggleBookmark<cr>
 nnoremap <C-e> :action ShowBookmarks<cr>
 
-" Quick access to specific bookmarks (match nvim harpoon concept)
-nnoremap <C-t> :action GotoBookmark1<cr>
-nnoremap <C-n> :action GotoBookmark2<cr>
-nnoremap <C-s> :action GotoBookmark3<cr>
+nnoremap <leader>1 :action ToggleBookmark1<cr>
+nnoremap <leader>2 :action ToggleBookmark2<cr>
+nnoremap <leader>3 :action ToggleBookmark3<cr>
+nnoremap <leader>4 :action ToggleBookmark4<cr>
+nnoremap <C-m> :action GotoBookmark1<cr>
+nnoremap <C-w> :action GotoBookmark2<cr>
+nnoremap <C-v> :action GotoBookmark3<cr>
+nnoremap <C-z> :action GotoBookmark4<cr>
 
 """ Multi-cursor enhancements --------------
 " Better multi-cursor support
@@ -235,17 +241,5 @@ map <A-n> <Action>(SelectNextOccurrence)
 map <A-p> <Action>(UnselectPreviousOccurrence)
 map <A-x> <Action>(SelectAllOccurrences)
 
-""" EasyMotion bindings --------------------
-" Uncomment these if you want easymotion (match nvim usage)
-" map <leader>s <Plug>(easymotion-s)
-" map <leader>e <Plug>(easymotion-f)
-
 """ Terminal integration -------------------
-nnoremap <leader>` :action ActivateTerminalToolWindow<cr>
-
-""" File tree operations -------------------
-" Match nvim nvim-tree toggle
-nnoremap <leader>b :action ActivateProjectToolWindow<cr>
-
-""" Markdown preview (if using markdown plugin)
-nnoremap <leader>mp :action org.intellij.plugins.markdown.ui.actions.editorLayout.EditorAndPreviewLayoutChangeAction<cr>
+nnoremap <leader>qq :action HideAllWindows<CR>
