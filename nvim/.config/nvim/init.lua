@@ -180,6 +180,15 @@ require('lazy').setup({
 		ft = { "markdown" },
 	},
 	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+		opts = {
+			render_modes = { "n", "c", "t", "R", "i" },
+			heading = { width = "block" },
+			file_types = { "markdown", "codecompanion" },
+		},
+	},
+	{
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
