@@ -1,9 +1,10 @@
+
 general.import = [
-  # Uncomment one of the themes below:
-  # "~/.config/alacritty/catppuccin-latte.toml",
-  # "~/.config/alacritty/catppuccin-frappe.toml",
-  # "~/.config/alacritty/catppuccin-macchiato.toml",
-  "~/.config/alacritty/catppuccin-mocha.toml"
+# Uncomment one of the themes below:
+# "~/.config/alacritty/catppuccin-latte.toml",
+# "~/.config/alacritty/catppuccin-frappe.toml",
+# "~/.config/alacritty/catppuccin-macchiato.toml",
+"~/.config/alacritty/catppuccin-mocha.toml"
 ]
 
 [env]
@@ -11,8 +12,9 @@ TERM = "xterm-256color"
 
 [window]
 decorations = "buttonless"
-opacity = 0.85
+opacity = 0.83
 dynamic_padding = true
+option_as_alt = "Both"
 blur = true
 
 [window.padding]
@@ -98,11 +100,6 @@ mods = "Super"
 chars = "\u0001p"
 
 [[keyboard.bindings]]
-key = "T"
-mods = "Super"
-chars = "\u0001c"
-
-[[keyboard.bindings]]
 key = "W"
 mods = "Super"
 chars = "\u0001&"
@@ -127,3 +124,7 @@ key = "L"
 mods = "Super"
 chars = "\u0001L"
 
+[[keyboard.bindings]]
+key = "R"
+mods = "Super"
+chars = "\u0001,"
