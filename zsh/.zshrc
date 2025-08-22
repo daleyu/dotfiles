@@ -110,6 +110,10 @@ alias gdi='git diff origin/main'
 alias lS='eza -1 --color=always --group-directories-first --icons'
 alias lt='eza --tree --level=2 --color=always --group-directories-first --icons'
 alias l.="eza -a | grep -E '^\.'"
+alias stable-main='git switch main\
+	&& git fetch origin/main \
+	git reset --hard origin/main
+	'
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd

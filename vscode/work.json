@@ -1,0 +1,309 @@
+{
+  "workbench.iconTheme": "vscode-icons",
+  "editor.minimap.autohide": true,
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.scale": 2,
+  "terminal.integrated.env.osx": {},
+  "editor.rulers": [80, 100],
+  "rewrap.autoWrap.enabled": true,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.tabSize": 4,
+  "files.autoSave": "off",
+  "git.openRepositoryInParentFolders": "always",
+  "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
+  "editor.fontLigatures": true,
+  "editor.lineNumbers": "relative",
+  "terminal.integrated.fontFamily": "monospace",
+  "git.confirmSync": false,
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
+  "vim.hlsearch": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["g", "h"],
+      "commands": [
+        {
+          "command": "editor.action.showDefinitionPreviewHover"
+        }
+      ]
+    },
+    {
+      "before": ["u"],
+      "after": [],
+      "commands": [
+        {
+          "command": "undo",
+          "args": []
+        }
+      ]
+    },
+    {
+      "before": ["<C-r>"],
+      "after": [],
+      "commands": [
+        {
+          "command": "redo",
+          "args": []
+        }
+      ]
+    },
+    {
+      "before": ["g", "["],
+      "commands": [":bprevious"]
+    },
+    {
+      "before": ["g", "]"],
+      "commands": [":bnext"]
+    },
+    {
+      "before": ["<C-w>", "v"],
+      "commands": [":vsplit"]
+    },
+    {
+      "before": ["<C-w>", "s"],
+      "commands": [":split"]
+    },
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "p"],
+      "commands": ["workbench.action.showCommands"]
+    },
+    {
+      "before": ["g", "r"],
+      "commands": ["editor.action.goToReferences"]
+    },
+    {
+      "before": ["g", "t"],
+      "commands": ["testing.goToRelatedTest"]
+    },
+    {
+      "before": ["g", "b"],
+      "commands": [
+        "workbench.action.quickOpenPreviousEditor",
+        "workbench.action.acceptSelectedQuickOpenItem"
+      ]
+    },
+    {
+      "before": ["<leader>", "q", "q"],
+      "commands": ["workbench.action.togglePanel"]
+    },
+    {
+      "before": ["<leader>", "c", "c"],
+      "commands": ["editor.action.rename"]
+    },
+    {
+      "before": ["<leader>", ","],
+      "commands": [
+        "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
+      ]
+    },
+    {
+      "before": ["<leader>", "z", "m"],
+      "commands": ["workbench.action.toggleZenMode"]
+    },
+    {
+      "before": ["<leader>", "l", "c"],
+      "commands": ["pay.cmd.copyRelativeFilePath.currentLine"]
+    },
+    {
+      "before": ["<leader>", "<leader>"],
+      "commands": ["workbench.explorer.fileView.focus"]
+    },
+    {
+      "before": ["<leader>", "/"],
+      "commands": ["pay.cmd.livegrep.openSearchEditor"]
+    },
+    {
+      "before": ["<leader>", "r"],
+      "commands": ["workbench.action.replaceInFiles"]
+    },
+    {
+      "before": ["<leader>", "b"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
+    {
+      "before": ["<leader>", "c", "a"],
+      "commands": ["editor.action.quickFix"]
+    },
+    {
+      "before": ["<C-h>"],
+      "commands": ["workbench.action.focusLeftGroup"]
+    },
+    {
+      "before": ["<C-l>"],
+      "commands": ["workbench.action.focusRightGroup"]
+    },
+    {
+      "before": ["<C-j>"],
+      "commands": ["workbench.action.focusBelowGroup"]
+    },
+    {
+      "before": ["<C-k>"],
+      "commands": ["workbench.action.focusAboveGroup"]
+    },
+    {
+      "before": ["<C-a>", "x"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["<leader>", "h", "b"],
+      "commands": ["git.blame.toggleEditorDecoration"]
+    },
+    {
+      "before": ["[", "h"],
+      "commands": ["workbench.action.editor.previousChange"]
+    },
+    {
+      "before": ["]", "h"],
+      "commands": ["workbench.action.editor.nextChange"]
+    },
+    {
+      "before": ["[", "x"],
+      "commands": ["workbench.action.compareEditor.previousChange"]
+    },
+    {
+      "before": ["]", "x"],
+      "commands": ["workbench.action.compareEditor.nextChange"]
+    },
+    {
+      "before": ["<leader>", "t", "r"],
+      "commands": ["pay.cmd.test.rerun"]
+    },
+    {
+      "before": ["<leader>", "t", "a"],
+      "commands": ["pay.cmd.test.activeEditor"]
+    },
+    {
+      "before": ["<leader>", "t", "t"],
+      "commands": ["pay.cmd.test.currentLine"]
+    },
+    {
+      "before": ["<leader>", "t", "d"],
+      "commands": ["pay.cmd.test.debug.currentLine"]
+    },
+    {
+      "before": ["<leader>", "t", "b"],
+      "commands": ["editor.debug.action.toggleBreakpoint"]
+    },
+    {
+      "before": ["<leader>", "n", "g"],
+      "commands": ["workbench.view.scm"]
+    },
+    {
+      "before": ["<leader>", "m", "p"],
+      "commands": ["markdown.showPreviewToSide"]
+    },
+    {
+      "before": ["<leader>", "h", "l"],
+      "commands": ["git.blame.toggleEditorDecoration"]
+    },
+    {
+      "before": ["<leader>", "s", "g"],
+      "commands": ["pay.cmd.sourcegraph.open.currentLine"]
+    },
+    {
+      "before": ["<leader>", "v", "v"],
+      "commands": [
+        "editor.action.selectAll",
+        "editor.action.clipboardCopyAction"
+      ]
+    },
+    {
+      "before": ["g", "p"],
+      "commands": ["editor.emmet.action.matchTag"]
+    },
+    {
+      "before": ["<leader>", "<tab>"],
+      "commands": ["editor.cpp.toggle"]
+    },
+    {
+      "before": ["g", "e"],
+      "commands": ["editor.action.marker.next"]
+    },
+    {
+      "before": ["<leader>", "g", "e"],
+      "commands": ["workbench.action.problems.focus"]
+    },
+    {
+      "before": ["<leader>", "4", "d"],
+      "commands": ["editor.action.formatDocument"]
+    }
+  ],
+  "vim.useSystemClipboard": true,
+  "vim.insertModeKeyBindings": [],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": ["g", "p"],
+      "commands": ["editor.emmet.action.matchTag"]
+    },
+    {
+      "before": ["<leader>", "c", "s"],
+      "commands": ["codesnap.start"]
+    },
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    },
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["J"],
+      "commands": ["editor.action.moveLinesDownAction"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["editor.action.moveLinesUpAction"]
+    },
+    {
+      "before": ["v"],
+      "commands": ["editor.action.smartSelect.expand"]
+    },
+    {
+      "before": ["g", "e"],
+      "commands": ["editor.action.marker.next"]
+    }
+  ],
+  "vim.handleKeys": {
+    "<C-d>": true,
+    "<C-u>": true,
+    "<C-f>": true,
+    "<C-b>": true,
+    "<C-w>": true,
+    "<C-h>": true,
+    "<C-j>": true,
+    "<C-k>": true,
+    "<C-l>": true
+  },
+  "vim.leader": "<space>",
+  "vim.statusBarColorControl": false,
+  "vim.vimrc.enable": true,
+  "workbench.editor.showTabs": "none",
+  "workbench.editor.revealIfOpen": true,
+  "workbench.editor.revealIfOpenInActiveGroup": true,
+  "workbench.editor.closeEmptyGroups": false,
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.activityBar.location": "hidden",
+  "vsicons.dontShowNewVersionMessage": true,
+  "workbench.layoutControl.enabled": false,
+  "git.blame.statusBarItem.enabled": true,
+  "zenMode.showTabs": "none",
+  "workbench.editor.enablePreviewFromQuickOpen": true,
+  "git.blame.editorDecoration.enabled": true,
+  "indentRainbow.indicatorStyle": "light",
+  "indentRainbow.lightIndicatorStyleLineWidth": 1,
+  // the same colors as above but more visible
+  "indentRainbow.colors": [
+    "rgba(255,255,64,0.3)",
+    "rgba(127,255,127,0.3)",
+    "rgba(255,127,255,0.3)",
+    "rgba(79,236,236,0.3)"
+  ],
+  "editor.fontSize": 16
+}
