@@ -48,8 +48,29 @@ abbr -ag lt "eza --tree --level=2 --color=always --group-directories-first --ico
 abbr -ag "l." "eza -a | grep -E '^\.'"
 abbr -ag gds 'git diff origin/master'
 abbr -ag gdi 'git diff origin/main'
+abbr -ag stable-main ""
 # go 
 set -gx PATH $PATH (go env GOPATH)/bin
+
+function stable-main
+    git checkout main
+    git fetch origin main
+    git reset --hard origin/main
+end
+
+
+function darkmode
+    osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to true'
+    sed -i '' '/^\[delta\]/,/^\[/{s/^features = .*/features = catppuccin-mocha/}' ~/.config/delta/.gitconfig
+    echo "🌙 Dark mode enabled (delta → catppuccin-mocha)"
+end
+
+function lightmode
+    osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to false'
+    sed -i '' '/^\[delta\]/,/^\[/{s/^features = .*/features = catppuccin-latte/}' ~/.config/delta/.gitconfig
+    echo "☀️ Light mode enabled (delta → catppuccin-latte)"
+end
+
 
 
 # nvim
