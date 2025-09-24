@@ -48,14 +48,19 @@ abbr -ag lt "eza --tree --level=2 --color=always --group-directories-first --ico
 abbr -ag "l." "eza -a | grep -E '^\.'"
 abbr -ag gds 'git diff origin/master'
 abbr -ag gdi 'git diff origin/main'
-abbr -ag stable-main ""
 # go 
 set -gx PATH $PATH (go env GOPATH)/bin
 
 function stable-main
-    git checkout main
+    git switch main
     git fetch origin main
     git reset --hard origin/main
+end
+
+function supercleanse
+	git branch 
+	grep -v "main"
+	xargs git branch -D
 end
 
 
