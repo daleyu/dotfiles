@@ -57,6 +57,10 @@ function stable-main
     git reset --hard origin/main
 end
 
+function restart-fish
+	source ~/.config/fish/config.fish
+end
+
 function supercleanse
 	git branch 
 	grep -v "main"
