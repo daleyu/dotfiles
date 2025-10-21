@@ -48,6 +48,7 @@ abbr -ag lt "eza --tree --level=2 --color=always --group-directories-first --ico
 abbr -ag "l." "eza -a | grep -E '^\.'"
 abbr -ag gds 'git diff origin/master'
 abbr -ag gdi 'git diff origin/main'
+abbr -ag diff 'nvim -d'
 # go 
 set -gx PATH $PATH (go env GOPATH)/bin
 
