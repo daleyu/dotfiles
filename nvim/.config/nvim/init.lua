@@ -809,9 +809,6 @@ vim.keymap.set("n", "<BS>", "hx")
 vim.keymap.set("n", "<leader><BS>", ":bd<CR>")
 vim.keymap.set("n", "<leader><CR>", ":nohlsearch<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>vv", "ggVG\"+y")
-vim.keymap.set("n", "Y", "y$")
-vim.keymap.set("n", "V", "v$")
-vim.keymap.set("n", "vv", "V")
 
 vim.keymap.set("n", "qj", "@q")
 
