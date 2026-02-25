@@ -1,27 +1,8 @@
 set -x XDG_CONFIG_HOME "$HOME/.config"
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-    set -x PATH $PATH $HOME/.pub-cache/bin
-    set -x JAVA_HOME $java_home
-	# >>> conda initialize >>>
-	# !! Contents within this block are managed by 'conda init' !!
-	if test -f /Users/daleyu/anaconda3/bin/conda
-		eval /Users/daleyu/anaconda3/bin/conda "shell.fish" "hook" $argv | source
-	end
-	# <<< conda initialize <<<
-
-	#status --is-interactive; and ~/.rbenv/bin/rbenv init - fish | source
-	if command -v rbenv > /dev/null
-		eval (rbenv init - | source)
-	end
-end
 
 if test -f /opt/homebrew/share/autojump/autojump.fish
     source /opt/homebrew/share/autojump/autojump.fish
 end
-
-# fish path's
-fish_add_path $HOME/.config/tmux/plugins/tmux-session-wizard/bin
 
 # brew
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -48,6 +29,7 @@ abbr -ag lt "eza --tree --level=2 --color=always --group-directories-first --ico
 abbr -ag "l." "eza -a | grep -E '^\.'"
 abbr -ag gds 'git diff origin/master'
 abbr -ag gdi 'git diff origin/main'
+<<<<<<< HEAD
 abbr -ag diff 'nvim -d'
 # go 
 set -gx PATH $PATH (go env GOPATH)/bin
@@ -82,6 +64,12 @@ function lightmode
 end
 
 
+||||||| parent of 13d269a (update dotfiles and precommit hook)
+# go 
+set -gx PATH $PATH (go env GOPATH)/bin
+
+=======
+>>>>>>> 13d269a (update dotfiles and precommit hook)
 
 # nvim
 set -gx EDITOR nvim
@@ -133,7 +121,9 @@ function fish_greeting
 	"
 end 
 
-fish_add_path /Users/daleyu/.spicetify
+# ~/.config/tmux/plugins
+fish_add_path $HOME/.config/tmux/plugins/tmux-session-wizard/bin
+
 fish_add_path /Users/daleyu/.utils
 
 # ZVM and ZIG

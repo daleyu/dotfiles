@@ -1,19 +1,20 @@
-#!/bin/bashc
+#!/bin/bash
 
 if [ "$#" -eq 0 ]; then
-echo "Usage: ntemp <command>"
-exit 1
+  echo "Usage: ntemp <command>"
+  exit 1
 fi
 
 temp_file=$(mktemp)
 "$@" > "$temp_file" 2>&1
 
 if [ $? -ne 0 ]; then
-echo "Command failed and temp file removed. : $temp_file"
+  echo "Command failed and temp file removed. : $temp_file"
 else
-echo "Command worked and temp file removed. see the file in Neovim"
+  echo "Command worked and temp file removed. see the file in Neovim"
 fi
 
 nvim "$temp_file"
 
 rm "$temp_file"
+

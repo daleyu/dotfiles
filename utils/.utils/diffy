@@ -1,0 +1,65 @@
+#!/bin/bash
+# fzf-diff.sh
+# ----------------------------------------------------------------------
+# Description:
+# Uses fzf to interactively select two files (File A and File B) and
+# then opens them side-by-side using 'nvim -d' (Neovim diff mode).
+#
+# Prerequisites:
+# - fzf (Fuzzy finder)
+# - nvim (Neovim)
+#
+# Usage:
+# 1. Make the script executable: chmod +x fzf-diff.sh
+# 2. Run it: ./fzf-diff.sh
+# ----------------------------------------------------------------------
+
+# Check if fzf is installed
+if ! command -v fzf &> /dev/null
+then
+    echo "Error: 'fzf' is not installed or not in PATH." >&2
+    echo "Please install fzf (e.g., brew install fzf, or apt install fzf)." >&2
+    exit 1
+fi
+
+# Check if nvim is installed
+if ! command -v nvim &> /dev/null
+then
+    echo "Error: 'nvim' (Neovim) is not installed or not in PATH." >&2
+    echo "Please install nvim (e.g., brew install neovim, or apt install neovim)." >&2
+    exit 1
+fi
+
+# 1. Select the first file (FILE A)
+echo "----------------------------------------------------"
+echo "STEP 1/2: Selecting FILE A (The original file)"
+echo "----------------------------------------------------"
+# Find all files recursively from the current directory, suppress errors (2>/dev/null),
+# and pipe the list into fzf for interactive selection.
+FILE_A=$(find . -type f -o -type l 2>/dev/null | fzf --prompt="Select FILE A (Left Pane): " --height 40% --border=rounded --color=bg+:-1,info:7,border:2)
+
+# Check if selection was canceled
+if [ -z "$FILE_A" ]; then
+    echo "Selection canceled. Exiting."
+    exit 0
+fi
+
+# 2. Select the second file (FILE B)
+echo ""
+echo "----------------------------------------------------"
+echo "STEP 2/2: Selecting FILE B (The right pane comparison file)"
+echo "----------------------------------------------------"
+FILE_B=$(find . -type f -o -type l 2>/dev/null | fzf --prompt="Select FILE B (Right Pane): " --height 40% --border=rounded --color=bg+:-1,info:7,border:2)
+
+# Check if selection was canceled
+if [ -z "$FILE_B" ]; then
+    echo "Selection canceled. Exiting."
+    exit 0
+fi
+
+# Run Neovim in diff mode
+nvim -d "$FILE_A" "$FILE_B"
+
+echo ""
+echo "-> NEOVIM session closed. Exiting script."
+echo ""

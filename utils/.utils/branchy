@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Check if fzf is installed
+if ! command -v fzf &> /dev/null; then
+    echo "fzf is not installed. Please install it first."
+    exit 1
+fi
+
+# Function to get the branch name
+get_branch_name() {
+    echo "Enter the branch name to diff against master:"
+    read branch_name
+    if [ -z "$branch_name" ]; then
+        echo "Branch name cannot be empty."
+        exit 1
+    fi
+}
+
+# Function to perform the diff and create the TUI
+select_files() {
+    git diff --name-only origin/master origin/$branch_name | \
+    fzf --multi --header="Select files to checkout (use TAB to select multiple)" \
+        --preview="git diff --color=always origin/master origin/$branch_name -- {}"
+}
+
+# Function to checkout selected files
+checkout_files() {
+    local files="$1"
+    if [ -n "$files" ]; then
+        echo "$files" | xargs -I {} git checkout origin/$branch_name -- {}
+        echo "Files checked out successfully."
+    else
+        echo "No files selected."
+    fi
+}
+
+# Main execution
+get_branch_name
+selected_files=$(select_files)
+checkout_files "$selected_files"
+

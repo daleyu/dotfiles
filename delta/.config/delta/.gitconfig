@@ -1,5 +1,6 @@
 [delta]
     navigate = true
     side-by-side = true
+	features = catppuccin-latte
 	true-color = always
-	features = catppuccin-macchiato
+

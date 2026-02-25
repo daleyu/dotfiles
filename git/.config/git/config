@@ -9,7 +9,7 @@
 	editor = nvim
 
 [interactive]
-    diffFilter = delta --color-only
+    diffFilter = delta
 
 [merge]
     conflictstyle = zdiff3

@@ -3,3 +3,7 @@
 
 #Fish
 fish_variables
+
+nvim/.config/nvim/spell/
+
+.idea/
