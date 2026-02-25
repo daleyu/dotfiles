@@ -11,11 +11,13 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.wo.number = true
-vim.o.statuscolumn = "%s %l %r "
 
 -- scroll off
-vim.opt.scrolloff = 5
+vim.opt.scrolloff = 15
 vim.opt.sidescrolloff = 10
+
+-- wrapping
+vim.opt.wrap = true
 
 -- Sets colors to line numbers Above, Current and Below  in this order
 function LineNumberColors()
@@ -57,11 +59,16 @@ vim.opt.timeoutlen = 300
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
--- tab stops and shift
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+-- my preferences for tab stops and shift but :shrug:
+-- vim.opt.tabstop = 4
+-- vim.opt.shiftwidth = 4
 
 vim.opt.laststatus = 3
+
+-- vim.g.clipboard = "osc52"
+
+-- use device clipboard
+vim.opt.clipboard = { 'unnamed', 'unnamedplus' }
 
 -- width
 -- vim.opt.colorcolumn = "80"
@@ -141,16 +148,53 @@ require('lazy').setup({
 		},
 	},
 	{ "nvim-treesitter/nvim-treesitter" },
+	{ "tpope/vim-sleuth" }, -- Detect tabstop and shiftwidth automatically
 	{ "nvim-treesitter/nvim-treesitter-textobjects" },
+	{
+		"luukvbaal/statuscol.nvim",
+		config = function()
+			local function lnum_both(args)
+				return string.format("%3d %2d", args.lnum, args.relnum)
+			end
+			require("statuscol").setup({
+				setopt = true,
+				segments = {
+					-- Git signs first
+					{
+						sign = {
+							namespace = { "gitsigns.*" },
+							name = { "gitsigns.*" },
+						},
+					},
+					-- Diagnostics second
+					{
+						sign = {
+							namespace = { ".*" },
+							name = { ".*" },
+							-- maxwidth = 2,
+							auto = true,
+						},
+					},
+					-- Line number last
+					{
+						text = { lnum_both, " " },
+						condition = { true },
+						click = "v:lua.ScLa",
+					},
+				},
+			})
+		end,
+	},
 	{ "nvim-treesitter/nvim-treesitter-context" },
-	{ "ibhagwan/fzf-lua",                           dependencies = { "nvim-tree/nvim-web-devicons" } },
+	{ "ibhagwan/fzf-lua",                       dependencies = { "nvim-tree/nvim-web-devicons" } },
 	{ 'williamboman/mason.nvim' },
 	{ 'williamboman/mason-lspconfig.nvim' },
 	{ 'hrsh7th/cmp-nvim-lsp' },
 	{ 'hrsh7th/nvim-cmp' },
-	{ "mistricky/codesnap.nvim",                    build = "make" },
+	{ "mistricky/codesnap.nvim",                build = "make" },
 	{ "sindrets/diffview.nvim" },
-	{ "nvim-tree/nvim-tree.lua",                    dependencies = { "nvim-tree/nvim-web-devicons" } },
+	{ 'akinsho/git-conflict.nvim',              version = "*",                                   config = true },
+	-- { "nvim-tree/nvim-tree.lua",                dependencies = { "nvim-tree/nvim-web-devicons" } },
 	{
 		"NeogitOrg/neogit",
 		dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim", "ibhagwan/fzf-lua" },
@@ -164,14 +208,14 @@ require('lazy').setup({
 			vim.g.vimtex_view_method = "zathura"
 		end
 	},
-	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
-		}
-	},
+	-- {
+	-- 	"folke/noice.nvim",
+	-- 	event = "VeryLazy",
+	-- 	dependencies = {
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		"rcarriga/nvim-notify",
+	-- 	}
+	-- },
 	{ 'vim-test/vim-test' },
 	{
 		"iamcco/markdown-preview.nvim",
@@ -364,20 +408,18 @@ conform.setup({
 		html = { 'prettierd', "prettier", stop_after_first = true },
 		css = { 'prettierd', "prettier", stop_after_first = true },
 	},
-	format_on_save = {
-		timeout_ms = 500,
-		lsp_fallback = true,
-	},
+	format_after_save = function(_bufnr)
+		if vim.bo.filetype == "proto" then
+			return
+		end
+		return {
+			lsp_format = "fallback",
+			async = true,
+		}
+	end,
 	format = {
 		stop_after_first = true,
 	}
-})
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	callback = function(args)
-		require("conform").format({ bufnr = args.buf })
-	end,
 })
 
 ---------------
@@ -407,9 +449,10 @@ local servers = {
 	"ts_ls",
 	"zls",
 	"eslint",
-	"jdtls",
 	"thriftls",
 	"ruff",
+	"sorbet",
+	"buf_ls"
 }
 
 local lspconfig = require('lspconfig')
@@ -514,12 +557,12 @@ require("catppuccin").setup({
 	integrations = {
 		cmp = true,
 		gitsigns = true,
-		nvimtree = true,
+		-- nvimtree = true,
 		fzf = true,
 		grug_far = false,
 		harpoon = false,
 		treesitter = true,
-		notify = false,
+		-- notify = false,
 		neogit = true,
 		mini = {
 			enabled = true,
@@ -579,6 +622,21 @@ require("fzf-lua").register_ui_select()
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
 
+-------------------
+--- ZEN MODE ---
+-----------------
+
+
+---------------------
+--- NOTES-GRAMMAR ---
+---------------------
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = { "markdown" },
+	callback = function()
+		vim.opt_local.spell = true
+	end,
+})
+
 -------------------------
 --- Treesitter configs---
 -------------------------
@@ -626,18 +684,18 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 require 'treesitter-context'.setup {
-	enable = true,        -- Enable this plugin (Can be enabled/disabled later via commands)
-	multiwindow = false,  -- Enable multiwindow support.
-	max_lines = 1,        -- How many lines the window should span. Values <= 0 mean no limit.
+	enable = true,    -- Enable this plugin (Can be enabled/disabled later via commands)
+	multiwindow = false, -- Enable multiwindow support.
+	max_lines = 1,    -- How many lines the window should span. Values <= 0 mean no limit.
 	min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
 	line_numbers = true,
 	multiline_threshold = 1, -- Maximum number of lines to show for a single context
 	trim_scope = 'inner', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-	mode = 'cursor',      -- Line used to calculate context. Choices: 'cursor', 'topline'
+	mode = 'cursor',  -- Line used to calculate context. Choices: 'cursor', 'topline'
 	-- Separator between context and content. Should be a single character string, like '-'.
 	-- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
 	separator = nil,
-	zindex = 40,  -- The Z-index of the context window
+	zindex = 40, -- The Z-index of the context window
 	on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 }
 
@@ -669,7 +727,7 @@ require("diffview").setup({})
 
 
 -- nvim-tree
-require("nvim-tree").setup()
+-- require("nvim-tree").setup()
 
 ----------------
 -- MINI.FILES --
@@ -761,19 +819,19 @@ vim.keymap.set("v", "<leader>cs", "<cmd>CodeSnap<cr>")
 vim.keymap.set("v", "<leader>ca", "<cmd>CodeSnapASCII<cr>")
 
 
-require("noice").setup({
-	cmdline = {},
-	messages = {},
-	popupmenu = {},
-	redirect = {},
-	presets = {
-		bottom_search = true, -- use a classic bottom cmdline for search
-	},
-})
+-- require("noice").setup({
+-- 	cmdline = {},
+-- 	messages = {},
+-- 	popupmenu = {},
+-- 	redirect = {},
+-- 	presets = {
+-- 		bottom_search = true, -- use a classic bottom cmdline for search
+-- 	},
+-- })
 
-require("notify").setup({
-	background_colour = "#bb9af7",
-})
+-- require("notify").setup({
+-- 	background_colour = "#bb9af7",
+-- })
 
 
 require('auto-session').setup({
@@ -805,12 +863,14 @@ vim.keymap.set("n", "x", "\"_x")
 vim.keymap.set("n", "<leader>dd", "\"_dd")
 vim.keymap.set("v", "<leader>dd", "\"_dd")
 
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+
 vim.keymap.set("n", "<BS>", "hx")
 vim.keymap.set("n", "<leader><BS>", ":bd<CR>")
 vim.keymap.set("n", "<leader><CR>", ":nohlsearch<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>vv", "ggVG\"+y")
 
-vim.keymap.set("n", "qj", "@q")
 
 -- goated binds
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -825,6 +885,7 @@ vim.keymap.set("x", ">", ">gv")
 vim.keymap.set("x", "<", "<gv")
 
 vim.keymap.set("n", "ge", vim.diagnostic.open_float)
+vim.keymap.set("n", "g/", [[/\u<enter>]])
 
 vim.keymap.set("n", "<leader>cc", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
@@ -909,26 +970,21 @@ vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+y")
 
--- navigation
--- vim.keymap.set("n", "<C-f>", "<C-f>zz", { noremap = true })
--- vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
--- vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
--- vim.keymap.set("n", "<C-b>", "<C-b>zz", { noremap = true })
 require('neoscroll').setup({
 	mappings = {
 		'<C-u>', '<C-d>',
 		'zt', 'zz', 'zb',
 	},
-	hide_cursor = true,       -- Hide cursor while scrolling
-	stop_eof = true,          -- Stop at <EOF> when scrolling downwards
+	hide_cursor = true,   -- Hide cursor while scrolling
+	stop_eof = true,      -- Stop at <EOF> when scrolling downwards
 	respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
 	cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
 	duration_multiplier = 0.3, -- Global duration multiplier
-	easing = 'linear',        -- Default easing function
-	pre_hook = nil,           -- Function to run before the scrolling animation starts
-	post_hook = nil,          -- Function to run after the scrolling animation ends
+	easing = 'linear',    -- Default easing function
+	pre_hook = nil,       -- Function to run before the scrolling animation starts
+	post_hook = nil,      -- Function to run after the scrolling animation ends
 	performance_mode = false, -- Disable "Performance Mode" on all buffers.
-	ignored_events = {        -- Events ignored while scrolling
+	ignored_events = {    -- Events ignored while scrolling
 		'WinScrolled', 'CursorMoved'
 	},
 })
@@ -939,8 +995,12 @@ vim.keymap.set("n", "<c-l>", "<c-w>w")
 vim.keymap.set("n", "gb", "<cmd>b#<cr>")
 vim.keymap.set("n", "]b", "<cmd>bn<cr>")
 vim.keymap.set("n", "[b", "<cmd>bp<cr>")
-vim.keymap.set("n", "g[", "gT")
-vim.keymap.set("n", "g]", "gt")
+vim.keymap.set("n", "[g", "gT")
+vim.keymap.set("n", "]g", "gt")
+
+-- conflicts
+vim.keymap.set("n", "[x", "<cmd>/>>>>>>><cr>")
+vim.keymap.set("n", "]x", "<cmd>?<<<<<<<<cr>")
 
 -- yank current file path
 function InsertFullPath()
@@ -960,6 +1020,7 @@ vim.keymap.set('n', '<leader>/', '<Cmd>FzfLua grep<CR>')
 vim.keymap.set('n', '<leader>l/', '<Cmd>FzfLua live_grep<CR>')
 vim.keymap.set('n', '<leader>*', '<Cmd>FzfLua grep_cword <CR>')
 vim.keymap.set("n", "<leader>zz", "<cmd>FzfLua zoxide<cr>")
+vim.keymap.set("n", "<leader>gs", "<cmd>FzfLua spell_suggest<cr>")
 vim.keymap.set("n", "<leader>ca", "<cmd>FzfLua lsp_code_actions<cr>")
 vim.keymap.set("n", "<leader>,", "<cmd>FzfLua buffers<cr>")
 vim.keymap.set("n", "<leader>t", "<cmd>FzfLua treesitter<cr>")
@@ -984,6 +1045,15 @@ vim.keymap.set("n", "<leader>q", function()
 	local pdf_file = vim.fn.expand('%:r') .. '.pdf'
 	vim.cmd('silent !zathura ' .. pdf_file .. ' &')
 end)
+
+vim.keymap.set("n", "<leader>mn", function()
+	vim.api.nvim_input("dd/##\r" .. "p")
+end, { desc = "Move current line below next ##" })
+
+vim.keymap.set("v", "<leader>mn", function()
+	vim.api.nvim_input("dd/##\r" .. "p")
+end, { desc = "Move current line below next ##" })
+
 
 -- Call Line Number color change function
 LineNumberColors()

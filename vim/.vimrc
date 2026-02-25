@@ -62,11 +62,6 @@ nmap ,v viw
 nnoremap gP i<CR><Esc>PkJxJx
 nnoremap gp a<CR><Esc>PkJxJx
 
-" Make Y and V behave like y$ and v$
-nnoremap Y y$
-nnoremap V v$
-nnoremap vv V
-
 " Recenter the screen after paging or scrolling
 nnoremap <C-f> <C-f>zz
 nnoremap <C-d> <C-d>zz

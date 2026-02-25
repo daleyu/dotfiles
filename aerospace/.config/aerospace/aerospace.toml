@@ -41,14 +41,12 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 # automatically-unhide-macos-hidden-apps = false
 
 
-#ADDED STUFF
-
 # Notify Sketchybar about workspace change and update icons
 exec-on-workspace-change = ['/bin/bash', '-c', 'AEROSPACE_FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE AEROSPACE_PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE ~/.config/sketchybar/plugins/update_workspace_icons.sh && sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE']
 # Possible values: (qwerty|dvorak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 [key-mapping]
-preset = 'dvorak'
+preset = 'qwerty'
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
@@ -61,12 +59,12 @@ preset = 'dvorak'
 inner.horizontal = 8
 inner.vertical = 8
 outer.bottom = 15
-outer.top = [{monitor."built-in" = 10}, {monitor.main = 40},10]
+outer.top = [{monitor."built-in" = 10}, {monitor.main = 15},10]
 outer.right = 15
 outer.left= 15
 
 # 'main' binding mode declaration
-# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+# See: https://n nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
 # Fallback value (if you omit the key): mode.main.binding = {}
 [mode.main.binding]
@@ -96,7 +94,15 @@ outer.left= 15
 # '''
 
 # App shortcuts
-alt-shift-r = ['exec-and-forget /opt/homebrew/bin/sketchybar --reload']
+# alt-b = 'exec-and-forget open -a /Applications/Zen\ Browser.app'
+# alt-c = 'exec-and-forget open -a /Applications/Google\ Chrome.app'
+# alt-t = 'exec-and-forget open -a /Applications/Ghostty.app'
+# alt-m = 'exec-and-forget open -a /Applications/Messages.app'
+# alt-s = 'exec-and-forget open -a /Applications/LarkSuite.app'
+# alt-d = 'exec-and-forget open -a /Applications/Discord.app'
+# alt-w = 'exec-and-forget open -a /Applications/Obsidian.app'
+# alt-n = 'exec-and-forget open -a /Applications/Notion.app'
+# alt-shift-r = ['exec-and-forget /opt/homebrew/bin/sketchybar --reload']
 
 # See: https://nikitabobko.github.ioeAeroSpace/commands#layout
 alt-e = 'layout tiles horizontal vertical'
@@ -130,8 +136,8 @@ alt-5 = 'workspace 5'
 alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
-alt-9 = 'workspace 7'
-alt-0 = 'workspace 8'
+alt-9 = 'workspace 9' 
+alt-0 = 'workspace 0' 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
@@ -142,8 +148,8 @@ alt-shift-5 = 'move-node-to-workspace 5'
 alt-shift-6 = 'move-node-to-workspace 6'
 alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
-alt-shift-9 = 'move-node-to-workspace 7'
-alt-shift-0 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
+alt-shift-0 = 'move-node-to-workspace 0'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -197,13 +203,8 @@ if.app-id ='com.larksuite.larkApp'
 run = ['move-node-to-workspace 3']
 
 [[on-window-detected]]
-if.app-id ='com.microsoft.VSCode'
-run = ['move-node-to-workspace 4']
-
-# cursor
-[[on-window-detected]]
-if.app-id ='com.todesktop.230313mzl4w4u92'
-run = ['move-node-to-workspace 4']
+if.app-id ='com.tinyspeck.slackmacgap'
+run = ['move-node-to-workspace 3']
 
 [[on-window-detected]]
 if.app-id ='com.jetbrains.intellij'
@@ -242,6 +243,20 @@ if.app-id ='com.postmanlabs.mac'
 run = ['move-node-to-workspace 8']
 
 [[on-window-detected]]
+<<<<<<< HEAD
+||||||| parent of 13d269a (update dotfiles and precommit hook)
+=======
+if.app-id ='com.microsoft.VSCode'
+run = ['move-node-to-workspace 9']
+
+# cursor
+[[on-window-detected]]
+if.app-id ='com.todesktop.230313mzl4w4u92'
+run = ['move-node-to-workspace 9']
+
+# zoom
+[[on-window-detected]]
+>>>>>>> 13d269a (update dotfiles and precommit hook)
 if.app-id ='us.zoom.xos'
 run = ['move-node-to-workspace 0']
 

@@ -1,10 +1,60 @@
 {
+  "window.title": "${rootPath}${separator}${activeEditorMedium}",
+  "update.mode": "none",
+  "security.workspace.trust.enabled": false,
+  "telemetry.telemetryLevel": "off",
+  "remote.autoForwardPorts": false,
+  "remote.restoreForwardedPorts": false,
+  "remote.SSH.enableDynamicForwarding": false,
+  "remote.forwardOnOpen": false,
+  "remote.otherPortsAttributes": {
+    "onAutoForward": "ignore"
+  },
+  "remote.SSH.enableAgentForwarding": false,
+  "remote.SSH.path": "sc-ssh-wrapper",
+  "remote.SSH.useLocalServer": true,
+  "remote.SSH.connectTimeout": 60,
+  "remote.SSH.configFile": "~/.ssh/devboxes",
+  "remote.SSH.enableRemoteCommand": true,
+  "search.followSymlinks": false,
+  "debug.javascript.automaticallyTunnelRemoteServer": false,
+  "github.copilot.enable": {
+    "*": false,
+    "apex": true,
+    "erb": true,
+    "go": true,
+    "java": true,
+    "javascript": true,
+    "python": true,
+    "ruby": true,
+    "rust": true,
+    "scala": true,
+    "shellscript": true,
+    "starlark": true,
+    "terraform": true,
+    "typescript": true,
+    "typescriptreact": true
+  },
+  "cody.override.authToken": "sgp_unused_but_must_be_nonempty",
+  "gitlens.ai.experimental.generateCommitMessage.enabled": false,
+  "ruby.rubocop.hideDisableSuggestions": true,
+  "remote.autoForwardPortsSource": "output",
+  "chat.commandCenter.enabled": false,
+  "workbench.navigationControl.enabled": false,
+  "window.commandCenter": false,
+  "breadcrumbs.enabled": false,
+  "editor.inlineSuggest.enabled": true,
+  "git.ignoreMissingGitWarning": true,
+  "application.shellEnvironmentResolutionTimeout": 20,
   "workbench.iconTheme": "vscode-icons",
   "editor.minimap.autohide": true,
   "editor.minimap.renderCharacters": false,
   "editor.minimap.scale": 2,
   "terminal.integrated.env.osx": {},
-  "editor.rulers": [80, 100],
+  "editor.rulers": [
+    80,
+    100
+  ],
   "rewrap.autoWrap.enabled": true,
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
@@ -22,7 +72,10 @@
   "vim.hlsearch": true,
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["g", "h"],
+      "before": [
+        "g",
+        "h"
+      ],
       "commands": [
         {
           "command": "editor.action.showDefinitionPreviewHover"
@@ -30,7 +83,9 @@
       ]
     },
     {
-      "before": ["u"],
+      "before": [
+        "u"
+      ],
       "after": [],
       "commands": [
         {
@@ -40,7 +95,9 @@
       ]
     },
     {
-      "before": ["<C-r>"],
+      "before": [
+        "<C-r>"
+      ],
       "after": [],
       "commands": [
         {
@@ -50,224 +107,415 @@
       ]
     },
     {
-      "before": ["g", "["],
-      "commands": [":bprevious"]
+      "before": [
+        "g",
+        "["
+      ],
+      "commands": [
+        ":bprevious"
+      ]
     },
     {
-      "before": ["g", "]"],
-      "commands": [":bnext"]
+      "before": [
+        "g",
+        "]"
+      ],
+      "commands": [
+        ":bnext"
+      ]
     },
     {
-      "before": ["<C-w>", "v"],
-      "commands": [":vsplit"]
+      "before": [
+        "<C-w>",
+        "v"
+      ],
+      "commands": [
+        ":vsplit"
+      ]
     },
     {
-      "before": ["<C-w>", "s"],
-      "commands": [":split"]
+      "before": [
+        "<C-w>",
+        "s"
+      ],
+      "commands": [
+        ":split"
+      ]
     },
     {
-      "before": ["<leader>", "f"],
-      "commands": ["workbench.action.quickOpen"]
+      "before": [
+        "<leader>",
+        "f"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
     },
     {
-      "before": ["<leader>", "p"],
-      "commands": ["workbench.action.showCommands"]
+      "before": [
+        "<leader>",
+        "p"
+      ],
+      "commands": [
+        "workbench.action.showCommands"
+      ]
     },
     {
-      "before": ["g", "r"],
-      "commands": ["editor.action.goToReferences"]
+      "before": [
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.goToReferences"
+      ]
     },
     {
-      "before": ["g", "t"],
-      "commands": ["testing.goToRelatedTest"]
+      "before": [
+        "g",
+        "t"
+      ],
+      "commands": [
+        "testing.goToRelatedTest"
+      ]
     },
     {
-      "before": ["g", "b"],
+      "before": [
+        "<leader>",
+        "h",
+        "b"
+      ],
+      "commands": [
+        "git.blame.toggleStatusBarItem"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "b"
+      ],
       "commands": [
         "workbench.action.quickOpenPreviousEditor",
         "workbench.action.acceptSelectedQuickOpenItem"
       ]
     },
     {
-      "before": ["<leader>", "q", "q"],
-      "commands": ["workbench.action.togglePanel"]
+      "before": [
+        "<leader>",
+        "q",
+        "q"
+      ],
+      "commands": [
+        "workbench.action.togglePanel"
+      ]
     },
     {
-      "before": ["<leader>", "c", "c"],
-      "commands": ["editor.action.rename"]
+      "before": [
+        "<leader>",
+        "c",
+        "c"
+      ],
+      "commands": [
+        "editor.action.rename"
+      ]
     },
     {
-      "before": ["<leader>", ","],
+      "before": [
+        "<leader>",
+        ","
+      ],
       "commands": [
         "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
       ]
     },
     {
-      "before": ["<leader>", "z", "m"],
-      "commands": ["workbench.action.toggleZenMode"]
+      "before": [
+        "<leader>",
+        "z",
+        "m"
+      ],
+      "commands": [
+        "workbench.action.toggleZenMode"
+      ]
     },
     {
-      "before": ["<leader>", "l", "c"],
-      "commands": ["pay.cmd.copyRelativeFilePath.currentLine"]
+      "before": [
+        "<leader>",
+        "l",
+        "c"
+      ],
+      "commands": [
+        "workbench.action.files.copyPathOfActiveFile"
+      ]
     },
     {
-      "before": ["<leader>", "<leader>"],
-      "commands": ["workbench.explorer.fileView.focus"]
+      "before": [
+        "<leader>",
+        "<leader>"
+      ],
+      "commands": [
+        "workbench.view.explorer"
+      ]
     },
     {
-      "before": ["<leader>", "/"],
-      "commands": ["pay.cmd.livegrep.openSearchEditor"]
+      "before": [
+        "<leader>",
+        "/"
+      ],
+      "commands": [
+        "pay.cmd.livegrep.openSearchEditor"
+      ]
     },
     {
-      "before": ["<leader>", "r"],
-      "commands": ["workbench.action.replaceInFiles"]
+      "before": [
+        "<leader>",
+        "r"
+      ],
+      "commands": [
+        "workbench.action.replaceInFiles"
+      ]
     },
     {
-      "before": ["<leader>", "b"],
-      "commands": ["workbench.action.toggleSidebarVisibility"]
+      "before": [
+        "<leader>",
+        "b"
+      ],
+      "commands": [
+        "workbench.action.toggleSidebarVisibility"
+      ]
     },
     {
-      "before": ["<leader>", "c", "a"],
-      "commands": ["editor.action.quickFix"]
+      "before": [
+        "<leader>",
+        "c",
+        "a"
+      ],
+      "commands": [
+        "editor.action.quickFix"
+      ]
     },
     {
-      "before": ["<C-h>"],
-      "commands": ["workbench.action.focusLeftGroup"]
+      "before": [
+        "<C-h>"
+      ],
+      "commands": [
+        "workbench.action.focusLeftGroup"
+      ]
     },
     {
-      "before": ["<C-l>"],
-      "commands": ["workbench.action.focusRightGroup"]
+      "before": [
+        "<C-l>"
+      ],
+      "commands": [
+        "workbench.action.focusRightGroup"
+      ]
     },
     {
-      "before": ["<C-j>"],
-      "commands": ["workbench.action.focusBelowGroup"]
+      "before": [
+        "<C-j>"
+      ],
+      "commands": [
+        "workbench.action.focusBelowGroup"
+      ]
     },
     {
-      "before": ["<C-k>"],
-      "commands": ["workbench.action.focusAboveGroup"]
+      "before": [
+        "<C-k>"
+      ],
+      "commands": [
+        "workbench.action.focusAboveGroup"
+      ]
     },
     {
-      "before": ["<C-a>", "x"],
-      "commands": ["workbench.action.closeActiveEditor"]
+      "before": [
+        "<C-a>",
+        "x"
+      ],
+      "commands": [
+        "workbench.action.closeActiveEditor"
+      ]
     },
     {
-      "before": ["<leader>", "h", "b"],
-      "commands": ["git.blame.toggleEditorDecoration"]
+      "before": [
+        "<leader>",
+        "h",
+        "b"
+      ],
+      "commands": [
+        "gitlens.toggleFileBlame"
+      ]
     },
     {
-      "before": ["[", "h"],
-      "commands": ["workbench.action.editor.previousChange"]
+      "before": [
+        "[",
+        "h"
+      ],
+      "commands": [
+        "workbench.action.editor.prevChange"
+      ]
     },
     {
-      "before": ["]", "h"],
-      "commands": ["workbench.action.editor.nextChange"]
+      "before": [
+        "]",
+        "h"
+      ],
+      "commands": [
+        "workbench.action.editor.nextChange"
+      ]
     },
     {
-      "before": ["[", "x"],
-      "commands": ["workbench.action.compareEditor.previousChange"]
+      "before": [
+        "[",
+        "x"
+      ],
+      "commands": [
+        "workbench.action.compareEditor.previousChange"
+      ]
     },
     {
-      "before": ["]", "x"],
-      "commands": ["workbench.action.compareEditor.nextChange"]
+      "before": [
+        "]",
+        "x"
+      ],
+      "commands": [
+        "workbench.action.compareEditor.nextChange"
+      ]
     },
     {
-      "before": ["<leader>", "t", "r"],
-      "commands": ["pay.cmd.test.rerun"]
+      "before": [
+        "<leader>",
+        "t",
+        "r"
+      ],
+      "commands": [
+        "pay.cmd.test.rerun"
+      ]
     },
     {
-      "before": ["<leader>", "t", "a"],
-      "commands": ["pay.cmd.test.activeEditor"]
+      "before": [
+        "<leader>",
+        "t",
+        "a"
+      ],
+      "commands": [
+        "pay.cmd.test.activeEditor"
+      ]
     },
     {
-      "before": ["<leader>", "t", "t"],
-      "commands": ["pay.cmd.test.currentLine"]
+      "before": [
+        "<leader>",
+        "t",
+        "t"
+      ],
+      "commands": [
+        "pay.cmd.test.currentLine"
+      ]
     },
     {
-      "before": ["<leader>", "t", "d"],
-      "commands": ["pay.cmd.test.debug.currentLine"]
+      "before": [
+        "<leader>",
+        "t",
+        "d"
+      ],
+      "commands": [
+        "pay.cmd.test.debug.currentLine"
+      ]
     },
     {
-      "before": ["<leader>", "t", "b"],
-      "commands": ["editor.debug.action.toggleBreakpoint"]
+      "before": [
+        "<leader>",
+        "t",
+        "b"
+      ],
+      "commands": [
+        "editor.debug.action.toggleBreakpoint"
+      ]
     },
     {
-      "before": ["<leader>", "n", "g"],
-      "commands": ["workbench.view.scm"]
+      "before": [
+        "<leader>",
+        "n",
+        "g"
+      ],
+      "commands": [
+        "workbench.view.scm"
+      ]
     },
     {
-      "before": ["<leader>", "m", "p"],
-      "commands": ["markdown.showPreviewToSide"]
+      "before": [
+        "<leader>",
+        "m",
+        "p"
+      ],
+      "commands": [
+        "markdown.showPreviewToSide"
+      ]
     },
     {
-      "before": ["<leader>", "h", "l"],
-      "commands": ["git.blame.toggleEditorDecoration"]
+      "before": [
+        "<leader>",
+        "h",
+        "l"
+      ],
+      "commands": [
+        "git.blame.toggleEditorDecoration"
+      ]
     },
     {
-      "before": ["<leader>", "s", "g"],
-      "commands": ["pay.cmd.sourcegraph.open.currentLine"]
+      "before": [
+        "<leader>",
+        "s",
+        "g"
+      ],
+      "commands": [
+        "pay.cmd.sourcegraph.open.currentLine"
+      ]
     },
     {
-      "before": ["<leader>", "v", "v"],
+      "before": [
+        "<leader>",
+        "v",
+        "v"
+      ],
       "commands": [
         "editor.action.selectAll",
         "editor.action.clipboardCopyAction"
       ]
     },
-    {
-      "before": ["g", "p"],
-      "commands": ["editor.emmet.action.matchTag"]
-    },
-    {
-      "before": ["<leader>", "<tab>"],
-      "commands": ["editor.cpp.toggle"]
-    },
-    {
-      "before": ["g", "e"],
-      "commands": ["editor.action.marker.next"]
-    },
-    {
-      "before": ["<leader>", "g", "e"],
-      "commands": ["workbench.action.problems.focus"]
-    },
-    {
-      "before": ["<leader>", "4", "d"],
-      "commands": ["editor.action.formatDocument"]
-    }
   ],
   "vim.useSystemClipboard": true,
   "vim.insertModeKeyBindings": [],
   "vim.visualModeKeyBindings": [
     {
-      "before": ["g", "p"],
-      "commands": ["editor.emmet.action.matchTag"]
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
     },
     {
-      "before": ["<leader>", "c", "s"],
-      "commands": ["codesnap.start"]
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
     },
     {
-      "before": ["<"],
-      "commands": ["editor.action.outdentLines"]
+      "before": [
+        "J"
+      ],
+      "commands": [
+        "editor.action.moveLinesDownAction"
+      ]
     },
     {
-      "before": [">"],
-      "commands": ["editor.action.indentLines"]
-    },
-    {
-      "before": ["J"],
-      "commands": ["editor.action.moveLinesDownAction"]
-    },
-    {
-      "before": ["K"],
-      "commands": ["editor.action.moveLinesUpAction"]
-    },
-    {
-      "before": ["v"],
-      "commands": ["editor.action.smartSelect.expand"]
-    },
-    {
-      "before": ["g", "e"],
-      "commands": ["editor.action.marker.next"]
+      "before": [
+        "K"
+      ],
+      "commands": [
+        "editor.action.moveLinesUpAction"
+      ]
     }
   ],
   "vim.handleKeys": {
@@ -305,5 +553,11 @@
     "rgba(255,127,255,0.3)",
     "rgba(79,236,236,0.3)"
   ],
-  "editor.fontSize": 16
+  "editor.fontSize": 16,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "gitlens.currentLine.enabled": false,
+  "gitlens.codeLens.authors.enabled": false,
+  "gitlens.codeLens.recentChange.enabled": false,
 }

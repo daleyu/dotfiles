@@ -12,6 +12,8 @@ macos-option-as-alt = left
 # font
 font-size = 14
 adjust-cell-height = 15%
+adjust-cell-width = "-3%"
+adjust-cell-height = "3%"
 
 # window and toolbar decoration
 window-decoration = auto
@@ -21,8 +23,7 @@ window-padding-balance = true
 macos-titlebar-style = hidden
 
 #styling for transparent
-# background-opacity = 1
-background-opacity = 0.85
+background-opacity = .95
 # TODO: add https://github.com/ghostty-org/ghostty/pull/5170 for toggle when it
 # is merged
 background-blur = 15
@@ -80,9 +81,19 @@ keybind = super+6=text:\x016
 keybind = super+7=text:\x017
 keybind = super+8=text:\x018
 keybind = super+9=text:\x019
+keybind = super+digit_1=text:\x011
+keybind = super+digit_2=text:\x012
+keybind = super+digit_3=text:\x013
+keybind = super+digit_4=text:\x014
+keybind = super+digit_5=text:\x015
+keybind = super+digit_6=text:\x016
+keybind = super+digit_7=text:\x017
+keybind = super+digit_8=text:\x018
+keybind = super+digit_9=text:\x019
 
 # next tab
 keybind = super+n=text:\x01n
+keybind = super+left_bracket=text:\x00[
 
 # prev tab
 keybind = super+p=text:\x01p
@@ -101,6 +112,9 @@ keybind = super+t=text:\x01T
 
 # find window
 keybind = super+f=text:\x01f
+
+# visual mode
+keybind = super+y=text:\x01[
 
 # go to last session
 keybind = super+l=text:\x01L
