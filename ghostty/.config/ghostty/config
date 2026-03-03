@@ -104,6 +104,9 @@ keybind = super+t=text:\x01c
 # close tab
 keybind = super+w=text:\x01&
 
+# close pane
+keybind = super+x=text:\x02x
+
 # open sessions
 keybind = super+s=text:\x01s
 
