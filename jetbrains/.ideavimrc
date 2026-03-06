@@ -2,17 +2,9 @@
 let mapleader=" "
 
 """ Some Basic vim necessities -------------
-<<<<<<< HEAD
-set hlsearch
-set scrolloff=10
-||||||| parent of 13d269a (update dotfiles and precommit hook)
-set hlsearch 
-set scrolloff=10
-=======
 set hlsearch 
 set scrolloff=15
 set scroll=20
->>>>>>> 13d269a (update dotfiles and precommit hook)
 set number
 "set relativenumber
 set nu
@@ -24,16 +16,12 @@ set incsearch
 set hlsearch
 set visualbell
 set clipboard+=unnamed
-set clipboard+=unnamedplus
+set clipboard+=unnamedplus   
 
 """ plugins --------------------------------
 set easymotion
 set multiple-cursors
-<<<<<<< HEAD
-||||||| parent of 13d269a (update dotfiles and precommit hook)
-=======
 set multicursor
->>>>>>> 13d269a (update dotfiles and precommit hook)
 set nerdtree
 set which-key
 set surround
@@ -52,161 +40,6 @@ nmap ,c yiw
 nmap ,v viw
 
 """ Copy/paste/yank improvements -----------
-<<<<<<< HEAD
-" change the copy and paste to match d and D binds
-nnoremap Y y$
-nnoremap V v$
-nnoremap vv V
-
-""" Separate clipboards (match nvim) -------
-nnoremap <leader>y "+y
-vnoremap <leader>y "+y
-nnoremap <leader>Y "+y
-
-""" Class motions --------------------------
-if &ide =~? 'intellij'
-"--- Previous class opening
-nnoremap [c 0?\<class\> <cr>f{:nohlsearch<cr>
-"--- Next class opening
-nnoremap ]c $/\<class\> <cr>f{:nohlsearch<cr>
-"--- Previous class closing
-nnoremap [C $?\<class\> <cr>nf{%:nohlsearch<cr>
-"--- Next class closing
-nnoremap ]C 0/\<class\> <cr>f{%:nohlsearch<cr>
-endif
-
-nnoremap vic gg :action MethodDown<cr>f{vi{
-nnoremap vac gg :action MethodDown<cr>f{va{
-nnoremap dic gg :action MethodDown<cr>f{di{
-nnoremap dac gg :action MethodDown<cr>f{da{
-nnoremap cic gg :action MethodDown<cr>f{ci{
-nnoremap cac gg :action MethodDown<cr>f{ca{
-nnoremap yic gg :action MethodDown<cr>f{yi{
-nnoremap yac gg :action MethodDown<cr>f{ya{
-
-""" Navigation improvements ----------------
-nnoremap gb <C-6>
-nmap <C-o> :action Back<CR>
-
-" Buffer/Tab navigation (match nvim)
-nnoremap g[ :action PreviousTab<cr>
-nnoremap g] :action NextTab<cr>
-nnoremap ]b :action NextTab<cr>
-nnoremap [b :action PreviousTab<cr>
-
-" Find usages (match nvim gr binding)
-nnoremap gr :action FindUsages<cr>
-
-""" Window/Split management ----------------
-" Tmux like splits (keep existing)
-nnoremap <a--> :action SplitHorizontally<cr>
-nnoremap <a-\> :action SplitVertically<cr>
-nnoremap <c-a-d> :action Unsplit<cr>
-
-" Window focus navigation (match nvim)
-nnoremap <C-h> :action PrevSplitter<cr>
-nnoremap <C-l> :action NextSplitter<cr>
-nnoremap <C-j> :action PrevSplitter<cr>
-nnoremap <C-k> :action NextSplitter<cr>
-
-" Close active editor (match nvim)
-nnoremap <leader><BS> :action CloseContent<cr>
-
-""" Leader-based commands (match nvim style) --
-nnoremap <D-t> :action Autosync.OpenExistingProject<cr>
-nnoremap <leader>f :action GotoFile<cr>
-nnoremap <leader>p :action GotoAction<cr>
-nnoremap <leader>gc :action GotoClass<cr>
-nnoremap <leader>, :action RecentFiles<cr>
-
-" UI toggles
-nnoremap <leader>b :NERDTreeClose<cr>
-nnoremap <leader><space> :action SelectInProjectView<cr>
-nnoremap <leader>/ :action FindInPath<cr>
-nnoremap <leader>rr :action ReplaceInPath<cr>
-
-" Code actions (match nvim LSP bindings)
-nnoremap <leader>ca :action ShowIntentionActions<cr>
-nnoremap mm :action ShowPopupMenu<cr>
-
-" Zen mode and utilities
-nnoremap <leader>zm :action ToggleDistractionFreeMode<cr>
-
-" Git integration (match nvim neogit bindings)
-nnoremap <leader>ng :action Vcs.Show.Local.Changes<cr>
-nnoremap <leader>hb :action Annotate<cr>
-map <leader>x] <Action>(ReSharperGotoNextErrorInSolution)
-map <leader>x[ <Action>(ReSharperGotoPrevErrorInSolution)
-
-" gitsigns like navigate between hunks
-nnoremap <leader>h[ :action VcsShowPrevChangeMarker<cr>
-nnoremap <leader>h] :action VcsShowNextChangeMarker<cr>
-
-""" LSP-like bindings (match nvim) ----------
-" Hover and help
-nnoremap gh :action ShowHoverInfo<cr>
-
-" Go to definition/declaration (match nvim)
-nnoremap gd :action GotoDeclaration<cr>
-nnoremap gD :action GotoDeclaration<cr>
-nnoremap gi :action GotoImplementation<cr>
-nnoremap go :action GotoTypeDeclaration<cr>
-nmap gt <Action>(GotoTest)
-
-
-" Diagnostics (match nvim)
-nnoremap ge :action ShowErrorDescription<cr>
-nnoremap ]e :action GotoNextError<cr>
-nnoremap [e :action GotoPreviousError<cr>
-
-" Code formatting (match nvim F3 binding)
-nnoremap <F3> :action ReformatCode<cr>
-vnoremap <F3> :action ReformatCode<cr>
-nnoremap <leader>cc yiw:action Replace<cr>
-||||||| parent of 13d269a (update dotfiles and precommit hook)
-"--  Class motions
-if &ide =~? 'intellij'
-  "--- Previous class opening
-  nnoremap [c 0?\<class\> <cr>f{:nohlsearch<cr>  
-  "--- Next class opening
-  nnoremap ]c $/\<class\> <cr>f{:nohlsearch<cr>
-  "--- Previous class closing
-  nnoremap [C $?\<class\> <cr>nf{%:nohlsearch<cr>
-  "--- Next class closing
-  nnoremap ]C 0/\<class\> <cr>f{%:nohlsearch<cr>
-endif
-
-nnoremap vic gg :action MethodDown<cr>f{vi{ 
-nnoremap vac gg :action MethodDown<cr>f{va{ 
-nnoremap dic gg :action MethodDown<cr>f{di{ 
-nnoremap dac gg :action MethodDown<cr>f{da{ 
-nnoremap cic gg :action MethodDown<cr>f{ci{ 
-nnoremap cac gg :action MethodDown<cr>f{ca{ 
-nnoremap yic gg :action MethodDown<cr>f{yi{ 
-nnoremap yac gg :action MethodDown<cr>f{ya{ 
-
-nnoremap <C-o> :action Back<cr>
-nnoremap <C-i> :action Forward<cr>
-
-" Tmux like
-nnoremap <a--> :action SplitHorizontally<cr>
-nnoremap <a-\> :action SplitVertically<cr> 
-nnoremap <c-a-d> :action Unsplit<cr>
-
-# Hover over error bind
-map gh <Action>(ShowHoverInfo)
-
-" paste in where the cursor is -------------
-nnoremap gP i<CR><Esc>PkJxJx
-nnoremap gp a<CR><Esc>PkJxJx
-
-" change the copy and paste to match d and D binds
-nnoremap Y y$
-nnoremap V v$
-nnoremap vv V
-
-" recenter after up and down
-=======
 
 """ Separate clipboards (match nvim) -------
 nnoremap <leader>y "+y
@@ -319,7 +152,6 @@ vnoremap <F3> :action ReformatCode<cr>
 nnoremap <leader>cc yiw:action Replace<cr>
 nnoremap <leader>rc :action Rename<cr>
 
->>>>>>> 13d269a (update dotfiles and precommit hook)
 
 nnoremap ga :action ShowIntentionActions<cr>
 
@@ -345,15 +177,6 @@ nnoremap <c-g> :action ShowFilePath<cr>
 nnoremap <leader>lc :action CopyPathFromRepositoryRootProvider<cr>
 nmap <leader>vv ggVG"+y
 
-<<<<<<< HEAD
-""" Visual mode improvements (match nvim) --
-" goated bindings for qol (match nvim exactly)
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-nnoremap J mzJ`z
-||||||| parent of 13d269a (update dotfiles and precommit hook)
-" easy window navigation
-=======
 nnoremap <leader>sg :action Dataland.OpenInSourcegraph<cr>
 
 """ Visual mode improvements (match nvim) --
@@ -363,7 +186,6 @@ vnoremap K :m '<-2<CR>gv=gv
 nnoremap J mzJ`z
 vnoremap v :action EditorSelectWord<cr>
 vnoremap V :action EditorUnSelectWord<cr>
->>>>>>> 13d269a (update dotfiles and precommit hook)
 
 " Visual mode indentation
 vnoremap < <gv
@@ -436,10 +258,6 @@ map <A-x> <Action>(SelectAllOccurrences)
 """ Terminal integration -------------------
 nnoremap <leader>qq :action HideAllWindows<CR>
 
-nnoremap <leader>geb :action Dataland.BazelBuildHelper<CR>
-
 nnoremap <leader>gmm :action MakeModule<cr>
 
 nnoremap <leader><tab> :action copilot.disableCopilot<cr>
-
-

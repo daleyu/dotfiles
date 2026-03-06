@@ -186,6 +186,10 @@ if.app-id ='com.google.Chrome'
 run = ['move-node-to-workspace 1']
 
 [[on-window-detected]]
+if.app-id ='com.google.Chrome.dev'
+run = ['move-node-to-workspace 1']
+
+[[on-window-detected]]
 if.app-id ='com.mitchellh.ghostty'
 run = ['move-node-to-workspace 2']
 
@@ -208,6 +212,12 @@ run = ['move-node-to-workspace 3']
 
 [[on-window-detected]]
 if.app-id ='com.jetbrains.intellij'
+run = ['move-node-to-workspace 4']
+
+
+# remote intellij
+[[on-window-detected]]
+if.app-id ='com.jetbrains.cwm.guest'
 run = ['move-node-to-workspace 4']
 
 [[on-window-detected]]
@@ -235,6 +245,10 @@ if.app-id ='com.apple.finder'
 run = ['move-node-to-workspace 7']
 
 [[on-window-detected]]
+if.app-id ='com.jetbrains.toolbox'
+run = ['move-node-to-workspace 7']
+
+[[on-window-detected]]
 if.app-id ='com.electron.dockerdesktop'
 run = ['move-node-to-workspace 8']
 
@@ -243,9 +257,6 @@ if.app-id ='com.postmanlabs.mac'
 run = ['move-node-to-workspace 8']
 
 [[on-window-detected]]
-<<<<<<< HEAD
-||||||| parent of 13d269a (update dotfiles and precommit hook)
-=======
 if.app-id ='com.microsoft.VSCode'
 run = ['move-node-to-workspace 9']
 
@@ -256,7 +267,6 @@ run = ['move-node-to-workspace 9']
 
 # zoom
 [[on-window-detected]]
->>>>>>> 13d269a (update dotfiles and precommit hook)
 if.app-id ='us.zoom.xos'
 run = ['move-node-to-workspace 0']
 
