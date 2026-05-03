@@ -32,6 +32,8 @@ background-blur = 15
 keybind = cmd+o>r=reload_config
 keybind = cmd+o>x=close_surface
 
+keybind = cmd+o>t=toggle_background_opacity
+
 keybind = cmd+o>n=new_window
 keybind = super+kp_add=increase_font_size:1
 
