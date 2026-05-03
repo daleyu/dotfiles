@@ -1,17 +1,19 @@
 #!/bin/bash
 
+temp_file=$(mktemp)
 if [ "$#" -eq 0 ]; then
-  echo "Usage: ntemp <command>"
-  exit 1
+  echo > "$temp_file" 2>&1
+elif [[ "$1" == "rb" || "$1" == "tsx" || "$1" == "java"  || "$1" == "md" || "$1" == "json" ]]; then
+  mv "$temp_file" "${temp_file}.$1"
+  temp_file="${temp_file}.$1"
+else
+  "$@" > "$temp_file" 2>&1
 fi
 
-temp_file=$(mktemp)
-"$@" > "$temp_file" 2>&1
-
 if [ $? -ne 0 ]; then
-  echo "Command failed and temp file removed. : $temp_file"
+  echo "Command failed"
 else
-  echo "Command worked and temp file removed. see the file in Neovim"
+  echo "Command worked"
 fi
 
 nvim "$temp_file"
