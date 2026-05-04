@@ -7,3 +7,7 @@ fish_variables
 nvim/.config/nvim/spell/
 
 .idea/
+
+# Stripe-specific nvim plugins (private)
+# Go to stripe dotfile overlays to get these files
+nvim/.config/nvim/lua/plugins-stripe/
