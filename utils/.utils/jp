@@ -1,0 +1,12 @@
+#!/bin/bash
+
+temp_file="$HOME/notes/archived/responses/temp.json"
+
+mkdir -p "$(dirname "$temp_file")"
+touch "$temp_file"
+
+pbpaste | jq . > "$temp_file"
+
+nvim "$temp_file"
+
+rm "$temp_file"

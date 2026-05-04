@@ -6,7 +6,6 @@ if ! command -v fzf &> /dev/null; then
     exit 1
 fi
 
-# Function to get the branch name
 get_branch_name() {
     echo "Enter the branch name to diff against master:"
     read branch_name
@@ -16,14 +15,12 @@ get_branch_name() {
     fi
 }
 
-# Function to perform the diff and create the TUI
 select_files() {
     git diff --name-only origin/master origin/$branch_name | \
     fzf --multi --header="Select files to checkout (use TAB to select multiple)" \
         --preview="git diff --color=always origin/master origin/$branch_name -- {}"
 }
 
-# Function to checkout selected files
 checkout_files() {
     local files="$1"
     if [ -n "$files" ]; then
