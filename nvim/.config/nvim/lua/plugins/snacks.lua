@@ -11,7 +11,16 @@ return {
 					files = {
 						hidden = true,
 					},
-					explorer = {},
+					grep = {
+						hidden = true,
+						exclude = { ".git" }
+					},
+					grep_word = {
+						hidden = true,
+					},
+					explorer = {
+						hidden = true,
+					},
 				},
 				previewers = {
 					diff = {
@@ -20,7 +29,7 @@ return {
 					},
 				},
 			},
-			explorer = { enabled = true },
+			explorer = { enabled = false },
 			image = { enabled = true },
 			notifier = {
 				enabled = true,
@@ -38,7 +47,7 @@ return {
 					diagnostics = true,
 					inlay_hints = true
 				},
-					show = {
+				show = {
 					statusline = true,
 					tabline = true,
 				},

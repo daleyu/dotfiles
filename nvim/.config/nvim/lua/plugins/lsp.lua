@@ -55,7 +55,7 @@ return {
 				ensure_installed = {
 					"lua_ls", "rust_analyzer", "bashls",
 					"jsonls", "ts_ls", "zls", "eslint", "thriftls",
-					"buf_ls"
+					"buf_ls", "marksman"
 				},
 			})
 		end,

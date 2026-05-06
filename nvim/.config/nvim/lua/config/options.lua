@@ -40,7 +40,6 @@ vim.opt.splitbelow = true
 vim.opt.laststatus = 3
 
 vim.opt.textwidth = 80
-vim.opt.colorcolumn = "80"
 vim.opt.wrapmargin = 10
 
 vim.opt.inccommand = 'split'

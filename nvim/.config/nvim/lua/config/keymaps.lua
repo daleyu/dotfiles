@@ -99,11 +99,14 @@ vim.keymap.set("v", "<leader>i", function() invert(true) end, { noremap = true, 
 vim.keymap.set('n', '<leader>lc', function()
 	local filepath = vim.fn.expand('%')
 	vim.fn.setreg('+', filepath)
-	print("Copied file path to system clipboard")
+	require("snacks").notify.notify("Copied file path to system clipboard")
 end, { noremap = true, silent = true, desc = "Copy file path" })
 
 vim.keymap.set("n", "<leader>gfs", '<Cmd>! git diff origin/master --name-only<CR>')
 vim.keymap.set("n", "<leader>gfi", '<Cmd>! git diff origin/main --name-only<CR>')
+vim.keymap.set("n", "<leader>qf", '<Cmd>copen<CR>')
+vim.keymap.set("n", "]f", '<Cmd>cnext<CR>')
+vim.keymap.set("n", "[f", '<Cmd>cprev<CR>')
 
 vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")
@@ -136,6 +139,16 @@ end, { desc = "Move current line below next ##" })
 vim.keymap.set("v", "<leader>mn", function()
 	vim.api.nvim_input("dd/##\r" .. "p")
 end, { desc = "Move current line below next ##" })
+
+vim.keymap.set('n', '<leader>tcc', function()
+	if vim.wo.colorcolumn == "" then
+		vim.wo.colorcolumn = "80"
+		require("snacks").notify.notify("Colorcolumn ON")
+	else
+		vim.wo.colorcolumn = ""
+		require("snacks").notify.notify("Colorcolumn OFF")
+	end
+end, { desc = "Toggle colorcolumn", noremap = true, silent = true })
 
 local function toggle_case()
 	local word = vim.fn.expand('<cword>')
