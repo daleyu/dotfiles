@@ -11,6 +11,7 @@ return {
 		config = function()
 			local mini_files = require("mini.files")
 			mini_files.setup({
+				options = { use_as_default_explorer = false, },
 				windows = {
 					preview = true,
 					width_preview = 40,
@@ -152,7 +153,9 @@ return {
 			})
 		end,
 	},
-	{ "MagicDuck/grug-far.nvim", opts = { windowCreationCommand = "e" },
+	{
+		"MagicDuck/grug-far.nvim",
+		opts = { windowCreationCommand = "e" },
 		keys = {
 			{ "<leader>r", "<cmd>GrugFar<cr>" },
 		},
