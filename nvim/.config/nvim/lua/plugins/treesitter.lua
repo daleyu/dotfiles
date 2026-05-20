@@ -8,10 +8,10 @@ return {
 			indent = { enable = true },
 		},
 		config = function(_, opts)
-			require('nvim-treesitter').install { "cpp", "typescript", "tsx", "python", "luau", "javascript", "rust", "json", "lua", "go", "html", "ruby", "javascript", "zig", "java", "proto", "bash" }
+			require('nvim-treesitter').install { "cpp", "typescript", "tsx", "python", "luau", "javascript", "rust", "json", "lua", "go", "html", "ruby", "javascript", "zig", "java", "proto", "bash", "markdown", "yaml" }
 
 			vim.api.nvim_create_autocmd('FileType', {
-				pattern = { "java", "tsx", "rb", "proto", "json", "go" },
+				pattern = { "java", "tsx", "rb", "proto", "json", "go", "md", "rs", "yaml" },
 				callback = function() vim.treesitter.start() end,
 			})
 		end,
