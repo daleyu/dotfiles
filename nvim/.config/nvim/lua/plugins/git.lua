@@ -7,6 +7,9 @@ return {
 			local gitsigns = require('gitsigns')
 			vim.keymap.set("n", "<leader>hb", "<cmd>Gitsigns blame<cr>")
 			vim.keymap.set("n", "<leader>hl", "<cmd>Gitsigns toggle_current_line_blame<cr>")
+			vim.keymap.set("n", "<leader>hp", "<cmd>Gitsigns preview_hunk_inline<cr>")
+			vim.keymap.set("n", "<leader>hm", "<cmd>Gitsigns change_base master<cr>")
+			vim.keymap.set("n", "<leader>hh", "<cmd>Gitsigns change_base HEAD<cr>")
 			vim.keymap.set('n', ']h', function()
 				if vim.wo.diff then
 					vim.cmd.normal({ ']h', bang = true })
