@@ -124,6 +124,30 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+view-pr() {
+    local top_email=$(git log -1 --format="%ae")
+    local target_hash=$(git log --format="%H %ae" | grep -v "$top_email" | head -n 1 | cut -d' ' -f1)
+    
+    if [ -z "$target_hash" ]; then
+        if git rev-parse --verify origin/HEAD >/dev/null 2>&1; then
+            target_hash=$(git rev-parse --abbrev-ref origin/HEAD | cut -d'/' -f2)
+            echo "Entire visible history belongs to $top_email."
+            echo "Falling back to the repository's default branch: $target_hash"
+        else
+            if git show-ref --verify --quiet refs/heads/main; then
+                target_hash="main"
+            else
+                target_hash="master"
+            fi
+            echo "No remote origin pointer found. Falling back to guessed local branch: $target_hash"
+        fi
+    else
+        echo "Comparing HEAD against latest diverging commit: $target_hash"
+    fi
+    
+    git difftool -d "$target_hash"
+}
+
 kinit dale.yu@BYTEDANCE.COM
 klist
 echo "Connected for 24 hrs to Bytedance auth"
