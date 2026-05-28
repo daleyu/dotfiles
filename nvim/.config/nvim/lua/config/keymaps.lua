@@ -102,8 +102,6 @@ vim.keymap.set('n', '<leader>lc', function()
 	require("snacks").notify.notify("Copied file path to system clipboard")
 end, { noremap = true, silent = true, desc = "Copy file path" })
 
-vim.keymap.set("n", "<leader>gfs", '<Cmd>! git diff origin/master --name-only<CR>')
-vim.keymap.set("n", "<leader>gfi", '<Cmd>! git diff origin/main --name-only<CR>')
 vim.keymap.set("n", "<leader>qf", '<Cmd>copen<CR>')
 vim.keymap.set("n", "]f", '<Cmd>cnext<CR>')
 vim.keymap.set("n", "[f", '<Cmd>cprev<CR>')
