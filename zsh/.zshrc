@@ -21,33 +21,6 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(git
         zsh-syntax-highlighting
         zsh-autosuggestions
@@ -56,35 +29,6 @@ plugins=(git
         )
 
 source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch $(uname -m)"
-
-# Set personal aliases, overriding those provided by Oh My Zsh libs,
-# plugins, and themes. Aliases can be placed here, though Oh My Zsh
-# users are encouraged to define aliases within a top-level file in
-# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-# - $ZSH_CUSTOM/aliases.zsh
-# - $ZSH_CUSTOM/macos.zsh
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Add timestamp to the end of the line
 local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
@@ -125,27 +69,25 @@ function y() {
 }
 
 view-pr() {
-    local top_email=$(git log -1 --format="%ae")
-    local target_hash=$(git log --format="%H %ae" | grep -v "$top_email" | head -n 1 | cut -d' ' -f1)
+    local main_branch
     
-    if [ -z "$target_hash" ]; then
-        if git rev-parse --verify origin/HEAD >/dev/null 2>&1; then
-            target_hash=$(git rev-parse --abbrev-ref origin/HEAD | cut -d'/' -f2)
-            echo "Entire visible history belongs to $top_email."
-            echo "Falling back to the repository's default branch: $target_hash"
-        else
-            if git show-ref --verify --quiet refs/heads/main; then
-                target_hash="main"
-            else
-                target_hash="master"
-            fi
-            echo "No remote origin pointer found. Falling back to guessed local branch: $target_hash"
-        fi
+    if git rev-parse --verify origin/HEAD >/dev/null 2>&1; then
+        main_branch=$(git rev-parse --abbrev-ref origin/HEAD | cut -d'/' -f2)
+    elif git show-ref --verify --quiet refs/heads/main; then
+        main_branch="main"
     else
-        echo "Comparing HEAD against latest diverging commit: $target_hash"
+        main_branch="master"
     fi
-    
-    git difftool -d "$target_hash"
+
+    local base_hash=$(git merge-base HEAD "$main_branch" 2>/dev/null)
+
+    if [ -n "$base_hash" ]; then
+        echo "Found diverging commit from $main_branch: $base_hash"
+        git difftool -d "$base_hash" HEAD
+    else
+      git difftool -d 
+      echo "Warn: Could not find a common ancestor between HEAD and $main_branch. So running normal git diff"
+    fi
 }
 
 kinit dale.yu@BYTEDANCE.COM

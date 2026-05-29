@@ -25,9 +25,8 @@
 [alias]
     bring = "!f() { if [ $# -eq 1 ]; then git fetch origin +refs/heads/$1:refs/remotes/origin/$1 && git checkout -B $1 FETCH_HEAD && git config branch.$1.remote origin && git config branch.$1.merge refs/heads/$1 && echo \"Branch '$1' is now checked out and configured to track origin/$1.\"; else echo 'Usage: git bring <branch_name>'; fi; }; f"
     snatch = "!f() { if [ $# -eq 2 ]; then git fetch origin \"$1\" && git checkout -b \"$2\" FETCH_HEAD && echo \"Stole origin/'$1' and created your new branch '$2'.\"; else echo 'Usage: git snatch <their_branch> <your_new_branch>'; fi; }; f"
-    latest = "!f() { git log --format=\"%H %ae\" | grep -v \"$(git config user.email)\" | head -n 1 | awk \"{print \$1}\"; }; f"
+    latest = "!f() { if git rev-parse --verify origin/HEAD >/dev/null 2>&1; then M=$(git rev-parse --abbrev-ref origin/HEAD | cut -d'/' -f2); elif git show-ref --verify --quiet refs/heads/main; then M='main'; else M='master'; fi; git merge-base HEAD $M; }; f"
     dt = !GIT_EXTERNAL_DIFF=difft git diff
-
 
 # Diff and merge
 [diff]
