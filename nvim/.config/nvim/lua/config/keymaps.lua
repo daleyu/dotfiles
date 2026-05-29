@@ -148,6 +148,34 @@ vim.keymap.set('n', '<leader>tcc', function()
 	end
 end, { desc = "Toggle colorcolumn", noremap = true, silent = true })
 
+local git_master_mode = false
+vim.keymap.set("n", "<leader>gfs", function()
+	if git_master_mode then
+		Snacks.picker.git_diff({ base = "origin/master", group = true })
+	else
+		Snacks.picker.git_diff({ base = nil, group = true })
+	end
+end, { desc = "Git Diff Master" })
+vim.keymap.set("n", "<leader>gfi", function()
+	if git_master_mode then
+		Snacks.picker.git_diff({ base = "origin/main", group = true })
+	else
+		Snacks.picker.git_diff({ base = nil, group = true })
+	end
+end, { desc = "Git Diff Main" })
+
+vim.keymap.set("n", "<leader>hm", function()
+	if git_master_mode then
+		git_master_mode = false
+		Snacks.notify.notify("Git base: HEAD")
+		require("gitsigns").change_base(nil, true)
+	else
+		git_master_mode = true
+		Snacks.notify.notify("Git base: origin/master")
+		require("gitsigns").change_base("origin/master", true)
+	end
+end, { desc = "Change Gitsigns/Git-Diff base" })
+
 local function toggle_case()
 	local word = vim.fn.expand('<cword>')
 	if word == "" then return end
