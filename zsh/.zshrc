@@ -35,6 +35,15 @@ local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
 PROMPT='${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 RPROMPT="[%D{%m/%f/%y}|%@]"
 
+
+function git-commit-line() {                                                                                                                       
+  git log --oneline --graph --decorate --color=always | \
+    fzf --ansi --no-preview --reverse \
+    --bind 'j:down,k:up' \
+    --bind 'q:abort' \
+    --bind 'enter:execute(hash=$(echo {} | grep -o "[a-f0-9]\{7,\}" | head -1); git diff --color=always $hash^..$hash | less -R)'
+} 
+alias gcl='git-commit-line'
 # aliases
 alias cat="bat"
 alias lg="lazygit"
@@ -72,11 +81,11 @@ view-pr() {
     local main_branch
     
     if git rev-parse --verify origin/HEAD >/dev/null 2>&1; then
-        main_branch=$(git rev-parse --abbrev-ref origin/HEAD | cut -d'/' -f2)
+        main_branch=$(git rev-parse --abbrev-ref origin/HEAD)
     elif git show-ref --verify --quiet refs/heads/main; then
-        main_branch="main"
+        main_branch="origin/main"
     else
-        main_branch="master"
+        main_branch="origin/master"
     fi
 
     local base_hash=$(git merge-base HEAD "$main_branch" 2>/dev/null)
@@ -90,9 +99,7 @@ view-pr() {
     fi
 }
 
-kinit dale.yu@BYTEDANCE.COM
-klist
-echo "Connected for 24 hrs to Bytedance auth"
+
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -112,7 +119,25 @@ esac
 # pnpm end
 export FPATH="/opt/homebrew/bin/eza/completions/zsh:$FPATH"
 
-export PATH=$PATH:/Users/bytedance/.spicetify
+# fzf utilities
+export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --exclude={.git,.idea,Library,.nodenv,.bazel_binaries,.pyenv,.vscode,.sass-cache,node_modules,build,tmp,'bazel-*'} --color=always"
+export FZF_DEFAULT_OPTS="--ansi --style full --color=bg+:#8aadf4,gutter:#8aadf4"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="
+--walker-skip .git,node_modules,target,bazel-*
+--preview 'bat -n --color=always {}'
+--bind 'ctrl-/:change-preview-window(down|hidden|)'"
+export FZF_ALT_C_COMMAND="fd --type directory --follow --hidden --exclude={.git,.idea,Library,.nodenv,.bazel_binaries,.pyenv,.vscode,.sass-cache,node_modules,build,tmp,'bazel-*'} --color=always"
+export FZF_ALT_C_OPTS="
+--walker-skip .git,node_modules,target,bazel-*
+--preview 'tree -C {}'"
+export FZF_CTRL_R_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_R_OPTS="
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
+
+source <(fzf --zsh)
+
 export PATH="$HOME/zig-macos-aarch64-0.15.0-dev.190+bfbf4badd:$PATH"
 export PATH=$HOME/.config/tmux/plugins/tmux-session-wizard/bin:$PATH
-eval "$(/Users/bytedance/.local/bin/mise activate zsh)"
