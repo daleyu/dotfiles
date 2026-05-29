@@ -21,22 +21,6 @@ return {
 		end,
 	},
 	{
-		"mistricky/codesnap.nvim",
-		build = "make",
-		config = function()
-			require("codesnap").setup({
-				has_breadcrumbs = true,
-				show_workspace = true,
-				has_line_number = true,
-				bg_padding = 0,
-				save_path = os.getenv("XDG_PICTURES_DIR") or (os.getenv("HOME") .. "/Pictures"),
-				mac_window_bar = false,
-			})
-			vim.keymap.set("v", "<leader>cs", "<cmd>CodeSnap<cr>")
-			vim.keymap.set("v", "<leader>ca", "<cmd>CodeSnapASCII<cr>")
-		end,
-	},
-	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
 		opts = {
