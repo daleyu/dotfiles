@@ -62,7 +62,7 @@ return {
 				},
 				win = { backdrop = { transparent = false, blend = 99 } },
 			},
-			statuscolumn = { enabled = false },
+			statuscolumn = { enabled = true },
 			styles = {
 				zen = { width = .6 }
 			}

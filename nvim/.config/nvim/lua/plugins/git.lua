@@ -8,6 +8,7 @@ return {
 			vim.keymap.set("n", "<leader>hb", "<cmd>Gitsigns blame<cr>")
 			vim.keymap.set("n", "<leader>hl", "<cmd>Gitsigns toggle_current_line_blame<cr>")
 			vim.keymap.set("n", "<leader>hp", "<cmd>Gitsigns preview_hunk_inline<cr>")
+			vim.keymap.set("n", "<leader>hu", "<cmd>Gitsigns reset_hunk<cr>")
 			vim.keymap.set('n', ']h', function()
 				if vim.wo.diff then
 					vim.cmd.normal({ ']h', bang = true })
