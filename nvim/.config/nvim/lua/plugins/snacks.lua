@@ -6,7 +6,14 @@ return {
 		opts = {
 			bigfile = { enabled = true },
 			picker = {
+				layout = {
+					layout = {
+						width = 0.90,
+						height = 0.90,
+					}
+				},
 				enabled = true,
+				ui_select = true,
 				sources = {
 					files = {
 						hidden = true,
@@ -31,6 +38,7 @@ return {
 			},
 			explorer = { enabled = false },
 			image = { enabled = true },
+			input = { enabled = true },
 			notifier = {
 				enabled = true,
 				top_down = false,
@@ -62,7 +70,7 @@ return {
 				},
 				win = { backdrop = { transparent = false, blend = 99 } },
 			},
-			statuscolumn = { enabled = true },
+			statuscolumn = { enabled = false },
 			styles = {
 				zen = { width = .6 }
 			}
@@ -76,7 +84,6 @@ return {
 			{ '<leader>*',  function() Snacks.picker.grep_word() end },
 			{ "<leader>gs", function() Snacks.picker.spelling() end },
 			{ "<leader>,",  function() Snacks.picker.buffers() end },
-			{ "<leader>t",  function() Snacks.picker.lsp_symbols() end },
 			{ "<leader>gl", function() Snacks.picker.resume() end },
 			{ "<leader>zz", function() Snacks.picker.zoxide() end },
 			{ "<leader>nh", function() Snacks.notifier.show_history() end, desc = "Notification History" },
