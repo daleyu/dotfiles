@@ -29,7 +29,6 @@ abbr -ag lt "eza --tree --level=2 --color=always --group-directories-first --ico
 abbr -ag "l." "eza -a | grep -E '^\.'"
 abbr -ag gds 'git diff origin/master'
 abbr -ag gdi 'git diff origin/main'
-<<<<<<< HEAD
 abbr -ag diff 'nvim -d'
 # go 
 set -gx PATH $PATH (go env GOPATH)/bin
@@ -62,14 +61,6 @@ function lightmode
     sed -i '' '/^\[delta\]/,/^\[/{s/^features = .*/features = catppuccin-latte/}' ~/.config/delta/.gitconfig
     echo "☀️ Light mode enabled (delta → catppuccin-latte)"
 end
-
-
-||||||| parent of 13d269a (update dotfiles and precommit hook)
-# go 
-set -gx PATH $PATH (go env GOPATH)/bin
-
-=======
->>>>>>> 13d269a (update dotfiles and precommit hook)
 
 # nvim
 set -gx EDITOR nvim
