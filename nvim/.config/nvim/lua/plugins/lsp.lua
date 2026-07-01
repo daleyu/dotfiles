@@ -9,9 +9,9 @@ return {
 			})
 
 			local servers = {
-				"lua_ls", "rust_analyzer", "bashls",
+				"rust_analyzer", "bashls",
 				"jsonls", "ts_ls", "zls", "eslint", "thriftls",
-				"buf_ls"
+				"buf_ls", "tinymist"
 			}
 
 			for _, server in ipairs(servers) do
@@ -31,31 +31,39 @@ return {
 		'williamboman/mason-lspconfig.nvim',
 		config = function()
 			require('mason').setup({})
-			require('mason-lspconfig').setup({
-				handlers = {
-					function(server_name)
-						vim.lsp.enable(server_name)
-					end,
-					pyright = function()
-						vim.lsp.config('pyright', {
-							settings = {
-								pyright = {
-									disableOrganizeImports = true,
-								},
-								python = {
-									analysis = {
-										ignore = { "*" },
-									},
-								},
-							},
-						})
-						vim.lsp.enable('pyright')
-					end
+			vim.lsp.config('lua_ls', {
+				settings = {
+					Lua = {
+						runtime = {
+							version = "LuaJIT",
+						},
+						diagnostics = {
+							globals = { "vim" },
+						},
+						workspace = {
+							checkThirdParty = false,
+							library = vim.api.nvim_get_runtime_file("lua", true),
+						},
+					},
 				},
+			})
+			vim.lsp.config('pyright', {
+				settings = {
+					pyright = {
+						disableOrganizeImports = true,
+					},
+					python = {
+						analysis = {
+							ignore = { "*" },
+						},
+					},
+				},
+			})
+			require('mason-lspconfig').setup({
 				ensure_installed = {
 					"lua_ls", "rust_analyzer", "bashls",
 					"jsonls", "ts_ls", "zls", "eslint", "thriftls",
-					"buf_ls", "marksman"
+					"buf_ls", "marksman", "tinymist"
 				},
 			})
 		end,
