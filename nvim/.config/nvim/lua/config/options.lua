@@ -1,5 +1,5 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 vim.opt.termguicolors = true
 
@@ -20,7 +20,7 @@ vim.opt.breakindent = true
 
 vim.opt.undofile = true
 
-vim.opt.clipboard = { 'unnamed', 'unnamedplus' }
+vim.opt.clipboard = { "unnamed", "unnamedplus" }
 
 vim.opt.ignorecase = true
 
@@ -28,7 +28,7 @@ vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.smartcase = true
 
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 
 vim.opt.updatetime = 250
 
@@ -42,6 +42,6 @@ vim.opt.laststatus = 3
 vim.opt.textwidth = 80
 vim.opt.wrapmargin = 10
 
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 
 vim.opt.cursorline = true

@@ -1,22 +1,22 @@
 return {
 	{
-		'saghen/blink.cmp',
-		version = '*',
+		"saghen/blink.cmp",
+		version = "*",
 		lazy = false,
 		dependencies = {
-			'saghen/blink.lib',
-			'rafamadriz/friendly-snippets',
+			"saghen/blink.lib",
+			"rafamadriz/friendly-snippets",
 		},
 		build = function()
-			require('blink.cmp').build():wait(60000)
+			require("blink.cmp").build():wait(60000)
 		end,
 
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
 		opts = {
 			keymap = {
-				preset = 'default',
-				['<CR>'] = { 'accept', 'fallback' },
+				preset = "default",
+				["<CR>"] = { "accept", "fallback" },
 				["<C-n>"] = { "show", "select_next", "fallback" },
 				["<C-p>"] = { "show", "select_prev", "fallback" },
 			},
@@ -27,7 +27,7 @@ return {
 						draw = {
 							columns = {
 								{ "kind_icon" },
-								{ "label",      "label_description", gap = 1 },
+								{ "label", "label_description", gap = 1 },
 								{ "source_name" },
 							},
 						},
@@ -49,8 +49,8 @@ return {
 					auto_show = true,
 					draw = {
 						columns = {
-							{ "kind_icon", "label",     "label_description", gap = 1 },
-							{ "kind",      "source_id", gap = 1 },
+							{ "kind_icon", "label", "label_description", gap = 1 },
+							{ "kind", "source_id", gap = 1 },
 						},
 					},
 				},
