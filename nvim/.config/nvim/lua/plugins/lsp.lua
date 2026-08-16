@@ -11,7 +11,7 @@ return {
 			local servers = {
 				"rust_analyzer", "bashls",
 				"jsonls", "ts_ls", "zls", "eslint", "thriftls",
-				"buf_ls", "tinymist"
+				"buf_ls", "tinymist", "yamlls"
 			}
 
 			for _, server in ipairs(servers) do
