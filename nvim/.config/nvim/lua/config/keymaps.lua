@@ -25,7 +25,21 @@ vim.keymap.set("x", "<", "<gv")
 vim.keymap.set("n", "ge", vim.diagnostic.open_float)
 vim.keymap.set("n", "g/", [[/\u<enter>]])
 
+-- https://www.reddit.com/r/neovim/comments/1t6x85i/comment/oklasyx/
 vim.keymap.set("n", "<leader>cc", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+vim.keymap.set("v", "<leader>cc", function()
+        vim.cmd('normal! "-y')
+        local text = vim.fn.getreg("-")
+        local escaped = vim.fn.escape(text, "/\\.*^$[]~")
+
+        vim.api.nvim_feedkeys(
+                ":%s/" .. escaped .. "/" .. escaped .. "/g"
+                .. vim.api.nvim_replace_termcodes("<Left><Left>", false, false, true),
+                "n",
+                false
+        )
+end, { desc = "substitute selection" })
 
 local antonyms = {
         "true",
