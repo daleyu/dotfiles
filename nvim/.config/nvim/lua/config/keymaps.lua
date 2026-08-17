@@ -34,8 +34,12 @@ vim.keymap.set("v", "<leader>cc", function()
         local escaped = vim.fn.escape(text, "/\\.*^$[]~")
 
         vim.api.nvim_feedkeys(
-                ":%s/" .. escaped .. "/" .. escaped .. "/g"
-                .. vim.api.nvim_replace_termcodes("<Left><Left>", false, false, true),
+                ":%s/"
+                        .. escaped
+                        .. "/"
+                        .. escaped
+                        .. "/g"
+                        .. vim.api.nvim_replace_termcodes("<Left><Left>", false, false, true),
                 "n",
                 false
         )
