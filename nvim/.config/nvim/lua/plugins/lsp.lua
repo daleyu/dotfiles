@@ -1,3 +1,47 @@
+local servers = {
+        lua_ls = {
+                settings = {
+                        Lua = {
+                                diagnostics = { globals = { "vim" } },
+                                hover = { enumsLimit = 100, previewFields = 100 },
+                        },
+                },
+        },
+        pyright = {
+                settings = {
+                        pyright = {
+                                disableOrganizeImports = true,
+                        },
+                        python = {
+                                analysis = {
+                                        ignore = { "*" },
+                                },
+                        },
+                },
+        },
+        vtsls = {},
+        jsonls = {},
+        rust_analyzer = { settings = { ["rust-analyzer"] = { check = { command = "clippy" } } } },
+        gopls = {},
+        ts_ls = {},
+        thriftls = {},
+        buf_ls = {},
+        bashls = {},
+        tinymist = {},
+        eslint = {},
+        marksman = {},
+        zls = {},
+        yamlls = {
+                settings = {
+                        yaml = {
+                                format = {
+                                        enable = false,
+                                },
+                        },
+                },
+        },
+}
+
 return {
         {
                 "neovim/nvim-lspconfig",
@@ -8,21 +52,8 @@ return {
                                 capabilities = require("blink.cmp").get_lsp_capabilities(),
                         })
 
-                        local servers = {
-                                "rust_analyzer",
-                                "bashls",
-                                "jsonls",
-                                "ts_ls",
-                                "zls",
-                                "eslint",
-                                "thriftls",
-                                "buf_ls",
-                                "tinymist",
-                                "yamlls",
-                                "lua_ls",
-                        }
-
-                        for _, server in ipairs(servers) do
+                        for server, server_config in pairs(servers) do
+                                vim.lsp.config(server, server_config)
                                 vim.lsp.enable(server)
                         end
 
@@ -82,7 +113,9 @@ return {
                                         "thriftls",
                                         "buf_ls",
                                         "marksman",
+                                        "yamlls",
                                         "tinymist",
+                                        "yamlfmt",
                                 },
                         })
                 end,
