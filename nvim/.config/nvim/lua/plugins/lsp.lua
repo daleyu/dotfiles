@@ -115,7 +115,6 @@ return {
                                         "marksman",
                                         "yamlls",
                                         "tinymist",
-                                        "yamlfmt",
                                 },
                         })
                 end,
