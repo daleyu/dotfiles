@@ -233,9 +233,4 @@ local function toggle_case()
         vim.cmd("normal! ciw" .. new_word .. "\27")
 end
 
-vim.keymap.set(
-        "n",
-        "<leader>vcc",
-        toggle_case,
-        { desc = "Toggle between camelCase/PascalCase and snake_case" }
-)
+vim.keymap.set("n", "<leader>vcc", toggle_case, { desc = "Toggle between camelCase/PascalCase and snake_case" })

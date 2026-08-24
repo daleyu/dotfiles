@@ -1,6 +1,6 @@
 column_width = 120
 indent_type = "Spaces"
-indent_width = 4
+indent_width = 8
 quote_style = "AutoPreferDouble"
 
 [sort_requires]
