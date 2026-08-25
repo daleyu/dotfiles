@@ -70,7 +70,7 @@ return {
                                         submit_review = { lhs = "<localleader>or", desc = "submit review" },
                                         discard_review = { lhs = "<localleader>oq", desc = "discard review" },
                                         add_review_comment = {
-                                                lhs = "<localleader>ca",
+                                                lhs = "<localleader>cr",
                                                 desc = "add a new review comment",
                                                 mode = { "n", "x" },
                                         },
@@ -104,6 +104,25 @@ return {
                                 },
                         },
                 },
+                config = function(_, opts)
+                        require("octo").setup(opts)
+
+                        local utils = require("octo.utils")
+                        local original_error = utils.error
+                        local proxy_note =
+                                "Note: GitHub API Proxy is enabled on this devbox. If you need to authenticate or re-authenticate `gh`, follow https://go/github-proxy-migration."
+
+                        utils.error = function(message, ...)
+                                if type(message) == "string" then
+                                        message = message:gsub("\27%[[%d;]*m", ""):gsub(vim.pesc(proxy_note), "")
+                                        message = vim.trim(message)
+                                        if message == "" then
+                                                return
+                                        end
+                                end
+                                return original_error(message, ...)
+                        end
+                end,
                 keys = {
                         {
                                 "<leader>oa",
@@ -113,15 +132,50 @@ return {
                         {
                                 "<leader>op",
                                 function()
-                                        local clipboard = vim.fn.getreg("+")
-                                        local pr = vim.trim(clipboard):gsub("^#", "")
-                                        if pr ~= "" then
-                                                vim.cmd("Octo pr edit " .. pr)
-                                        else
-                                                Snacks.notify.warn("Clipboard register (+) is empty")
-                                        end
+                                        vim.ui.input({ prompt = "PR number: " }, function(input)
+                                                if input == nil then
+                                                        return
+                                                end
+
+                                                local pr = vim.trim(input):gsub("^#", "")
+                                                if pr:match("^%d+$") then
+                                                        vim.cmd("Octo pr edit " .. pr)
+                                                else
+                                                        Snacks.notify.warn("Enter a valid PR number")
+                                                end
+                                        end)
                                 end,
-                                desc = "Octo PR from Clipboard",
+                                desc = "Octo PR by Number",
+                        },
+                        {
+                                "<leader>ol",
+                                function()
+                                        local repo = require("octo.utils").get_remote_name()
+                                        if not repo then
+                                                Snacks.notify.warn("Repo is not configured")
+                                                return
+                                        end
+
+                                        local authors = {
+                                                "daleyu",
+                                                "brianql",
+                                                "willmelani",
+                                                "xzha",
+                                                "mli",
+                                                "kevinmao",
+                                                "anuraag",
+                                                "hemachandra",
+                                        }
+                                        local author_query = table.concat(
+                                                vim.tbl_map(function(author)
+                                                        return "author:" .. author
+                                                end, authors),
+                                                " "
+                                        )
+                                        local query = string.format("is:pr is:open repo:%s %s", repo, author_query)
+                                        vim.cmd("Octo search " .. query)
+                                end,
+                                desc = "Octo Team PRs",
                         },
                 },
                 dependencies = {
