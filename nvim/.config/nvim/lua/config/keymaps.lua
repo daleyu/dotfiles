@@ -219,6 +219,8 @@ vim.keymap.set("n", "<leader>hm", function()
         end
 end, { desc = "Change Gitsigns/Git-Diff base" })
 
+vim.keymap.set("v", "<leader>oa", "<CMD>Octo actions<CR>")
+
 local function toggle_case()
         local word = vim.fn.expand("<cword>")
         if word == "" then
