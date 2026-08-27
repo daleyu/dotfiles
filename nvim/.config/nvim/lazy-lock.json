@@ -1,7 +1,7 @@
 {
   "auto-dark-mode.nvim": { "branch": "master", "commit": "97a86c9402c784a254e5465ca2c51481eea310e3" },
   "auto-session": { "branch": "main", "commit": "c8e6139a2e52a38101fecaba6014d7dd75489044" },
-  "autosync.nvim": { "branch": "master", "commit": "3b537a716c0d6766b49d5a13c76f601c7f907d0e" },
+  "autosync.nvim": { "branch": "master", "commit": "74775acfc4de3701466cb3e5b8977338d7a40e07" },
   "blink.cmp": { "branch": "main", "commit": "78336bc89ee5365633bcf754d93df01678b5c08f" },
   "blink.lib": { "branch": "main", "commit": "c8fdc12c8a2fab6cf786dd7141a283f8079f902b" },
   "catppuccin": { "branch": "main", "commit": "edefef779ab08ce1a4a404713e3012b0d202bd35" },
