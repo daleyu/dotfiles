@@ -35,7 +35,7 @@ keybind = cmd+o>x=close_surface
 keybind = cmd+o>t=toggle_background_opacity
 
 keybind = cmd+o>n=new_window
-keybind = alt+kp_add=increase_font_size:1
+keybind = super+kp_add=increase_font_size:1
 
 # tabs 
 keybind = cmd+o>c=new_tab
@@ -73,49 +73,49 @@ copy-on-select = clipboard
 
 
 # TMUX settings
-keybind = alt+1=text:\x011
-keybind = alt+2=text:\x012
-keybind = alt+3=text:\x013
-keybind = alt+4=text:\x014
-keybind = alt+5=text:\x015
-keybind = alt+6=text:\x016
-keybind = alt+7=text:\x017
-keybind = alt+8=text:\x018
-keybind = alt+9=text:\x019
-keybind = alt+digit_1=text:\x011
-keybind = alt+digit_2=text:\x012
-keybind = alt+digit_3=text:\x013
-keybind = alt+digit_4=text:\x014
-keybind = alt+digit_5=text:\x015
-keybind = alt+digit_6=text:\x016
-keybind = alt+digit_7=text:\x017
-keybind = alt+digit_8=text:\x018
-keybind = alt+digit_9=text:\x019
+keybind = super+1=text:\x011
+keybind = super+2=text:\x012
+keybind = super+3=text:\x013
+keybind = super+4=text:\x014
+keybind = super+5=text:\x015
+keybind = super+6=text:\x016
+keybind = super+7=text:\x017
+keybind = super+8=text:\x018
+keybind = super+9=text:\x019
+keybind = super+digit_1=text:\x011
+keybind = super+digit_2=text:\x012
+keybind = super+digit_3=text:\x013
+keybind = super+digit_4=text:\x014
+keybind = super+digit_5=text:\x015
+keybind = super+digit_6=text:\x016
+keybind = super+digit_7=text:\x017
+keybind = super+digit_8=text:\x018
+keybind = super+digit_9=text:\x019
 
 # next tab
-keybind = alt+n=text:\x01n
-keybind = alt+left_bracket=text:\x00[
+keybind = super+n=text:\x01n
+keybind = super+left_bracket=text:\x00[
 
 # prev tab
-keybind = alt+p=text:\x01p
+keybind = super+p=text:\x01p
 
 # close tab
-keybind = alt+w=text:\x01&
+keybind = super+w=text:\x01&
 
 # close pane
-keybind = alt+x=text:\x02x
+keybind = super+x=text:\x02x
 
 # open sessions
-keybind = alt+s=text:\x01s
+keybind = super+s=text:\x01s
 
 # open sessionizer
-keybind = alt+t=text:\x01T
+keybind = super+t=text:\x01T
 
 # find window
-keybind = alt+f=text:\x01f
+keybind = super+f=text:\x01f
 
 # visual mode
-keybind = alt+y=text:\x01[
+keybind = super+y=text:\x01[
 
 # go to last session
-keybind = alt+l=text:\x01L
+keybind = super+l=text:\x01L
