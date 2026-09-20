@@ -19,6 +19,7 @@ export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
+
 HYPHEN_INSENSITIVE="true"
 
 plugins=(git
@@ -100,7 +101,13 @@ view-pr() {
 }
 
 
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+if [[ -f /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme ]]; then
+    source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+elif [[ -f /opt/homebrew/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme ]]; then
+    source /opt/homebrew/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+elif [[ -f ~/powerlevel10k/powerlevel10k.zsh-theme ]]; then
+    source ~/powerlevel10k/powerlevel10k.zsh-theme
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

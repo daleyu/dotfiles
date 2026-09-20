@@ -57,3 +57,6 @@
     prompt = true
     trustExitCode = true
     hideResolved = true
+[user]
+	name = daleyu
+	email = yudale2003@gmail.com

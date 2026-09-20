@@ -1,5 +1,5 @@
 return {
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{ "catppuccin/nvim",      name = "catppuccin", priority = 1000 },
 	{
 		"f-person/auto-dark-mode.nvim",
 		config = {
