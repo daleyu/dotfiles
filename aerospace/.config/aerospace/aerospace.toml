@@ -216,7 +216,6 @@ run = ['move-node-to-workspace 3']
 if.app-id ='com.jetbrains.intellij'
 run = ['move-node-to-workspace 4']
 
-
 # remote intellij
 [[on-window-detected]]
 if.app-id ='com.jetbrains.cwm.guest'
