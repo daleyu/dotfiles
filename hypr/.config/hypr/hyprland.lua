@@ -226,7 +226,6 @@ hl.config({
     input = {
         kb_layout    = "us",
         kb_variant   = "dvorak",
-        kb_model     = "",
         kb_options   = "caps:escape",
         kb_rules     = "",
 
