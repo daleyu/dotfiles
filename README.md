@@ -5,6 +5,8 @@ Wayland + hyprland
 - Look at arch.txt to see arch packages
 - Hyprland is in the hyprland folder
 
+Still working on setting up arch 
+
 ## Custom Keyboard layout
 
 My Keyboard layout. Extension of Dvorak
