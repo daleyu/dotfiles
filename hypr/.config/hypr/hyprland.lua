@@ -50,7 +50,6 @@ local menu        = "rofi -show drun"
 --
 hl.on("hyprland.start", function()
     hl.exec_cmd("nm-applet")
-    hl.exec_cmd("hyprlauncher")
     hl.exec_cmd("hyprpaper")
     hl.exec_cmd("rofi -show drun")
     hl.exec_cmd("waybar")
@@ -225,7 +224,7 @@ hl.config({
 hl.config({
     input = {
         kb_layout    = "us",
-        kb_variant   = "dvorak",
+        kb_variant   = "",
         kb_options   = "caps:escape",
         kb_rules     = "",
 
