@@ -53,6 +53,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("hyprpaper")
     hl.exec_cmd("rofi -show drun")
     hl.exec_cmd("waybar")
+    hl.exec_cmd("systemctl --user start hyprpolkitagent")
 end)
 
 -------------------------------
@@ -282,6 +283,10 @@ hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(cmdMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
+
+hl.bind(cmdMod .. " + SHIFT + 4",
+    hl.dsp.exec_cmd(
+        'grim -g "$(slurp)" ~/ScreenShots/$(date +\'%Y-%m-%d_%H-%M-%S\').png && wl-copy < ~/ScreenShots/$(date +\'%Y-%m-%d_%H-%M-%S\').png'))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
