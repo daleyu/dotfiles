@@ -31,6 +31,7 @@ hyprlauncher
 hyprpaper
 hyprpolkitagent
 intel-media-driver
+keyd
 kitty
 libpulse
 libva-intel-driver
@@ -44,6 +45,7 @@ network-manager-applet
 networkmanager
 nodejs
 noto-fonts
+noto-fonts-emoji
 npm
 oh-my-zsh-git
 pavucontrol
@@ -65,6 +67,7 @@ system-config-printer
 tmux
 tree-sitter-cli
 ttf-nerd-fonts-symbols
+ttf-nerd-fonts-symbols-mono
 ufw
 unzip
 uwsm
@@ -73,9 +76,11 @@ vulkan-intel
 vulkan-nouveau
 vulkan-radeon
 waybar
+wev
 wget
 which
 wireplumber
+woff2-font-awesome
 wofi
 wpa_supplicant
 xdg-desktop-portal-hyprland
