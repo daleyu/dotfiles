@@ -89,16 +89,27 @@ hl.env("HYPRCURSOR_SIZE", "24")
 -----------------------
 
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
+
+local mocha = {
+    base = "rgb(1e1e2e)",
+    mantle = "rgb(181825)",
+    crust = "rgb(11111b)",
+    text = "rgb(cdd6f4)",
+    mauve = "rgb(cba6f7)",
+}
+
+-- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
     general = {
         gaps_in          = 5,
         gaps_out         = 20,
 
-        border_size      = 2,
+        border_size      = 5,
 
         col              = {
-            active_border   = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
-            inactive_border = "rgba(595959aa)",
+            -- from jankyborders
+            active_border   = { colors = { "rgb(bb9af7)" } },
+            inactive_border = "rgb(545c7f)",
         },
 
         -- Set to true to enable resizing windows by clicking and dragging on borders and gaps
@@ -122,7 +133,8 @@ hl.config({
             enabled      = true,
             range        = 4,
             render_power = 3,
-            color        = 0xee1a1a1a,
+            -- Catppuccin Mocha crust color for shadows
+            color        = 0xee11111b,
         },
 
         blur             = {

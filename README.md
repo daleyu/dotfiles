@@ -12,6 +12,15 @@ Still working on setting up arch
 My Keyboard layout. Extension of Dvorak
 <img width="1309" height="1301" alt="CleanShot 2025-12-08 at 18 46 50" src="https://github.com/user-attachments/assets/2ce323fe-a53e-4501-8877-fbf951bd6fb2" />
 
+
+On arch linux sometimes Keyd is a little buggy so, you have to start the daemon
+and then reload it to get the most recent changes
+```
+sudo systemctl enable --now keyd
+
+sudo keyd reload
+```
+
 ## Using Stow for dotfile locations
 
 ```Installation
