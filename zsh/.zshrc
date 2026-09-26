@@ -18,7 +18,7 @@ export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p
 
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 HYPHEN_INSENSITIVE="true"
 
@@ -131,11 +131,11 @@ export FZF_ALT_C_COMMAND="fd --type directory --follow --hidden --exclude={.git,
 export FZF_ALT_C_OPTS="
 --walker-skip .git,node_modules,target,bazel-*
 --preview 'tree -C {}'"
-export FZF_CTRL_R_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_R_OPTS="
-  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
-  --color header:italic
-  --header 'Press CTRL-Y to copy command into clipboard'"
+--bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+--color header:italic
+--header 'Press CTRL-Y to copy command into clipboard'"
+unset FZF_CTRL_R_COMMAND
 
 source <(fzf --zsh)
 

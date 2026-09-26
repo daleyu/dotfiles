@@ -1,4 +1,5 @@
 amd-ucode
+anki
 base
 base-devel
 bat
@@ -61,6 +62,7 @@ qt6-wayland
 rofi
 slurp
 smartmontools
+spotify-launcher
 stow
 sudo
 system-config-printer
