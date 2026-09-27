@@ -11,7 +11,7 @@ return {
 			require('nvim-treesitter').install { "cpp", "typescript", "tsx", "python", "luau", "javascript", "rust", "json", "lua", "go", "html", "ruby", "javascript", "zig", "java", "proto", "bash", "markdown", "yaml", "typst" }
 
 			vim.api.nvim_create_autocmd('FileType', {
-				pattern = { "java", "tsx", "rb", "proto", "json", "go", "md", "rs", "yaml", "typst" },
+				pattern = { "java", "tsx", "rb", "proto", "json", "go", "md", "rs", "yaml", "typst", "python" },
 				callback = function() vim.treesitter.start() end,
 			})
 		end,
