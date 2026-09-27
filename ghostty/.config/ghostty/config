@@ -119,3 +119,6 @@ keybind = alt+y=text:\x01[
 
 # go to last session
 keybind = alt+l=text:\x01L
+
+# rename window
+keybind = alt+r=text:\x01,
