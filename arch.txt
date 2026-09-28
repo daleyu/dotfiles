@@ -1,3 +1,6 @@
+adobe-source-han-sans-jp-fonts
+adobe-source-han-serif-jp-fonts
+alsa-utils
 amd-ucode
 anki
 base
@@ -6,7 +9,9 @@ bat
 blueman
 bluez
 bluez-utils
+btop
 btrfs-progs
+cava
 cups
 cups-pk-helper
 discord
@@ -18,6 +23,7 @@ fastfetch
 fd
 firefox
 fzf
+ghostscript
 ghostty
 git
 git-delta
@@ -31,6 +37,7 @@ hyprland
 hyprlauncher
 hyprpaper
 hyprpolkitagent
+imagemagick
 intel-media-driver
 keyd
 kitty
@@ -39,6 +46,8 @@ libva-intel-driver
 linux
 linux-firmware
 ly
+man-db
+man-pages
 mkinitcpio
 nano
 neovim
@@ -46,9 +55,11 @@ network-manager-applet
 networkmanager
 nodejs
 noto-fonts
+noto-fonts-cjk
 noto-fonts-emoji
 npm
 oh-my-zsh-git
+otf-ipafont
 pavucontrol
 pipewire
 pipewire-alsa
@@ -63,6 +74,7 @@ rofi
 slurp
 smartmontools
 spotify-launcher
+steam
 stow
 sudo
 system-config-printer
@@ -70,6 +82,7 @@ tmux
 tree-sitter-cli
 ttf-nerd-fonts-symbols
 ttf-nerd-fonts-symbols-mono
+typst
 ufw
 unzip
 uwsm
