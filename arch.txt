@@ -1,3 +1,4 @@
+7zip
 adobe-source-han-sans-jp-fonts
 adobe-source-han-serif-jp-fonts
 alsa-utils
@@ -39,6 +40,7 @@ hyprpaper
 hyprpolkitagent
 imagemagick
 intel-media-driver
+jq
 keyd
 kitty
 libpulse
@@ -48,6 +50,7 @@ linux-firmware
 ly
 man-db
 man-pages
+mise
 mkinitcpio
 nano
 neovim
@@ -70,6 +73,7 @@ python-pip
 python-setuptools
 qt5-wayland
 qt6-wayland
+resvg
 rofi
 slurp
 smartmontools
@@ -106,6 +110,7 @@ xf86-video-nouveau
 xorg-xrandr
 yay-bin
 yay-bin-debug
+yazi
 zoxide
 zram-generator
 zsh

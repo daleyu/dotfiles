@@ -142,3 +142,5 @@ source <(fzf --zsh)
 
 export PATH="$HOME/zig-macos-aarch64-0.15.0-dev.190+bfbf4badd:$PATH"
 export PATH=$HOME/.config/tmux/plugins/tmux-session-wizard/bin:$PATH
+
+eval "$(mise activate zsh)"
