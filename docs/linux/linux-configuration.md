@@ -1,5 +1,10 @@
 # Arch Configuration
 
+## Syncing up the Linux packages
+The list of linux packages can be found in the arch.txt which is found at the
+root of the directory
+- For resyncing the packages then it is run through this command 
+`pacman -Qqe > arch.txt`
 
 ## Turning off mic Playback
 There is an annoying issue with the cheap Fifine mic, where it will have

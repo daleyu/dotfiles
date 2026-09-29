@@ -84,7 +84,10 @@ Remember to include my global path here:
 ```
 
 ## Fish 
-My terminal of choice for personal computer. 
+> Note: I use zsh because zsh is everywhere and fish isn't and there is not
+> always the best Fish support at large companies. I found it easier to use zsh
+> (I have tried bash before and didn't see a difference)
+~~My Terminal of choice for personal computer~~ 
 - My theme is fish tide [equivalent to powerlevel10k]
  
 Check my fish docs in the docs folder for more specific information.
@@ -228,3 +231,9 @@ cd /Users/bytedance/.local/share/nvim/lazy/markdown-preview.nvim/app
 
 ### Setting up VimTex and Zathura
 Not gonna bother with this since it isn't needed.
+
+## Disclaimer 
+Note to myself from the future, this whole config was at one point entirely not
+touched by AI. 
+- As of September 28th, the only AI generated portion should be the keyboard
+  mapping portion
