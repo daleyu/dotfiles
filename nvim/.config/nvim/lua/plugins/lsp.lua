@@ -24,6 +24,7 @@ local servers = {
         rust_analyzer = { settings = { ["rust-analyzer"] = { check = { command = "clippy" } } } },
         gopls = {},
         ts_ls = {},
+        sqls = {},
         thriftls = {},
         buf_ls = {},
         bashls = {},
