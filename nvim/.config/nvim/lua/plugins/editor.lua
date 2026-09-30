@@ -10,16 +10,40 @@ return {
                 version = false,
                 config = function()
                         local mini_files = require("mini.files")
+
+                        local function get_layout_widths()
+                                local total_cols = vim.o.columns
+                                local usable_width = math.max(total_cols - 6, 40)
+                                local width_focus = math.floor(usable_width * 0.40)
+                                local width_preview = usable_width - width_focus
+                                return width_focus, width_preview
+                        end
+
+                        local focus_w, preview_w = get_layout_widths()
+
                         mini_files.setup({
                                 options = { use_as_default_explorer = false },
                                 windows = {
                                         preview = true,
-                                        width_preview = 40,
-                                        width_nofocus = 30,
-                                        width_focus = 30,
+                                        width_focus = focus_w,
+                                        width_nofocus = 40,
+                                        width_preview = preview_w,
                                 },
                         })
                         mini_files.config.mappings.close = "<esc>"
+
+                        -- https://github.com/nvim-mini/mini.nvim/discussions/1564
+                        vim.api.nvim_create_autocmd("VimResized", {
+                                callback = function()
+                                        local fw, pw = get_layout_widths()
+                                        mini_files.refresh({
+                                                windows = {
+                                                        width_focus = fw,
+                                                        width_preview = pw,
+                                                },
+                                        })
+                                end,
+                        })
 
                         vim.keymap.set("n", "<leader>o", mini_files.open)
                         vim.keymap.set("n", "<leader>s", function()
@@ -198,14 +222,15 @@ return {
                                 options = {},
                         },
                 },
-                -- === Suggested Keymaps: ===
-                vim.keymap.set("n", "<leader>ns", ":Namu symbols<cr>", {
-                        desc = "Jump to LSP symbol",
-                        silent = true,
-                }),
-                vim.keymap.set("n", "<leader>nw", ":Namu workspace<cr>", {
-                        desc = "LSP Symbols - Workspace",
-                        silent = true,
-                }),
+                init = function()
+                        vim.keymap.set("n", "<leader>ns", ":Namu symbols<cr>", {
+                                desc = "Jump to LSP symbol",
+                                silent = true,
+                        })
+                        vim.keymap.set("n", "<leader>nw", ":Namu workspace<cr>", {
+                                desc = "LSP Symbols - Workspace",
+                                silent = true,
+                        })
+                end,
         },
 }
