@@ -114,6 +114,9 @@ keybind = alt+t=text:\x01T
 # find window
 keybind = alt+f=text:\x01f
 
+# toggle sidebar
+keybind = alt+b=text:\x01b
+
 # visual mode
 keybind = alt+y=text:\x01[
 
