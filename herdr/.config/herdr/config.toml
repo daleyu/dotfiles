@@ -3,7 +3,6 @@ onboarding = false
 [keys]
 # tmux prefix C-a
 prefix = "ctrl+a"
-previous_workspace = "prefix+shift+l"
 
 # tmux bind r source-file ...
 reload_config = "prefix+r"
@@ -16,7 +15,7 @@ split_horizontal = "prefix+minus"
 focus_pane_down = "prefix+j"
 focus_pane_up = "prefix+k"
 focus_pane_left = "prefix+h"
-focus_pane_right = "prefix+l"
+focus_pane_right = "prefix+right"
 rename_pane = "prefix+comma"
 rename_workspace = "prefix+shift+4"
 
@@ -62,13 +61,7 @@ pane_outer_borders = false
 [[keys.command]]
 key = "prefix+T"
 type = "plugin_action"
-command = "sessionizer.pick"
-description = "fuzzy-switch workspace"
-
-[[keys.command]]
-key = "prefix+t"
-type = "plugin_action"
-command = "sessionizer.pick"
+command = "beyondlex.herdr-recent-navigator.focus-workspaces"
 description = "fuzzy-switch workspace"
 
 [[keys.command]]
@@ -82,3 +75,9 @@ key = "prefix+F"
 type = "plugin_action"
 command = "sessionizer.agents"
 description = "jump to an agent"
+
+[[keys.command]]
+key = "prefix+L"
+type = "plugin_action"
+command = "beyondlex.herdr-recent-navigator.focus-workspaces"
+description = "recent workspaces"
