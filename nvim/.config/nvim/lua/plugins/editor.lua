@@ -45,7 +45,6 @@ return {
                                 end,
                         })
 
-                        vim.keymap.set("n", "<leader>o", mini_files.open)
                         vim.keymap.set("n", "<leader>s", function()
                                 local state = mini_files.get_explorer_state()
                                 local dir = state and state.branch[state.depth_focus] or "%:h"
