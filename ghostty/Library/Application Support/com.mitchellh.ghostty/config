@@ -112,7 +112,10 @@ keybind = super+s=text:\x01s
 keybind = super+t=text:\x01T
 
 # find window
-keybind = super+f=text:\x01a
+keybind = super+f=text:\x01f
+
+# toggle sidebar
+keybind = super+b=text:\x01b
 
 # visual mode
 keybind = super+y=text:\x01[
