@@ -23,9 +23,6 @@ resize_pane_down = "prefix+ctrl+k"
 resize_pane_left = "prefix+ctrl+h"
 resize_pane_right = "prefix+ctrl+l"
 
-# The tmux session-wizard T binding maps naturally to Herdr's session navigator.
-goto = "prefix+t"
-
 # tmux copy-mode entry and selection use Herdr's built-in tmux-like copy mode.
 copy_mode = "prefix+["
 
