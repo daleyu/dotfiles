@@ -1,4 +1,4 @@
-# Port of the tmux settings in tmux/.config/tmux/tmux.conf.
+onboarding = false
 
 [keys]
 # tmux prefix C-a
@@ -42,6 +42,17 @@ tab_bar_position = "bottom"
 
 # Match tmux mouse support and visible pane boundaries.
 mouse_capture = true
-pane_borders = "always"
-pane_outer_borders = true
+pane_borders = "off"
+pane_outer_borders = false
 
+[[keys.command]]
+key = "prefix+f"
+type = "plugin_action"
+command = "sessionizer.pick"
+description = "fuzzy-switch workspace"
+
+[[keys.command]]
+key = "prefix+a"
+type = "plugin_action"
+command = "sessionizer.agents"
+description = "jump to an agent"
