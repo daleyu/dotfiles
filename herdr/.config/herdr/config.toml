@@ -1,0 +1,47 @@
+# Port of the tmux settings in tmux/.config/tmux/tmux.conf.
+
+[keys]
+# tmux prefix C-a
+prefix = "ctrl+a"
+
+# tmux bind r source-file ...
+reload_config = "prefix+r"
+
+# tmux splits: backslash side by side, minus stacked.
+split_vertical = "prefix+backslash"
+split_horizontal = "prefix+minus"
+
+# Keep the tmux pane navigation keys.
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_left = "prefix+h"
+focus_pane_right = "prefix+l"
+
+# tmux resize: C-j grows upward, C-k downward, C-h left, C-l right.
+resize_pane_up = "prefix+ctrl+j"
+resize_pane_down = "prefix+ctrl+k"
+resize_pane_left = "prefix+ctrl+h"
+resize_pane_right = "prefix+ctrl+l"
+
+# The tmux session-wizard T binding maps naturally to Herdr's session navigator.
+goto = "prefix+t"
+
+# tmux copy-mode entry and selection use Herdr's built-in tmux-like copy mode.
+copy_mode = "prefix+["
+
+[theme]
+name = "catppuccin"
+
+[theme.custom]
+blue = "#8aadf4"
+accent = "#8aadf4"
+
+[ui]
+# tmux status line is at the bottom.
+tab_bar_position = "bottom"
+
+# Match tmux mouse support and visible pane boundaries.
+mouse_capture = true
+pane_borders = "always"
+pane_outer_borders = true
+
