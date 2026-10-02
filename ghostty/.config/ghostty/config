@@ -112,7 +112,7 @@ keybind = alt+s=text:\x01s
 keybind = alt+t=text:\x01T
 
 # find window
-keybind = alt+f=text:\x01f
+keybind = alt+f=text:\x01a
 
 # visual mode
 keybind = alt+y=text:\x01[

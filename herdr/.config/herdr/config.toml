@@ -46,13 +46,25 @@ pane_borders = "off"
 pane_outer_borders = false
 
 [[keys.command]]
-key = "prefix+f"
+key = "prefix+T"
 type = "plugin_action"
 command = "sessionizer.pick"
 description = "fuzzy-switch workspace"
 
 [[keys.command]]
-key = "prefix+a"
+key = "prefix+t"
+type = "plugin_action"
+command = "sessionizer.pick"
+description = "fuzzy-switch workspace"
+
+[[keys.command]]
+key = "prefix+f"
+type = "plugin_action"
+command = "sessionizer.agents"
+description = "jump to an agent"
+
+[[keys.command]]
+key = "prefix+F"
 type = "plugin_action"
 command = "sessionizer.agents"
 description = "jump to an agent"
