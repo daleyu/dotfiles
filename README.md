@@ -119,6 +119,12 @@ Download the Catppucin theme
 ya pack -a yazi-rs/flavors:catppuccin-macchiato
 ```
 
+## Setting up Spicetify
+
+The `spicetify` Stow package includes the official Catppuccin theme. See
+[spicetify/README.md](spicetify/README.md) for the Arch Linux setup commands and
+Mocha activation steps.
+
 ## SketchyBar
 
 Install SketchyBar
