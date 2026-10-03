@@ -1,0 +1,41 @@
+{
+  "custom/spotify-prev": {
+    "exec": "playerctl --player=spotify status >/dev/null 2>&1 && printf ''",
+    "interval": 2,
+    "hide-empty-text": true,
+    "format": "{}",
+    "tooltip": false,
+    "on-click": "playerctl --player=spotify previous"
+  },
+  "custom/spotify-toggle": {
+    "exec": "playerctl --player=spotify status >/dev/null 2>&1 || exit 0; if playerctl --player=spotify status 2>/dev/null | grep -q '^Playing$'; then printf ''; else printf ''; fi",
+    "interval": 1,
+    "hide-empty-text": true,
+    "format": "{}",
+    "tooltip": false,
+    "on-click": "playerctl --player=spotify play-pause"
+  },
+  "custom/spotify-next": {
+    "exec": "playerctl --player=spotify status >/dev/null 2>&1 && printf ''",
+    "interval": 2,
+    "hide-empty-text": true,
+    "format": "{}",
+    "tooltip": false,
+    "on-click": "playerctl --player=spotify next"
+  },
+  "mpris": {
+    "player": "spotify",
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{player_icon} {dynamic}",
+    "dynamic-order": ["title", "artist"],
+    "dynamic-len": 32,
+    "player-icons": {
+      "spotify": "",
+      "default": ""
+    },
+    "on-click": "play-pause",
+    "on-click-middle": "previous",
+    "on-click-right": "next",
+    "tooltip-format": "{artist} — {title}\n{album}"
+  }
+}

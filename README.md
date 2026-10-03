@@ -125,6 +125,9 @@ The `spicetify` Stow package includes the official Catppuccin theme. See
 [spicetify/README.md](spicetify/README.md) for the Arch Linux setup commands and
 Mocha activation steps.
 
+## Waybar
+Waybar was stolen from some theme online and then had stuff added to it.
+
 ## SketchyBar
 
 Install SketchyBar
