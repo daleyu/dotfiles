@@ -13,6 +13,7 @@ bluez-utils
 btop
 btrfs-progs
 cava
+cliphist
 cups
 cups-pk-helper
 discord
@@ -97,6 +98,7 @@ vulkan-radeon
 waybar
 wev
 wget
+wl-clipboard
 which
 wireplumber
 woff2-font-awesome

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Clipboard History
+Comment=Search and restore a clipboard entry
+Exec=rofi -show clipboard-history
+Terminal=false
+Categories=Utility;

@@ -1,5 +1,5 @@
 configuration {
-    modes: "window,run,ssh,drun";
+    modes: "window,run,ssh,drun,clipboard-history";
     sorting-method: "normal";
     show-icons:true;
     matching: "regex";
@@ -7,6 +7,7 @@ configuration {
     display-run: "Menu:";
     display-ssh: "SSH:";
     display-drun: "Apps:";
+    display-clipboard-history: "Clipboard:";
     display-window: "Windows:";
 }
 
