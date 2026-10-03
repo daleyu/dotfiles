@@ -9,15 +9,19 @@
     "window-rewrite": {
       // --- Work ---
       "kitty": "󰆍",
+      ".[Gg]hostty.*": "󰆍",
       "onlyoffice": "󰏆",
       "firefox": "",
+      ".[Cc]hrome.*": "",
       "code": "󰨞",
+      ".[Aa]nki.*": "",
       "azahar": "",
       "obsidian": "󰹕",
       "mousepad": "󱓧",
       // --- Apps ---
       "discord": "",
       "spotify": "",
+      ".[Ss]team.*": "",
       "org.kde.kdeconnect.app": "󰦉",
       "org.qbittorrent.qBittorrent": "󰘿",
       // --- Graphics & Visual ---
