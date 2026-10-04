@@ -1,6 +1,8 @@
 # dotfiles
 
 ## Arch Linux
+Run `./install_linux.sh`.
+
 Wayland + hyprland
 - Look at arch.txt to see arch packages
 - Hyprland is in the hyprland folder
@@ -8,6 +10,10 @@ Wayland + hyprland
 Still working on setting up arch 
 
 ![](assets/2026-09-26-18-53-02.png)
+
+## MacOS
+`/install_mac.sh`
+
 
 ## Custom Keyboard layout
 
