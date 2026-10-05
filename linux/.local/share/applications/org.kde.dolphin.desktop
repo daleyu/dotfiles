@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Dolphin
+Comment=File Manager
+Exec=env QT_QPA_PLATFORMTHEME=kde dolphin %u
+Icon=org.kde.dolphin
+Type=Application
+Categories=Qt;KDE;System;FileTools;FileManager;
+MimeType=inode/directory;application/x-gnome-saved-search;
+Terminal=false
+StartupNotify=true

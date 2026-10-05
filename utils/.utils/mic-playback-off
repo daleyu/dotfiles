@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+card=$(awk 'tolower($0) ~ /fifine microphone/ { print $1; exit }' /proc/asound/cards)
+
+if [[ -z "$card" ]]; then
+    echo 'Fifine Microphone ALSA card was not found.' >&2
+    exit 1
+fi
+
+exec amixer -c "$card" sset Mic playback mute
