@@ -58,26 +58,45 @@ mouse_capture = true
 pane_borders = "off"
 pane_outer_borders = false
 
+
 [[keys.command]]
 key = "prefix+T"
 type = "plugin_action"
-command = "herdr-navigator.open"
-description = "open Herdr Navigator"
+command = "daleyu.herdr-explorer.general-search"
+description = "search Herdr targets"
 
 [[keys.command]]
 key = "prefix+f"
 type = "plugin_action"
-command = "sessionizer.agents"
-description = "jump to an agent"
-
-[[keys.command]]
-key = "prefix+F"
-type = "plugin_action"
-command = "sessionizer.agents"
+command = "daleyu.herdr-explorer.agents"
 description = "jump to an agent"
 
 [[keys.command]]
 key = "prefix+L"
 type = "plugin_action"
-command = "beyondlex.herdr-recent-navigator.focus-workspaces"
-description = "recent workspaces"
+command = "daleyu.herdr-explorer.previous-workspace"
+description = "toggle previous workspace"
+
+# [[keys.command]]
+# key = "prefix+T"
+# type = "plugin_action"
+# command = "herdr-navigator.open"
+# description = "open Herdr Navigator"
+#
+# [[keys.command]]
+# key = "prefix+f"
+# type = "plugin_action"
+# command = "sessionizer.agents"
+# description = "jump to an agent"
+#
+# [[keys.command]]
+# key = "prefix+F"
+# type = "plugin_action"
+# command = "sessionizer.agents"
+# description = "jump to an agent"
+#
+# [[keys.command]]
+# key = "prefix+L"
+# type = "plugin_action"
+# command = "beyondlex.herdr-recent-navigator.focus-workspaces"
+# description = "recent workspaces"

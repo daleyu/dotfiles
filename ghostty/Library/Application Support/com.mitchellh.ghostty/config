@@ -114,6 +114,9 @@ keybind = super+t=text:\x01T
 # find window
 keybind = super+f=text:\x01f
 
+# find window
+keybind = super+g=text:\x01g
+
 # toggle sidebar
 keybind = super+b=text:\x01b
 
