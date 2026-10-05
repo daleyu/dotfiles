@@ -191,31 +191,53 @@ vim.keymap.set("n", "<leader>tcc", function()
         end
 end, { desc = "Toggle colorcolumn", noremap = true, silent = true })
 
-local git_master_mode = false
-vim.keymap.set("n", "<leader>gfs", function()
-        if git_master_mode then
-                Snacks.picker.git_diff({ base = "origin/master", group = true })
-        else
-                Snacks.picker.git_diff({ base = nil, group = true })
+local git_default_mode = false
+
+local function git_default_base()
+        local cwd = Snacks.git.get_root() or vim.fn.getcwd()
+        local head = vim.system({ "git", "symbolic-ref", "--quiet", "--short", "refs/remotes/origin/HEAD" }, {
+                cwd = cwd,
+                text = true,
+        }):wait()
+        local candidates = { "origin/main", "origin/master" }
+        if head.code == 0 then
+                table.insert(candidates, 1, vim.trim(head.stdout))
         end
-end, { desc = "Git Diff Master" })
-vim.keymap.set("n", "<leader>gfi", function()
-        if git_master_mode then
-                Snacks.picker.git_diff({ base = "origin/main", group = true })
-        else
-                Snacks.picker.git_diff({ base = nil, group = true })
+        for _, base in ipairs(candidates) do
+                local result = vim.system({ "git", "rev-parse", "--verify", "--quiet", base .. "^{commit}" }, {
+                        cwd = cwd,
+                }):wait()
+                if result.code == 0 then
+                        return base
+                end
         end
-end, { desc = "Git Diff Main" })
+        Snacks.notify.notify("Could not find origin's default branch (main or master)", { level = "warn" })
+end
+
+local function git_diff()
+        local base = git_default_mode and git_default_base() or nil
+        if git_default_mode and not base then
+                return
+        end
+        Snacks.picker.git_diff({ base = base, group = true })
+end
+
+vim.keymap.set("n", "<leader>gfs", git_diff, { desc = "Git Diff Default Branch" })
+vim.keymap.set("n", "<leader>gfi", git_diff, { desc = "Git Diff Default Branch" })
 
 vim.keymap.set("n", "<leader>hm", function()
-        if git_master_mode then
-                git_master_mode = false
+        if git_default_mode then
+                git_default_mode = false
                 Snacks.notify.notify("Git base: HEAD")
                 require("gitsigns").change_base(nil, true)
         else
-                git_master_mode = true
-                Snacks.notify.notify("Git base: origin/master")
-                require("gitsigns").change_base("origin/master", true)
+                local base = git_default_base()
+                if not base then
+                        return
+                end
+                git_default_mode = true
+                Snacks.notify.notify("Git base: " .. base)
+                require("gitsigns").change_base(base, true)
         end
 end, { desc = "Change Gitsigns/Git-Diff base" })
 
