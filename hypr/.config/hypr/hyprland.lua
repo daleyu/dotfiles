@@ -29,7 +29,7 @@ hl.monitor({
 
 -- Set programs that you use
 local terminal    = "ghostty"
-local fileManager = "dolphin"
+local fileManager = "env QT_QPA_PLATFORMTHEME=kde dolphin"
 local menu        = "rofi -show drun"
 
 
@@ -50,6 +50,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("wl-paste --type image --watch cliphist store")
     hl.exec_cmd("waybar")
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
+    hl.exec_cmd("$HOME/.utils/mic-playback-off")
 end)
 
 -------------------------------
