@@ -61,8 +61,8 @@ pane_outer_borders = false
 [[keys.command]]
 key = "prefix+T"
 type = "plugin_action"
-command = "sessionizer.pick"
-description = "fuzzy-switch workspace"
+command = "herdr-navigator.open"
+description = "open Herdr Navigator"
 
 [[keys.command]]
 key = "prefix+f"

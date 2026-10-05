@@ -7,6 +7,9 @@ root of the directory
 `pacman -Qqe > arch.txt`
 
 ## Turning off mic Playback
+The `mic-playback-off` script will automatically turn off playback and should
+run on hyprland init
+
 There is an annoying issue with the cheap Fifine mic, where it will have
 autoplayback enabled and keep trying to enable it.
 - On linux this is disabled through use of alsamixer.

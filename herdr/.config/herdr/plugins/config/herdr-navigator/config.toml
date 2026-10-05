@@ -1,0 +1,34 @@
+# Herdr Navigator plugin settings.
+
+[picker]
+engine = "nucleo"
+source_order = ["workspace", "agent", "project", "session", "server", "zoxide", "root", "quick", "plugin"]
+preview = true
+detailed_rows = true
+vim_mode = false
+
+[sources]
+open_workspaces = true
+agents = true
+herdr_plus_projects = true
+herdr_plus_quick_actions = true
+sessions = true
+servers = true
+zoxide = true
+roots = true
+
+[[roots]]
+path = "~/workspace"
+max_depth = 3
+
+[[roots]]
+path = "~/projects"
+max_depth = 3
+
+[sessions]
+local = true
+# Add one entry per remote machine to make it searchable in Navigator:
+# [[sessions.entries]]
+# name = "Build machine"
+# remote = "build-host"
+# tags = ["devbox"]
