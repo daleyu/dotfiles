@@ -18,6 +18,8 @@ focus_pane_left = "prefix+h"
 focus_pane_right = "prefix+right"
 rename_pane = "prefix+comma"
 rename_workspace = "prefix+shift+4"
+previous_workspace = "prefix+up"
+next_workspace = "prefix+down"
 
 # tmux resize: C-j grows upward, C-k downward, C-h left, C-l right.
 resize_pane_up = "prefix+ctrl+j"

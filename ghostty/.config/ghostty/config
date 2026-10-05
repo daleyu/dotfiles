@@ -73,6 +73,9 @@ copy-on-select = clipboard
 
 
 # TMUX settings
+keybind = alt+shift+left_bracket=text:\x01\x1b[A
+keybind = alt+shift+right_bracket=text:\x01\x1b[B
+
 keybind = alt+1=text:\x011
 keybind = alt+2=text:\x012
 keybind = alt+3=text:\x013
