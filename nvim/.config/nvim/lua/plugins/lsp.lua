@@ -6,27 +6,27 @@ local servers = {
         lua_ls = {
                 settings = {
                         Lua = {
+                                runtime = { version = "LuaJIT" },
                                 diagnostics = { globals = { "vim" } },
                                 hover = { enumsLimit = 100, previewFields = 100 },
+                                workspace = {
+                                        checkThirdParty = false,
+                                        library = vim.api.nvim_get_runtime_file("lua", true),
+                                },
                         },
                 },
         },
         pyright = {
                 before_init = configure_python,
                 settings = {
-                        pyright = {
-                                disableOrganizeImports = true,
-                        },
-                        python = {
-                                analysis = {
-                                        ignore = {},
-                                },
-                        },
+                        pyright = { disableOrganizeImports = true },
+                        python = { analysis = { ignore = {} } },
                 },
         },
+        rust_analyzer = { settings = { ["rust-analyzer"] = { check = { command = "clippy" } } } },
+        yamlls = { settings = { yaml = { format = { enable = false } } } },
         vtsls = {},
         jsonls = {},
-        rust_analyzer = { settings = { ["rust-analyzer"] = { check = { command = "clippy" } } } },
         gopls = {},
         ts_ls = {},
         sqls = {},
@@ -37,15 +37,6 @@ local servers = {
         eslint = {},
         marksman = {},
         zls = {},
-        yamlls = {
-                settings = {
-                        yaml = {
-                                format = {
-                                        enable = false,
-                                },
-                        },
-                },
-        },
 }
 
 return {
@@ -64,10 +55,7 @@ return {
                         end
 
                         vim.diagnostic.config({
-                                float = {
-                                        border = "rounded",
-                                        source = true,
-                                },
+                                float = { border = "rounded", source = true },
                         })
                 end,
         },
@@ -76,35 +64,6 @@ return {
                 "williamboman/mason-lspconfig.nvim",
                 config = function()
                         require("mason").setup({})
-                        vim.lsp.config("lua_ls", {
-                                settings = {
-                                        Lua = {
-                                                runtime = {
-                                                        version = "LuaJIT",
-                                                },
-                                                diagnostics = {
-                                                        globals = { "vim" },
-                                                },
-                                                workspace = {
-                                                        checkThirdParty = false,
-                                                        library = vim.api.nvim_get_runtime_file("lua", true),
-                                                },
-                                        },
-                                },
-                        })
-                        vim.lsp.config("pyright", {
-                                before_init = configure_python,
-                                settings = {
-                                        pyright = {
-                                                disableOrganizeImports = true,
-                                        },
-                                        python = {
-                                                analysis = {
-                                                        ignore = {},
-                                                },
-                                        },
-                                },
-                        })
                         require("mason-lspconfig").setup({
                                 ensure_installed = {
                                         "lua_ls",
