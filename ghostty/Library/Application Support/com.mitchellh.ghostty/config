@@ -128,3 +128,6 @@ keybind = super+y=text:\x01[
 
 # go to last session
 keybind = super+l=text:\x01L
+
+# Herdr GoTo
+keybind = super+g=text:\x01g

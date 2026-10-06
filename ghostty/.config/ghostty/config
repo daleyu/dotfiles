@@ -128,3 +128,6 @@ keybind = alt+l=text:\x01L
 
 # rename window
 keybind = alt+r=text:\x01,
+
+# Herdr GoTo
+keybind = alt+g=text:\x01g
