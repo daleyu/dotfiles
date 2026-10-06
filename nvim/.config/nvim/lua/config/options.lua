@@ -1,6 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.g.loaded_python3_provider = 0
+
 vim.opt.termguicolors = true
 
 vim.g.have_nerd_font = true

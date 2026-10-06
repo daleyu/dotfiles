@@ -1,3 +1,7 @@
+local function configure_python(_, config)
+        config.settings.python.pythonPath = require("config.python").resolve(config.root_dir)
+end
+
 local servers = {
         lua_ls = {
                 settings = {
@@ -8,13 +12,14 @@ local servers = {
                 },
         },
         pyright = {
+                before_init = configure_python,
                 settings = {
                         pyright = {
                                 disableOrganizeImports = true,
                         },
                         python = {
                                 analysis = {
-                                        ignore = { "*" },
+                                        ignore = {},
                                 },
                         },
                 },
@@ -88,13 +93,14 @@ return {
                                 },
                         })
                         vim.lsp.config("pyright", {
+                                before_init = configure_python,
                                 settings = {
                                         pyright = {
                                                 disableOrganizeImports = true,
                                         },
                                         python = {
                                                 analysis = {
-                                                        ignore = { "*" },
+                                                        ignore = {},
                                                 },
                                         },
                                 },
