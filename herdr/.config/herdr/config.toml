@@ -21,6 +21,7 @@ rename_workspace = "prefix+shift+4"
 previous_workspace = "prefix+up"
 next_workspace = "prefix+down"
 
+close_pane= "prefix+&"
 # tmux resize: C-j grows upward, C-k downward, C-h left, C-l right.
 resize_pane_up = "prefix+ctrl+j"
 resize_pane_down = "prefix+ctrl+k"
