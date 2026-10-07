@@ -366,7 +366,7 @@ hl.window_rule({
 
 hl.window_rule({
     name      = "chrome-workspace",
-    match     = { class = "^google%-chrome$" },
+    match     = { class = "^google-chrome$" },
     workspace = 1,
 })
 
@@ -385,6 +385,12 @@ hl.window_rule({
 hl.window_rule({
     name      = "anki-workspace",
     match     = { class = "^anki$" },
+    workspace = 4,
+})
+
+hl.window_rule({
+    name      = "steam-workspace",
+    match     = { class = "^steam$" },
     workspace = 4,
 })
 
