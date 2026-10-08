@@ -125,7 +125,7 @@ return {
                 end,
                 keys = {
                         {
-                                "<leader>oa",
+                                "<leader>go",
                                 "<CMD>Octo actions<CR>",
                                 desc = "Octo Actions",
                         },

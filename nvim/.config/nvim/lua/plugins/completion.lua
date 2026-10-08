@@ -76,6 +76,9 @@ return {
                                 enabled = true,
                         },
                         sources = {
+                                per_filetype = {
+                                        org = { inherit_defaults = true, "org" },
+                                },
                                 default = {
                                         "lazydev",
                                         "lsp",
@@ -85,6 +88,7 @@ return {
                                         "markdown",
                                 },
                                 providers = {
+                                        org = { name = "Org", module = "org.completion.blink" },
                                         lsp = { score_offset = 90 },
                                         lazydev = {
                                                 name = "LazyDev",

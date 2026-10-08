@@ -252,7 +252,8 @@ vim.keymap.set("n", "<leader>hm", function()
         end
 end, { desc = "Change Gitsigns/Git-Diff base" })
 
-vim.keymap.set("v", "<leader>oa", "<CMD>Octo actions<CR>")
+vim.keymap.set("v", "<leader>go", "<CMD>Octo actions<CR>")
+vim.keymap.set("n", "<leader>gn", "<CMD>Org<CR>", { desc = "Org command picker" })
 
 local function toggle_case()
         local word = vim.fn.expand("<cword>")
