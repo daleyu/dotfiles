@@ -90,6 +90,7 @@ return {
                                 providers = {
                                         org = { name = "Org", module = "org.completion.blink" },
                                         lsp = { score_offset = 90 },
+                                        org = { score_offset = 91, name = "Org", module = "org.completion.blink" },
                                         lazydev = {
                                                 name = "LazyDev",
                                                 module = "lazydev.integrations.blink",

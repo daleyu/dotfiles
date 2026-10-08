@@ -131,6 +131,7 @@ return {
                         },
                         {
                                 "<leader>op",
+
                                 function()
                                         vim.ui.input({ prompt = "PR number: " }, function(input)
                                                 if input == nil then
