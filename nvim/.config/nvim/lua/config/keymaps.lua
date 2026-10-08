@@ -84,8 +84,10 @@ local function invert(calledFromVisual)
         local bufnr = api.nvim_get_current_buf()
 
         if calledFromVisual then
-                local start_line = vim.fn.line("'<")
-                local end_line = vim.fn.line("'>")
+                local anchor_line = vim.fn.line("v")
+                local cursor_line = vim.fn.line(".")
+                local start_line = math.min(anchor_line, cursor_line)
+                local end_line = math.max(anchor_line, cursor_line)
                 local lines = api.nvim_buf_get_lines(bufnr, start_line - 1, end_line, false)
 
                 for i, line in ipairs(lines) do
@@ -107,13 +109,13 @@ local function invert(calledFromVisual)
                 row = row - 1
                 local line = api.nvim_buf_get_lines(bufnr, row, row + 1, false)[1]
 
-                local left = col
-                local right = col
-                while left > 0 and line:sub(left, left):match("[%w_]") do
-                        left = left - 1
-                end
+                local left = col + 1
+                local right = col + 1
                 if not line:sub(left, left):match("[%w_]") then
-                        left = left + 1
+                        return
+                end
+                while left > 1 and line:sub(left - 1, left - 1):match("[%w_]") do
+                        left = left - 1
                 end
                 while right <= #line and line:sub(right, right):match("[%w_]") do
                         right = right + 1
@@ -126,7 +128,7 @@ local function invert(calledFromVisual)
 
                 if antonym then
                         api.nvim_buf_set_text(bufnr, row, from_col - 1, row, to_col, { antonym })
-                        api.nvim_win_set_cursor(0, { row + 1, from_col - 1 + #antonym })
+                        api.nvim_win_set_cursor(0, { row + 1, from_col - 1 + #antonym - 1 })
                 end
         end
 end
