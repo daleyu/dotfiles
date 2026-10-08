@@ -372,7 +372,7 @@ hl.window_rule({
 
 hl.window_rule({
     name      = "ghostty-workspace",
-    match     = { class = "^com%.mitchellh%.ghostty$" },
+    match     = { class = "^com\\.mitchellh\\.ghostty$" },
     workspace = 2,
 })
 
