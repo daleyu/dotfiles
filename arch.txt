@@ -13,6 +13,7 @@ bluez-utils
 btop
 btrfs-progs
 cava
+chafa
 cliphist
 cups
 cups-pk-helper
@@ -29,6 +30,7 @@ ghostscript
 ghostty
 git
 git-delta
+github-cli
 go
 google-chrome
 grim
@@ -44,6 +46,7 @@ intel-media-driver
 jq
 keyd
 kitty
+lazygit
 libpulse
 libva-intel-driver
 linux
@@ -65,11 +68,11 @@ npm
 oh-my-zsh-git
 otf-ipafont
 pavucontrol
-plasma-integration
 pipewire
 pipewire-alsa
 pipewire-jack
 pipewire-pulse
+plasma-integration
 polkit-kde-agent
 python-pip
 python-setuptools
@@ -79,6 +82,8 @@ resvg
 rofi
 slurp
 smartmontools
+sof-firmware
+spicetify-cli
 spotify-launcher
 steam
 stow
@@ -99,7 +104,6 @@ vulkan-radeon
 waybar
 wev
 wget
-wl-clipboard
 which
 wireplumber
 woff2-font-awesome
