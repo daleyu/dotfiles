@@ -17,10 +17,16 @@ Still working on setting up arch
 
 ## Custom Keyboard layout
 
-My Keyboard layout. Extension of Dvorak
+My Keyboard layout. Extension of dvorak 
+
+To stow it in the correct linux place it has start from system root 
+```
+sudo stow --target="/" keyd
+```
+
 #### Base Layer
 +---+---+---+---+---+---+---+---+---+---+---+---+---+-------+
-| ` | ! | [ | ] | { | $ | * | } | = | ( | ) | & | ^ | BKSP  |
+| ` | ! | \[ | \] | { | $ | * | } | = | ( | ) | & | ^ | BKSP  |
 +---+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-------+
 | TAB | ' | , | . | p | y | f | g | c | r | l | / | @ |   \   |
 +-----+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-------+
