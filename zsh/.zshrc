@@ -178,7 +178,7 @@ export FZF_CTRL_R_OPTS="
   --no-preview
   --header 'Press CTRL-Y to copy command into clipboard'"
 
-# Color history rows before fzf displays them; --ansi preserves the colors.
+# Kudos to https://github.com/junegunn/fzf/issues/1049
 eval "$(fzf --zsh | sed \
   -e '/zmodload/s/perl/perl_off/' \
   -e '/selected/s/fc -rl/fc -rlt "%F %T"/' \
