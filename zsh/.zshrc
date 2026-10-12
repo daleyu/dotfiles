@@ -97,6 +97,8 @@ alias lx='eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale --color=al
 alias gds='git diff origin/master'
 alias gdi='git diff origin/main'
 alias push='git push'
+alias yless="jless --yaml"
+alias loggy="pbpaste | logtime | pbcopy"
 
 alias lS='eza -1 --color=always --group-directories-first --icons'
 alias lt='eza --tree --level=2 --color=always --group-directories-first --icons'
@@ -168,13 +170,19 @@ export FZF_ALT_C_COMMAND="fd --type directory --follow --hidden --exclude={.git,
 export FZF_ALT_C_OPTS="
 --walker-skip .git,node_modules,target,bazel-*
 --preview 'tree -C {}'"
+export FZF_CTRL_R_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_R_OPTS="
---bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
---color header:italic
---header 'Press CTRL-Y to copy command into clipboard'"
-unset FZF_CTRL_R_COMMAND
+  --bind 'ctrl-y:execute-silent(printf %s {4..} | pbcopy)+abort'
+  --color header:italic
+  --ansi
+  --no-preview
+  --header 'Press CTRL-Y to copy command into clipboard'"
 
-source <(fzf --zsh)
+# Color history rows before fzf displays them; --ansi preserves the colors.
+eval "$(fzf --zsh | sed \
+  -e '/zmodload/s/perl/perl_off/' \
+  -e '/selected/s/fc -rl/fc -rlt "%F %T"/' \
+  -e '/selected="\$(fc /s/ |$/ | bat -l bash -p --color=always --theme 1337 --paging=never --wrap=never |/')"
 
 export PATH="$HOME/zig-macos-aarch64-0.15.0-dev.190+bfbf4badd:$PATH"
 export PATH=$HOME/.config/tmux/plugins/tmux-session-wizard/bin:$PATH
