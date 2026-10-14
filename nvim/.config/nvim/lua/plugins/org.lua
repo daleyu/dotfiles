@@ -4,7 +4,10 @@ return {
         lazy = false,
         opts = {
                 org_directory = "~/notes",
-                agenda_files = { "~/notes/**/*.org" },
+                agenda_files = {
+                        "~/notes/**/*.org",
+                        "~/org-notes/**/*.org",
+                },
                 default_notes_file = "~/notes/refile.org",
         },
 }
