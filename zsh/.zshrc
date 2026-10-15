@@ -37,8 +37,6 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 # setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 HIST_STAMPS="mm/dd/yyyy"
 
-
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 # Default prompt symbol.
 typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION='❯'
 # Prompt symbol in command vi mode.
@@ -150,6 +148,8 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# ~/.p10k.zsh can have extra opts, so reset to quiet
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 eval "$(zoxide init zsh)"
 
 export NVM_DIR="$HOME/.nvm"
@@ -170,7 +170,6 @@ export FZF_ALT_C_COMMAND="fd --type directory --follow --hidden --exclude={.git,
 export FZF_ALT_C_OPTS="
 --walker-skip .git,node_modules,target,bazel-*
 --preview 'tree -C {}'"
-export FZF_CTRL_R_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_R_OPTS="
   --bind 'ctrl-y:execute-silent(printf %s {4..} | pbcopy)+abort'
   --color header:italic
@@ -179,6 +178,7 @@ export FZF_CTRL_R_OPTS="
   --header 'Press CTRL-Y to copy command into clipboard'"
 
 # Kudos to https://github.com/junegunn/fzf/issues/1049
+unset FZF_CTRL_R_COMMAND
 eval "$(fzf --zsh | sed \
   -e '/zmodload/s/perl/perl_off/' \
   -e '/selected/s/fc -rl/fc -rlt "%F %T"/' \
