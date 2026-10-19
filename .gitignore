@@ -5,6 +5,7 @@
 fish_variables
 
 nvim/.config/nvim/spell/
+nvim.log
 
 .idea/
 

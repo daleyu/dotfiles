@@ -1,5 +1,47 @@
 return {
         {
+                "FylerOrg/fyler.nvim",
+                dependencies = { "nvim-tree/nvim-web-devicons" },
+                cmd = "Fyler",
+                keys = {
+                        { "<leader>b", "<cmd>Fyler<cr>", desc = "Open Fyler" },
+                },
+                opts = {
+                        kind = "replace",
+                        win_opts = {
+                                nu = true,
+                                rnu = true,
+                                scl = "no",
+                        },
+                        extensions = {
+                                git = { enabled = true, inline = false },
+                                trash = { enabled = true },
+                                watcher = { enabled = true },
+                        },
+                        integrations = {
+                                icon = "nvim_web_devicons",
+                        },
+                        ui = {
+                                -- indent_guides = true,
+                                hidden_items = {
+                                        switches = {},
+                                },
+                        },
+                        mappings = {
+                                n = {
+                                        ["<CR>"] = {
+                                                action = "select",
+                                                args = {
+                                                        pick = false,
+                                                        close = true,
+                                                },
+                                                desc = "Open file in editing window",
+                                        },
+                                },
+                        },
+                },
+        },
+        {
                 "mbbill/undotree",
                 keys = {
                         { "<leader>u", vim.cmd.UndotreeToggle },

@@ -98,12 +98,6 @@ return {
                 end,
                 keys = {
                         {
-                                "<leader>b",
-                                function()
-                                        Snacks.explorer()
-                                end,
-                        },
-                        {
                                 "<leader>p",
                                 function()
                                         Snacks.picker()
