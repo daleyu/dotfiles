@@ -237,6 +237,7 @@ end
 
 vim.keymap.set("n", "<leader>gfs", git_diff, { desc = "Git Diff Default Branch" })
 vim.keymap.set("n", "<leader>gfi", git_diff, { desc = "Git Diff Default Branch" })
+vim.keymap.set("n", "<leader>gf", git_diff, { desc = "Git Diff Default Branch" })
 
 vim.keymap.set("n", "<leader>hm", function()
         if git_default_mode then

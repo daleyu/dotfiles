@@ -12,7 +12,7 @@ return {
                 },
                 keys = {
                         {
-                                "<leader>gf",
+                                "<leader>gff",
                                 function()
                                         require("fff").find_files({ query = "git:modified " })
                                 end,
