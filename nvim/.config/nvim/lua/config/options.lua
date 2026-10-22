@@ -3,6 +3,9 @@ vim.g.maplocalleader = " "
 
 vim.g.loaded_python3_provider = 0
 
+-- default 1000
+-- vim.o.maxmempattern = 2000
+
 vim.opt.termguicolors = true
 
 vim.g.have_nerd_font = true

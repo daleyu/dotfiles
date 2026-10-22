@@ -34,6 +34,7 @@ copy_mode = "prefix+["
 [theme]
 name = "catppuccin"
 
+auto_switch = false
 [theme.custom]
 accent = "#8aadf4"
 blue = "#8aadf4"
