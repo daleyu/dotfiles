@@ -24,6 +24,8 @@ To stow it in the correct linux place it has start from system root
 sudo stow --target="/" keyd
 ```
 
+![](assets/2026-10-27-21-25-03.png)
+
 #### Base Layer
 +---+---+---+---+---+---+---+---+---+---+---+---+---+-------+
 | ` | ! | \[ | \] | { | $ | * | } | = | ( | ) | & | ^ | BKSP  |
