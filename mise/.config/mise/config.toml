@@ -1,7 +1,7 @@
 [tools]
 "github:neovim/neovim" = { version = "nightly", asset_pattern = 'nvim-{{ os() }}-{{ arch(x64="x86_64") }}.tar.gz' }
 # "github:neovim/neovim" = { version = "latest", asset_pattern = 'nvim-{{ os() }}-{{ arch(x64="x86_64") }}.tar.gz' }
-go = "1.23"
+go = "latest"
 ruby = "latest"
 zig = "latest"
 zls = "latest"
@@ -13,7 +13,11 @@ tinymist = "latest"
 "npm:bash-language-server" = "latest"
 "npm:vscode-langservers-extracted" = "latest"
 codex = "latest"
-herdr = "latest"
 "aqua:JohnnyMorganz/StyLua" = "latest"
 "npm:pyright" = "latest"
 "github:can1357/oh-my-pi" = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = ["ruby"]
+# Herdr is built from seidr fork and installed into ~/.local/bin.
+disable_tools = ["herdr"]
