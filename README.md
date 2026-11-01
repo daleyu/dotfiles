@@ -15,6 +15,16 @@ Still working on setting up arch
 `/install_mac.sh`
 
 
+## Neovim 
+Currently using Neovim nightly
+
+To refresh the moving nightly release:
+
+```sh
+mise install --force github:neovim/neovim@nightly
+```
+
+
 ## Custom Keyboard layout
 
 My Keyboard layout. Extension of dvorak 
@@ -93,7 +103,7 @@ brew bundle
 
 Run this to install all brew packages
 ```
-brew install fish jesseduffield/lazygit/lazygit tmux clipboard fzf gcc gh glow neovim node powerlevel10k python ripgrep rust stow tree-sitter wget yazi zoxide go cava graphviz eza ast-grep reattach-to-user-namespace luarocks bat
+brew install fish jesseduffield/lazygit/lazygit tmux clipboard fzf gcc gh glow node powerlevel10k python ripgrep rust stow tree-sitter wget yazi zoxide go cava graphviz eza ast-grep reattach-to-user-namespace luarocks bat
 ```
 Casks
 ```

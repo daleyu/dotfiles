@@ -1,4 +1,6 @@
 [tools]
+"github:neovim/neovim" = { version = "nightly", asset_pattern = 'nvim-{{ os() }}-{{ arch(x64="x86_64") }}.tar.gz' }
+# "github:neovim/neovim" = { version = "latest", asset_pattern = 'nvim-{{ os() }}-{{ arch(x64="x86_64") }}.tar.gz' }
 go = "1.23"
 ruby = "latest"
 zig = "latest"
