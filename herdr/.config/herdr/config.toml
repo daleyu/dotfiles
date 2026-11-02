@@ -21,6 +21,8 @@ rename_workspace = "prefix+shift+4"
 previous_workspace = "prefix+up"
 next_workspace = "prefix+down"
 
+last_workspace="prefix+L"
+
 close_pane= "prefix+&"
 # tmux resize: C-j grows upward, C-k downward, C-h left, C-l right.
 resize_pane_up = "prefix+ctrl+j"
@@ -61,25 +63,6 @@ tab_bar_right = [
 mouse_capture = true
 pane_borders = "off"
 pane_outer_borders = false
-
-
-[[keys.command]]
-key = "prefix+T"
-type = "plugin_action"
-command = "daleyu.herdr-explorer.general-search"
-description = "search Herdr targets"
-
-[[keys.command]]
-key = "prefix+f"
-type = "plugin_action"
-command = "daleyu.herdr-explorer.agents"
-description = "jump to an agent"
-
-[[keys.command]]
-key = "prefix+L"
-type = "plugin_action"
-command = "daleyu.herdr-explorer.previous-workspace"
-description = "toggle previous workspace"
 
 # [[keys.command]]
 # key = "prefix+T"

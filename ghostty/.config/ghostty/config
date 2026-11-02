@@ -112,7 +112,7 @@ keybind = alt+x=text:\x02x
 keybind = alt+s=text:\x01s
 
 # open sessionizer
-keybind = alt+t=text:\x01T
+keybind = alt+t=text:\x01g
 
 # find window
 keybind = alt+f=text:\x01f
