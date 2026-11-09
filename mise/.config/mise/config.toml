@@ -16,6 +16,7 @@ codex = "latest"
 "aqua:JohnnyMorganz/StyLua" = "latest"
 "npm:pyright" = "latest"
 "github:can1357/oh-my-pi" = "latest"
+claude = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["ruby"]

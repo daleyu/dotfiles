@@ -65,6 +65,24 @@ plugins=(git
 
 source $ZSH/oh-my-zsh.sh
 
+# Linux only: ctrl+v pastes the system clipboard at the prompt (macOS has
+# cmd+v). This lives in zle, not in the terminal, so programs like nvim still
+# get ctrl+v (visual block). Pasted newlines are inserted, not executed.
+if [[ $OSTYPE == linux* ]]; then
+  paste-from-clipboard() {
+    local clip
+    if (( $+commands[wl-paste] )) && [[ -n $WAYLAND_DISPLAY ]]; then
+      clip=$(wl-paste --no-newline 2>/dev/null)
+    elif (( $+commands[xclip] )); then
+      clip=$(xclip -selection clipboard -o 2>/dev/null)
+    fi
+    LBUFFER+=$clip
+  }
+  zle -N paste-from-clipboard
+  bindkey -M viins '^V' paste-from-clipboard
+  bindkey -M emacs '^V' paste-from-clipboard
+fi
+
 # Add timestamp to the end of the line
 local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
 PROMPT='${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
