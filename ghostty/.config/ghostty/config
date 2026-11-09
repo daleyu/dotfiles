@@ -29,50 +29,54 @@ background-opacity = .85
 background-blur = 15
 
 # keybindings
-keybind = cmd+o>r=reload_config
-keybind = cmd+o>x=close_surface
+keybind = alt+o>r=reload_config
+keybind = alt+o>x=close_surface
 
-keybind = cmd+o>t=toggle_background_opacity
+keybind = alt+o>t=toggle_background_opacity
 
-keybind = cmd+o>n=new_window
+keybind = alt+o>n=new_window
 keybind = alt+kp_add=increase_font_size:1
 
 # tabs 
-keybind = cmd+o>c=new_tab
-keybind = cmd+o>shift+l=next_tab
-keybind = cmd+o>shift+h=previous_tab
-keybind = cmd+o>comma=move_tab:-1
-keybind = cmd+o>period=move_tab:1
+keybind = alt+o>c=new_tab
+keybind = alt+o>shift+l=next_tab
+keybind = alt+o>shift+h=previous_tab
+keybind = alt+o>comma=move_tab:-1
+keybind = alt+o>period=move_tab:1
 
 # quick tab switch
-keybind = cmd+o>1=goto_tab:1
-keybind = cmd+o>2=goto_tab:2
-keybind = cmd+o>3=goto_tab:3
-keybind = cmd+o>4=goto_tab:4
-keybind = cmd+o>5=goto_tab:5
-keybind = cmd+o>6=goto_tab:6
-keybind = cmd+o>7=goto_tab:7
-keybind = cmd+o>8=goto_tab:8
-keybind = cmd+o>9=goto_tab:9
+keybind = alt+o>1=goto_tab:1
+keybind = alt+o>2=goto_tab:2
+keybind = alt+o>3=goto_tab:3
+keybind = alt+o>4=goto_tab:4
+keybind = alt+o>5=goto_tab:5
+keybind = alt+o>6=goto_tab:6
+keybind = alt+o>7=goto_tab:7
+keybind = alt+o>8=goto_tab:8
+keybind = alt+o>9=goto_tab:9
 
 # split
-keybind = cmd+o>\=new_split:right
-keybind = cmd+o>-=new_split:down
+keybind = alt+o>\=new_split:right
+keybind = alt+o>-=new_split:down
 
-keybind = cmd+o>j=goto_split:bottom
-keybind = cmd+o>k=goto_split:top
-keybind = cmd+o>h=goto_split:left
-keybind = cmd+o>l=goto_split:right
+keybind = alt+o>j=goto_split:bottom
+keybind = alt+o>k=goto_split:top
+keybind = alt+o>h=goto_split:left
+keybind = alt+o>l=goto_split:right
 
-keybind = cmd+o>z=toggle_split_zoom
+keybind = alt+o>z=toggle_split_zoom
 
-keybind = cmd+o>e=equalize_splits
+keybind = alt+o>e=equalize_splits
 
 # other
 copy-on-select = clipboard
 
 
 # TMUX settings
+keybind = alt+shift+left_bracket=text:\x01\x1b[A
+keybind = alt+shift+right_bracket=text:\x01\x1b[B
+
+# Also allow Ctrl+Tab navigation on Linux.
 keybind = ctrl+shift+tab=text:\x01\x1b[A
 keybind = ctrl+tab=text:\x01\x1b[B
 
@@ -111,11 +115,11 @@ keybind = alt+x=text:\x02x
 # open sessions
 keybind = alt+s=text:\x01s
 
-# open sessionizer
-keybind = alt+t=text:\x01g
+# workspace / machine navigator
+keybind = alt+t=text:\x01m
 
-# find window
-keybind = alt+f=text:\x01f
+# running agent navigator
+keybind = alt+f=text:\x01a
 
 # toggle sidebar
 keybind = alt+b=text:\x01b
