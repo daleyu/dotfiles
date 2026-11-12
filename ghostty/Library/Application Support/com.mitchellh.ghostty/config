@@ -112,10 +112,10 @@ keybind = super+x=text:\x02x
 keybind = super+s=text:\x01s
 
 # open sessionizer
-keybind = super+t=text:\x01g
+keybind = super+t=text:\x01m
 
 # find window
-keybind = super+f=text:\x01f
+keybind = super+f=text:\x01a
 
 # find window
 keybind = super+g=text:\x01g
