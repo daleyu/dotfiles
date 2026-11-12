@@ -27,6 +27,11 @@ end
 
 require("lazy").setup({
         spec = spec,
+        -- Plugins marked `dev = true` load from a local checkout here, falling back to git without one.
+        dev = {
+                path = "~/Development",
+                fallback = true,
+        },
         performance = {
                 rtp = {
                         reset = false,
