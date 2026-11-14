@@ -59,13 +59,13 @@ sidebar_collapsed_mode = "hidden"
 #   { type = "command", command = "\"$HERDR_BIN_PATH\" workspace get \"$HERDR_ACTIVE_WORKSPACE_ID\" | jq -r '.result.workspace.label // empty'", interval_seconds = 3, timeout_seconds = 2 },
 # ]
 
+tab_bar_style = "pill"
+tab_bar_workspace_label = "right"
+
 # Match tmux mouse support and visible pane boundaries.
 mouse_capture = true
 pane_borders = "off"
 pane_outer_borders = false
-
-tab_bar_style = "pill"
-tab_bar_workspace_label = "right"
 
 # [[keys.command]]
 # key = "prefix+T"
