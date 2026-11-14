@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# Hold-to-talk for Handy: `handy-ptt start` on key press, `handy-ptt stop` on release.
+#
+# Handy can only be told to toggle (SIGUSR2), so sending a blind toggle on both
+# press and release runs inverted after a single missed edge. This checks whether
+# Handy is really recording (it holds a PulseAudio capture stream only while it
+# is) and toggles only when that differs from what the key wants.
+set -euo pipefail
+
+pid=$(pgrep -o -x handy) || exit 0
+
+recording() {
+    pactl list source-outputs 2>/dev/null | grep -q "application.name = \"cpal-pulseaudio-$pid\""
+}
+
+case "${1:-}" in
+    start)
+        recording || kill -USR2 "$pid"
+        ;;
+    stop)
+        # After a quick tap the capture stream may not be open yet; give it a moment.
+        for _ in $(seq 20); do
+            if recording; then
+                kill -USR2 "$pid"
+                exit 0
+            fi
+            sleep 0.05
+        done
+        ;;
+    *)
+        echo "usage: handy-ptt start|stop" >&2
+        exit 2
+        ;;
+esac

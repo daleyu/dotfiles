@@ -50,6 +50,9 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("wl-paste --type image --watch cliphist store")
     hl.exec_cmd("waybar")
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
+    -- Mute the Fifine mic's hardware playback (sidetone), which is on after every boot.
+    -- Full path: ~/.utils is only added to PATH by the shell, not by Hyprland.
+    hl.exec_cmd(os.getenv("HOME") .. "/.utils/mic-playback-off")
 end)
 
 -------------------------------
@@ -329,6 +332,15 @@ hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+
+-- Handy hold-to-talk on right Alt (keyd remaps it to F19): record while held.
+-- Handy's own shortcut is an X11 grab, which under XWayland only fires while
+-- an X11 window is focused, so Hyprland handles the key instead. Handy can
+-- only be toggled, so ~/.utils/handy-ptt checks whether it is really recording
+-- before toggling; blind toggles on press and release end up inverted.
+local handyPtt = os.getenv("HOME") .. "/.utils/handy-ptt"
+hl.bind("F19", hl.dsp.exec_cmd(handyPtt .. " start"))
+hl.bind("F19", hl.dsp.exec_cmd(handyPtt .. " stop"), { release = true })
 
 
 --------------------------------
