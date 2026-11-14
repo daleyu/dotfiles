@@ -36,6 +36,7 @@ google-chrome
 grim
 grub
 gst-plugin-pipewire
+handy-bin
 htop
 hyprland
 hyprlauncher
