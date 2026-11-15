@@ -263,6 +263,15 @@ return {
                                 options = {},
                         },
                 },
+                config = function(_, opts)
+                        require("namu").setup(opts)
+                        -- namu cuts symbol names at the first space except in markdown; keep whole org headlines
+                        local utils = require("namu.core.utils")
+                        local clean_symbol_name = utils.clean_symbol_name
+                        utils.clean_symbol_name = function(name, filetype, ...)
+                                return clean_symbol_name(name, filetype == "org" and "markdown" or filetype, ...)
+                        end
+                end,
                 init = function()
                         vim.keymap.set("n", "<leader>ns", ":Namu symbols<cr>", {
                                 desc = "Jump to LSP symbol",

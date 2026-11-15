@@ -8,7 +8,26 @@ return {
 			indent = { enable = true },
 		},
 		config = function(_, opts)
-			require('nvim-treesitter').install { "cpp", "typescript", "tsx", "python", "luau", "javascript", "rust", "json", "lua", "go", "html", "ruby", "javascript", "zig", "java", "proto", "bash", "markdown", "yaml", "typst" }
+			-- org isn't bundled with nvim-treesitter main; register the nvim-orgmode grammar
+			vim.api.nvim_create_autocmd('User', {
+				pattern = 'TSUpdate',
+				callback = function()
+					require('nvim-treesitter.parsers').org = {
+						install_info = {
+							url = 'https://github.com/nvim-orgmode/tree-sitter-org',
+							queries = 'queries',
+						},
+					}
+				end,
+			})
+			-- org.nvim defers its sticky headlines to treesitter-context once an org parser exists,
+			-- but treesitter-context has no org query; keep org.nvim's own context
+			vim.api.nvim_create_autocmd('FileType', {
+				pattern = 'org',
+				callback = function() vim.b.org_context = true end,
+			})
+
+			require('nvim-treesitter').install { "cpp", "typescript", "tsx", "python", "luau", "javascript", "rust", "json", "lua", "go", "html", "ruby", "javascript", "zig", "java", "proto", "bash", "markdown", "yaml", "typst", "org" }
 
 			vim.api.nvim_create_autocmd('FileType', {
 				pattern = { "java", "tsx", "rb", "proto", "json", "go", "md", "rs", "yaml", "typst", "python" },
