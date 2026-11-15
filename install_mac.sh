@@ -22,10 +22,12 @@ brew bundle --file="$DOTFILES_DIR/Brewfile"
 
 STOW_PACKAGES=(
   aerospace alacritty bat delta fish fontconfig ghostty git herdr iterm
-  jankyborders karabiner lazygit mise nvim rg sketchybar spicetify tmux vim
+  jankyborders karabiner lazygit mise nvim rg sketchybar spicetify tmux utils vim
   yazi zsh
 )
 stow --restow --target="$HOME" "${STOW_PACKAGES[@]}"
+
+python3 "$DOTFILES_DIR/utils/.utils/agent-preferences-util"
 
 if command -v mise >/dev/null 2>&1; then
   mise install

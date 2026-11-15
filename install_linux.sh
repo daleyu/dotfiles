@@ -31,9 +31,11 @@ fi
 
 STOW_PACKAGES=(
   alacritty bat delta fontconfig ghostty git herdr hypr lazygit linux mise
-  nvim rofi rg spicetify tmux waybar yazi zsh
+  nvim rofi rg spicetify tmux utils waybar yazi zsh
 )
 stow --restow --target="$HOME" --ignore='^Library/' "${STOW_PACKAGES[@]}"
+
+python3 "$DOTFILES_DIR/utils/.utils/agent-preferences-util"
 
 if command -v mise >/dev/null 2>&1; then
   mise install

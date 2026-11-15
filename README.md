@@ -290,3 +290,19 @@ Note to myself from the future, this whole config was at one point entirely not
 touched by AI. 
 - As of September 28th, the only AI generated portion should be the keyboard
   mapping portion
+
+## Claude Code and Codex preferences
+
+Shared models, themes, Vim mode, and keybindings live in `claude/` and `codex/`.
+Trust, permissions, hooks, and machine-specific settings stay in local app configs.
+These directories are merged, not stowed. Requires Python 3.11+.
+
+```sh
+# Apply dotfiles preferences to local configs (also run by platform installers).
+agent-preferences-util
+
+# Save allowed preferences changed in either app back to dotfiles.
+agent-preferences-util --capture
+```
+
+Capture uses an explicit allowlist; review the resulting diff before publishing.

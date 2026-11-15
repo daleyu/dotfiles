@@ -1,0 +1,125 @@
+#!/usr/bin/env python3
+"""Apply portable agent preferences, or capture only explicitly allowed settings."""
+import argparse
+import datetime
+import json
+import math
+from pathlib import Path
+import tomllib
+
+CODEX_KEYS = {'model', 'model_reasoning_effort', 'model_verbosity'}
+TUI_KEYS = {'vim_mode_default', 'theme', 'keymap', 'status_line', 'title', 'notifications', 'notification_method'}
+CLAUDE_KEYS = {'model', 'theme', 'editorMode', 'enabledPlugins', 'effortLevel', 'outputStyle', 'vimInsertModeRemaps'}
+
+
+def portable(app, data):
+    if app == 'claude':
+        return {k: v for k, v in data.items() if k in CLAUDE_KEYS}
+    result = {k: v for k, v in data.items() if k in CODEX_KEYS}
+    tui = {k: v for k, v in data.get('tui', {}).items() if k in TUI_KEYS}
+    if tui:
+        result['tui'] = tui
+    return result
+
+
+def merge(local, preferences):
+    for key, value in preferences.items():
+        if isinstance(value, dict) and isinstance(local.get(key), dict):
+            merge(local[key], value)
+        else:
+            local[key] = value
+    return local
+
+
+def toml_value(value):
+    if isinstance(value, str):
+        return json.dumps(value, ensure_ascii=False)
+    if isinstance(value, bool):
+        return str(value).lower()
+    if isinstance(value, (datetime.datetime, datetime.date, datetime.time)):
+        return value.isoformat()
+    if isinstance(value, (int, float)):
+        if isinstance(value, float) and not math.isfinite(value):
+            return 'nan' if math.isnan(value) else ('inf' if value > 0 else '-inf')
+        return repr(value)
+    if isinstance(value, list):
+        return '[' + ', '.join(toml_value(v) for v in value) + ']'
+    if isinstance(value, dict):
+        return '{ ' + ', '.join(json.dumps(k) + ' = ' + toml_value(v) for k, v in value.items()) + ' }'
+    raise ValueError('Unsupported TOML value')
+
+
+def encode(app, data):
+    if app == 'claude':
+        return json.dumps(data, indent=2, ensure_ascii=False) + '\n'
+    lines = []
+    def table(values, path=()):
+        if path:
+            lines.append('[' + '.'.join(json.dumps(k) for k in path) + ']')
+        for key, value in values.items():
+            if not isinstance(value, dict):
+                lines.append(json.dumps(key) + ' = ' + toml_value(value))
+        for key, value in values.items():
+            if isinstance(value, dict):
+                lines.append('')
+                table(value, (*path, key))
+    table(data)
+    text = '\n'.join(lines).strip() + '\n'
+    assert tomllib.loads(text) == data
+    return text
+
+
+def read(app, path):
+    if not path.exists():
+        return {}
+    return (tomllib.loads if app == 'codex' else json.loads)(path.read_text())
+
+
+def run(root, home, capture=False):
+    pending = []
+    for app, filename in [('codex', 'config.toml'), ('claude', 'settings.json')]:
+        local = home / ('.' + app) / filename
+        shared = root / app / ('preferences.toml' if app == 'codex' else 'preferences.json')
+        if capture:
+            if not local.exists():
+                raise ValueError(f'Cannot capture missing {app} configuration')
+            target, data = shared, portable(app, read(app, local))
+        else:
+            preferences = read(app, shared)
+            if portable(app, preferences) != preferences:
+                raise ValueError(f'{shared}: contains settings outside the portable allowlist')
+            target, data = local, merge(read(app, local), preferences)
+        text = encode(app, data)
+        if target.is_symlink():
+            raise ValueError(f'{target}: remove the config symlink before merging')
+        pending.append((target, text))
+    # Claude keeps custom shortcuts in a separate file; Codex uses tui.keymap.
+    local_keys = home / '.claude/keybindings.json'
+    shared_keys = root / 'claude/keybindings.json'
+    origin, target = (local_keys, shared_keys) if capture else (shared_keys, local_keys)
+    if origin.exists():
+        data = json.loads(origin.read_text())
+        if set(data) - {'$schema', '$docs', 'bindings'}:
+            raise ValueError('Unexpected fields in Claude keybindings')
+        if target.is_symlink():
+            raise ValueError(f'{target}: remove the keybindings symlink before merging')
+        pending.append((target, json.dumps(data, indent=2) + '\n'))
+    for target, text in pending:
+        if target.exists() and target.read_text() == text:
+            continue
+        target.parent.mkdir(parents=True, exist_ok=True)
+        if target.exists() and not capture:
+            backup = target.with_name(target.name + '.before-preferences')
+            if not backup.exists():
+                backup.write_bytes(target.read_bytes())
+                backup.chmod(0o600)
+        target.write_text(text)
+        target.chmod(0o600)
+    print('Captured portable preferences only.' if capture else 'Applied preferences; local trust, permissions, and hooks preserved.')
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--capture', action='store_true', help='Save allowed local preferences to dotfiles; never copy trust, permissions, or hooks')
+    args = parser.parse_args()
+    run(Path(__file__).resolve().parents[2], Path.home(), args.capture)
