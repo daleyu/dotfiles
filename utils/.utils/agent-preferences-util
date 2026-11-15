@@ -9,7 +9,7 @@ import tomllib
 
 CODEX_KEYS = {'model', 'model_reasoning_effort', 'model_verbosity'}
 TUI_KEYS = {'vim_mode_default', 'theme', 'keymap', 'status_line', 'title', 'notifications', 'notification_method'}
-CLAUDE_KEYS = {'model', 'theme', 'editorMode', 'enabledPlugins', 'effortLevel', 'outputStyle', 'vimInsertModeRemaps'}
+CLAUDE_KEYS = {'model', 'theme', 'editorMode', 'enabledPlugins', 'effortLevel', 'outputStyle', 'vimInsertModeRemaps', 'statusLine'}
 
 
 def portable(app, data):
@@ -115,6 +115,17 @@ def run(root, home, capture=False):
                 backup.chmod(0o600)
         target.write_text(text)
         target.chmod(0o600)
+    # The status line script is never rewritten by Claude, so link it instead of
+    # copying; edits in dotfiles take effect on the next render.
+    if not capture:
+        script, link = root / 'claude/statusline.sh', home / '.claude/statusline.sh'
+        if script.exists() and not (link.is_symlink() and link.resolve() == script.resolve()):
+            if link.exists() and not link.is_symlink():
+                link.replace(link.with_name(link.name + '.before-preferences'))
+            elif link.is_symlink():
+                link.unlink()
+            link.parent.mkdir(parents=True, exist_ok=True)
+            link.symlink_to(script)
     print('Captured portable preferences only.' if capture else 'Applied preferences; local trust, permissions, and hooks preserved.')
 
 

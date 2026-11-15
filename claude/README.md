@@ -25,3 +25,7 @@ Linux and macOS installers apply preferences automatically. Do not stow
 the codex or claude directories. Application changes are captured only when
 you explicitly run --capture. Applying preferences preserves local settings
 but normalizes config formatting; a .before-preferences backup is kept locally.
+
+The status line lives in claude/statusline.sh (Catppuccin Mocha powerline;
+needs jq, git, and a Nerd Font). Applying preferences symlinks it to
+~/.claude/statusline.sh, so edits here take effect immediately.

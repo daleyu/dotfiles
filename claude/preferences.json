@@ -5,5 +5,10 @@
     "pyright-lsp@claude-plugins-official": true
   },
   "theme": "dark-ansi",
-  "editorMode": "vim"
+  "editorMode": "vim",
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh",
+    "padding": 0
+  }
 }
