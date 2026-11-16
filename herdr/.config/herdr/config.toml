@@ -30,6 +30,10 @@ resize_pane_down = "prefix+ctrl+k"
 resize_pane_left = "prefix+ctrl+h"
 resize_pane_right = "prefix+ctrl+l"
 
+# Resize mode: C-a R, then h/j/k/l (or arrows) repeatedly, 5% per press; Esc/Enter exits.
+# Its default prefix+r is taken by reload_config above.
+resize_mode = "prefix+shift+r"
+
 # tmux copy-mode entry and selection use Herdr's built-in tmux-like copy mode.
 copy_mode = "prefix+["
 
@@ -64,8 +68,13 @@ tab_bar_workspace_label = "right"
 
 # Match tmux mouse support and visible pane boundaries.
 mouse_capture = true
-pane_borders = "off"
+
+# tmux-style dividers between split panes only: no frame on the outer edge,
+# and one shared line per split (pane_gaps off avoids doubled lines). Divider
+# segments touching the focused pane use theme accent (#8aadf4) in bold.
+pane_borders = "auto"
 pane_outer_borders = false
+pane_gaps = false
 
 # [[keys.command]]
 # key = "prefix+T"
