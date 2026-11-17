@@ -49,6 +49,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("wl-paste --type text --watch cliphist store")
     hl.exec_cmd("wl-paste --type image --watch cliphist store")
     hl.exec_cmd("waybar")
+    -- Per-app keyd overrides (~/.config/keyd/app.conf); needs the user in the keyd group.
+    hl.exec_cmd("keyd-application-mapper -d")
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
     -- Mute the Fifine mic's hardware playback (sidetone), which is on after every boot.
     -- Full path: ~/.utils is only added to PATH by the shell, not by Hyprland.
@@ -225,6 +227,8 @@ hl.config({
     misc = {
         force_default_wallpaper = -1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
         disable_hyprland_logo   = false, -- If true disables the random hyprland logo / anime girl background. :(
+        key_press_enables_dpms  = true,  -- Wake the screen on any key press after dpms off
+        mouse_move_enables_dpms = false, -- Mouse movement does not wake the screen; only key presses do
     },
 })
 
@@ -270,7 +274,7 @@ hl.device({
 ---------------------
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
-local cmdMod = "ALT"    -- Sets "ALT" key and uses it like mac command
+local cmdMod = "ALT"    -- Physical Alt is the keyd [cmd] layer, which sends Alt for these binds
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())

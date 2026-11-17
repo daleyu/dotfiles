@@ -99,6 +99,10 @@ keybind = alt+digit_7=text:\x017
 keybind = alt+digit_8=text:\x018
 keybind = alt+digit_9=text:\x019
 
+# Linux: the thumb key + V arrives as Shift+Insert (see keyd config), which
+# defaults to the primary selection.
+keybind = shift+insert=paste_from_clipboard
+
 # next tab
 keybind = alt+n=text:\x01n
 keybind = alt+left_bracket=text:\x00[

@@ -67,6 +67,13 @@ sudo systemctl enable --now keyd
 sudo keyd reload
 ```
 
+Per-app key overrides (`linux/.config/keyd/app.conf`, e.g. the thumb key
+sending Alt inside Ghostty) need your user in the `keyd` group. Log out and
+back in afterwards; Hyprland then starts `keyd-application-mapper` itself.
+```
+sudo usermod -aG keyd $USER
+```
+
 ## Using Stow for dotfile locations
 
 ```Installation

@@ -81,6 +81,11 @@ if [[ $OSTYPE == linux* ]]; then
   zle -N paste-from-clipboard
   bindkey -M viins '^V' paste-from-clipboard
   bindkey -M emacs '^V' paste-from-clipboard
+
+  # Hyprland: turn the monitors off (sleep lets the keypress release first).
+  if (( $+commands[hyprctl] )); then
+    alias screenoff="sleep 1 && hyprctl dispatch 'hl.dsp.dpms({ action = \"off\" })'"
+  fi
 fi
 
 # Add timestamp to the end of the line
