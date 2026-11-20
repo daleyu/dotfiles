@@ -1,6 +1,7 @@
 return {
         {
-                -- Loaded from ~/Development/monku.nvim when that checkout exists, otherwise from GitHub.
+                -- Loads a local checkout (~/stripe/monku.nvim or ~/Development/monku.nvim) when
+                -- present; otherwise lazy installs it from GitHub. See dev in config/lazy.lua.
                 "daleyu/monku.nvim",
                 dev = true,
                 lazy = false,

@@ -27,9 +27,18 @@ end
 
 require("lazy").setup({
         spec = spec,
-        -- Plugins marked `dev = true` load from a local checkout here, falling back to git without one.
+        -- Plugins marked `dev = true` load from the first local checkout found in these
+        -- directories, falling back to git (and lazy-lock.json) without one.
         dev = {
-                path = "~/Development",
+                path = function(plugin)
+                        for _, root in ipairs({ "~/stripe", "~/Development" }) do
+                                local dir = vim.fs.normalize(root .. "/" .. plugin.name)
+                                if vim.uv.fs_stat(dir) then
+                                        return dir
+                                end
+                        end
+                        return vim.fs.normalize("~/Development/" .. plugin.name)
+                end,
                 fallback = true,
         },
         performance = {
