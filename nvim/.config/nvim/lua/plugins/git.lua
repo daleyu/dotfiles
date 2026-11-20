@@ -48,141 +48,203 @@ return {
                 end,
         },
         { "akinsho/git-conflict.nvim", version = "*", config = true },
+        -- {
+        --         "pwntester/octo.nvim",
+        --         cmd = "Octo",
+        --         opts = {
+        --                 picker = "snacks",
+        --                 enable_builtin = true,
+        --                 github_hostname = "git.corp.stripe.com",
+        --                 mappings = {
+        --                         submit_win = {
+        --                                 approve_review = { lhs = "<C-y>", desc = "approve review", mode = { "n" } },
+        --                                 comment_review = { lhs = "<C-m>", desc = "comment review", mode = { "n" } },
+        --                                 request_changes = {
+        --                                         lhs = "<C-r>",
+        --                                         desc = "request changes review",
+        --                                         mode = { "n" },
+        --                                 },
+        --                                 close_review_tab = { lhs = "<C-c>", desc = "close review tab", mode = { "n" } },
+        --                         },
+        --                         review_diff = {
+        --                                 submit_review = { lhs = "<localleader>or", desc = "submit review" },
+        --                                 discard_review = { lhs = "<localleader>oq", desc = "discard review" },
+        --                                 add_review_comment = {
+        --                                         lhs = "<localleader>cr",
+        --                                         desc = "add a new review comment",
+        --                                         mode = { "n", "x" },
+        --                                 },
+        --                                 focus_files = {
+        --                                         lhs = "<localleader>e",
+        --                                         desc = "move focus to changed file panel",
+        --                                 },
+        --                                 toggle_files = {
+        --                                         lhs = "<localleader>b",
+        --                                         desc = "hide/show changed files panel",
+        --                                 },
+        --                                 next_thread = { lhs = "]t", desc = "move to next thread" },
+        --                                 prev_thread = { lhs = "[t", desc = "move to previous thread" },
+        --                                 select_next_entry = { lhs = "]f", desc = "move to next changed file" },
+        --                                 select_prev_entry = { lhs = "[f", desc = "move to previous changed file" },
+        --                                 select_first_entry = { lhs = "[F", desc = "move to first changed file" },
+        --                                 select_last_entry = { lhs = "]F", desc = "move to last changed file" },
+        --                                 select_next_unviewed_entry = { lhs = "]u", desc = "move to next unviewed file" },
+        --                                 select_prev_unviewed_entry = {
+        --                                         lhs = "[u",
+        --                                         desc = "move to previous unviewed file",
+        --                                 },
+        --                                 close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
+        --                                 toggle_viewed = {
+        --                                         lhs = "<localleader><space>",
+        --                                         desc = "toggle viewer viewed state",
+        --                                 },
+        --                                 goto_file = { lhs = "gf", desc = "go to file" },
+        --                                 copy_sha = { lhs = "<C-e>", desc = "copy commit SHA to system clipboard" },
+        --                                 review_commits = { lhs = "<localleader>C", desc = "review PR commits" },
+        --                         },
+        --                 },
+        --         },
+        --         config = function(_, opts)
+        --                 require("octo").setup(opts)
+        --
+        --                 local utils = require("octo.utils")
+        --                 local original_error = utils.error
+        --                 local proxy_note =
+        --                         "Note: GitHub API Proxy is enabled on this devbox. If you need to authenticate or re-authenticate `gh`, follow https://go/github-proxy-migration."
+        --
+        --                 utils.error = function(message, ...)
+        --                         if type(message) == "string" then
+        --                                 message = message:gsub("\27%[[%d;]*m", ""):gsub(vim.pesc(proxy_note), "")
+        --                                 message = vim.trim(message)
+        --                                 if message == "" then
+        --                                         return
+        --                                 end
+        --                         end
+        --                         return original_error(message, ...)
+        --                 end
+        --         end,
+        --         keys = {
+        --                 {
+        --                         "<leader>go",
+        --                         "<CMD>Octo actions<CR>",
+        --                         desc = "Octo Actions",
+        --                 },
+        --                 {
+        --                         "<leader>op",
+        --
+        --                         function()
+        --                                 vim.ui.input({ prompt = "PR number: " }, function(input)
+        --                                         if input == nil then
+        --                                                 return
+        --                                         end
+        --
+        --                                         local pr = vim.trim(input):gsub("^#", "")
+        --                                         if pr:match("^%d+$") then
+        --                                                 vim.cmd("Octo pr edit " .. pr)
+        --                                         else
+        --                                                 Snacks.notify.warn("Enter a valid PR number")
+        --                                         end
+        --                                 end)
+        --                         end,
+        --                         desc = "Octo PR by Number",
+        --                 },
+        --                 {
+        --                         "<leader>ol",
+        --                         function()
+        --                                 local repo = require("octo.utils").get_remote_name()
+        --                                 if not repo then
+        --                                         Snacks.notify.warn("Repo is not configured")
+        --                                         return
+        --                                 end
+        --
+        --                                 local authors = {
+        --                                         "daleyu",
+        --                                         "brianql",
+        --                                         "willmelani",
+        --                                         "xzha",
+        --                                         "mli",
+        --                                         "kevinmao",
+        --                                         "anuraag",
+        --                                         "hemachandra",
+        --                                 }
+        --                                 local author_query = table.concat(
+        --                                         vim.tbl_map(function(author)
+        --                                                 return "author:" .. author
+        --                                         end, authors),
+        --                                         " "
+        --                                 )
+        --                                 local query = string.format("is:pr is:open repo:%s %s", repo, author_query)
+        --                                 vim.cmd("Octo search " .. query)
+        --                         end,
+        --                         desc = "Octo Team PRs",
+        --                 },
+        --         },
+        --         dependencies = {
+        --                 "nvim-lua/plenary.nvim",
+        --                 "folke/snacks.nvim",
+        --                 "nvim-tree/nvim-web-devicons",
+        --         },
+        -- },
         {
-                "pwntester/octo.nvim",
-                cmd = "Octo",
+                "emrearmagan/atlas.nvim",
+                cmd = "Atlas",
+                keys = {
+                        {
+                                "<leader>go",
+                                "<CMD>Atlas pulls github<CR>",
+                                mode = "n",
+                                desc = "Atlas GitHub pull requests",
+                        },
+                },
+                dependencies = {
+                        "folke/snacks.nvim",
+                        "sindrets/diffview.nvim",
+                        "nvim-tree/nvim-web-devicons",
+                },
                 opts = {
-                        picker = "snacks",
-                        enable_builtin = true,
-                        github_hostname = "git.corp.stripe.com",
-                        mappings = {
-                                submit_win = {
-                                        approve_review = { lhs = "<C-y>", desc = "approve review", mode = { "n" } },
-                                        comment_review = { lhs = "<C-m>", desc = "comment review", mode = { "n" } },
-                                        request_changes = {
-                                                lhs = "<C-r>",
-                                                desc = "request changes review",
-                                                mode = { "n" },
+                        ui = {
+                                statusline = { show_hints = true },
+                                picker = "snacks",
+                                listed_buffer = true,
+                        },
+                        keymaps = {
+                                ui = { submit = "<C-c>", close = "<ESC>" },
+                        },
+                        providers = {
+                                github = { hostname = "git.corp.stripe.com" },
+                        },
+                        pulls = {
+                                github = {
+                                        views = {
+                                                {
+                                                        name = "To review",
+                                                        key = "1",
+                                                        layout = "compact",
+                                                        search = "is:open assignee:@me -author:@me",
+                                                },
+                                                {
+                                                        name = "My open PRs",
+                                                        key = "2",
+                                                        layout = "compact",
+                                                        search = "is:open is:pr author:@me",
+                                                },
                                         },
-                                        close_review_tab = { lhs = "<C-c>", desc = "close review tab", mode = { "n" } },
                                 },
-                                review_diff = {
-                                        submit_review = { lhs = "<localleader>or", desc = "submit review" },
-                                        discard_review = { lhs = "<localleader>oq", desc = "discard review" },
-                                        add_review_comment = {
-                                                lhs = "<localleader>cr",
-                                                desc = "add a new review comment",
-                                                mode = { "n", "x" },
+                                git_transport = "ssh",
+                                diff = {
+                                        open_cmd = "AtlasDiff",
+                                        lsp = { enabled = true },
+                                },
+                                repo_config = {
+                                        paths = {
+                                                ["stripe-internal/mint"] = vim.fn.isdirectory("/pay/src") == 1 and "/pay/src"
+                                                        or "~/stripe/mint",
                                         },
-                                        focus_files = {
-                                                lhs = "<localleader>e",
-                                                desc = "move focus to changed file panel",
-                                        },
-                                        toggle_files = {
-                                                lhs = "<localleader>b",
-                                                desc = "hide/show changed files panel",
-                                        },
-                                        next_thread = { lhs = "]t", desc = "move to next thread" },
-                                        prev_thread = { lhs = "[t", desc = "move to previous thread" },
-                                        select_next_entry = { lhs = "]f", desc = "move to next changed file" },
-                                        select_prev_entry = { lhs = "[f", desc = "move to previous changed file" },
-                                        select_first_entry = { lhs = "[F", desc = "move to first changed file" },
-                                        select_last_entry = { lhs = "]F", desc = "move to last changed file" },
-                                        select_next_unviewed_entry = { lhs = "]u", desc = "move to next unviewed file" },
-                                        select_prev_unviewed_entry = {
-                                                lhs = "[u",
-                                                desc = "move to previous unviewed file",
-                                        },
-                                        close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
-                                        toggle_viewed = {
-                                                lhs = "<localleader><space>",
-                                                desc = "toggle viewer viewed state",
-                                        },
-                                        goto_file = { lhs = "gf", desc = "go to file" },
-                                        copy_sha = { lhs = "<C-e>", desc = "copy commit SHA to system clipboard" },
-                                        review_commits = { lhs = "<localleader>C", desc = "review PR commits" },
                                 },
                         },
                 },
                 config = function(_, opts)
-                        require("octo").setup(opts)
-
-                        local utils = require("octo.utils")
-                        local original_error = utils.error
-                        local proxy_note =
-                                "Note: GitHub API Proxy is enabled on this devbox. If you need to authenticate or re-authenticate `gh`, follow https://go/github-proxy-migration."
-
-                        utils.error = function(message, ...)
-                                if type(message) == "string" then
-                                        message = message:gsub("\27%[[%d;]*m", ""):gsub(vim.pesc(proxy_note), "")
-                                        message = vim.trim(message)
-                                        if message == "" then
-                                                return
-                                        end
-                                end
-                                return original_error(message, ...)
-                        end
+                        require("atlas").setup(opts)
                 end,
-                keys = {
-                        {
-                                "<leader>go",
-                                "<CMD>Octo actions<CR>",
-                                desc = "Octo Actions",
-                        },
-                        {
-                                "<leader>op",
-
-                                function()
-                                        vim.ui.input({ prompt = "PR number: " }, function(input)
-                                                if input == nil then
-                                                        return
-                                                end
-
-                                                local pr = vim.trim(input):gsub("^#", "")
-                                                if pr:match("^%d+$") then
-                                                        vim.cmd("Octo pr edit " .. pr)
-                                                else
-                                                        Snacks.notify.warn("Enter a valid PR number")
-                                                end
-                                        end)
-                                end,
-                                desc = "Octo PR by Number",
-                        },
-                        {
-                                "<leader>ol",
-                                function()
-                                        local repo = require("octo.utils").get_remote_name()
-                                        if not repo then
-                                                Snacks.notify.warn("Repo is not configured")
-                                                return
-                                        end
-
-                                        local authors = {
-                                                "daleyu",
-                                                "brianql",
-                                                "willmelani",
-                                                "xzha",
-                                                "mli",
-                                                "kevinmao",
-                                                "anuraag",
-                                                "hemachandra",
-                                        }
-                                        local author_query = table.concat(
-                                                vim.tbl_map(function(author)
-                                                        return "author:" .. author
-                                                end, authors),
-                                                " "
-                                        )
-                                        local query = string.format("is:pr is:open repo:%s %s", repo, author_query)
-                                        vim.cmd("Octo search " .. query)
-                                end,
-                                desc = "Octo Team PRs",
-                        },
-                },
-                dependencies = {
-                        "nvim-lua/plenary.nvim",
-                        "folke/snacks.nvim",
-                        "nvim-tree/nvim-web-devicons",
-                },
         },
 }

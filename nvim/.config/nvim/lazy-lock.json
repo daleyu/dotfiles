@@ -1,4 +1,5 @@
 {
+  "atlas.nvim": { "branch": "main", "commit": "e3035add15df67bb3e70f53ced4b63b94a76d916" },
   "auto-dark-mode.nvim": { "branch": "master", "commit": "97a86c9402c784a254e5465ca2c51481eea310e3" },
   "auto-session": { "branch": "main", "commit": "02a5588f677970a9bc784115c62bef9e5855499b" },
   "autosync.nvim": { "branch": "master", "commit": "74775acfc4de3701466cb3e5b8977338d7a40e07" },
